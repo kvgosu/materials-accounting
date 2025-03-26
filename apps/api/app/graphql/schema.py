@@ -1,14 +1,14 @@
-from ariadne import load_schema_from_path, make_executable_schema
+# app/graphql/schema.py
+from ariadne import make_executable_schema
 from .schema_loader import load_all_schemas
-from .resolvers import query, mutation  # Эти модули мы создадим позже
+from .resolvers import query, mutation
 
-# Загружаем схему из общей библиотеки
+# Загружаем схему
 type_defs = load_all_schemas()
 
 # Создаем исполняемую схему с резолверами
 schema = make_executable_schema(
     type_defs,
     query,
-    mutation,
-    # Здесь можно добавить другие резолверы
+    mutation
 )

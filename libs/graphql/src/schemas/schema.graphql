@@ -1,8 +1,15 @@
-
 type Query {
-  clients: [Client!]!
-  suppliers: [Supplier!]!
-  materials: [Material!]!
+  # Клиенты
+  clients(skip: Int, limit: Int, search: String): [Client!]!
+  client(id: ID!): Client
+  
+  # Поставщики
+  suppliers(skip: Int, limit: Int, search: String): [Supplier!]!
+  supplier(id: ID!): Supplier
+  
+  # Материалы
+  materials(skip: Int, limit: Int, search: String): [Material!]!
+  material(id: ID!): Material
 }
 
 type Client {
@@ -28,4 +35,104 @@ type Material {
   name: String!
   unit: String!
   description: String
+}
+
+type Mutation {
+  # Клиенты
+  createClient(input: CreateClientInput!): CreateClientPayload!
+  updateClient(id: ID!, input: UpdateClientInput!): UpdateClientPayload!
+  deleteClient(id: ID!): DeleteClientPayload!
+  
+  # Поставщики
+  createSupplier(input: CreateSupplierInput!): CreateSupplierPayload!
+  updateSupplier(id: ID!, input: UpdateSupplierInput!): UpdateSupplierPayload!
+  deleteSupplier(id: ID!): DeleteSupplierPayload!
+  
+  # Материалы
+  createMaterial(input: CreateMaterialInput!): CreateMaterialPayload!
+  updateMaterial(id: ID!, input: UpdateMaterialInput!): UpdateMaterialPayload!
+  deleteMaterial(id: ID!): DeleteMaterialPayload!
+}
+
+# Входные типы для клиентов
+input CreateClientInput {
+  name: String!
+  contactPerson: String
+  phone: String
+  email: String
+  address: String
+}
+
+input UpdateClientInput {
+  name: String
+  contactPerson: String
+  phone: String
+  email: String
+  address: String
+}
+
+type CreateClientPayload {
+  client: Client!
+}
+
+type UpdateClientPayload {
+  client: Client!
+}
+
+type DeleteClientPayload {
+  success: Boolean!
+}
+
+# Входные типы для поставщиков
+input CreateSupplierInput {
+  name: String!
+  contactPerson: String
+  phone: String
+  email: String
+  address: String
+}
+
+input UpdateSupplierInput {
+  name: String
+  contactPerson: String
+  phone: String
+  email: String
+  address: String
+}
+
+type CreateSupplierPayload {
+  supplier: Supplier!
+}
+
+type UpdateSupplierPayload {
+  supplier: Supplier!
+}
+
+type DeleteSupplierPayload {
+  success: Boolean!
+}
+
+# Входные типы для материалов
+input CreateMaterialInput {
+  name: String!
+  unit: String!
+  description: String
+}
+
+input UpdateMaterialInput {
+  name: String
+  unit: String
+  description: String
+}
+
+type CreateMaterialPayload {
+  material: Material!
+}
+
+type UpdateMaterialPayload {
+  material: Material!
+}
+
+type DeleteMaterialPayload {
+  success: Boolean!
 }

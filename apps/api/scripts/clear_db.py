@@ -1,97 +1,66 @@
+# scripts/clear_db.py
 import sys
 import os
-import logging
-from sqlalchemy import text
+import io
+import sqlite3
+import argparse
+from dotenv import load_dotenv
 
-# Добавляем путь к корневой директории проекта в sys.path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+# Настраиваем кодировку консоли для поддержки Unicode в Windows
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
-from app.database.db import SessionLocal, engine
-from app.database.models import (
-    Base, Client, Supplier, Contract, Material, 
-    Invoice, InvoiceItem, Transaction, DebtMovement
-)
+load_dotenv()
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
+sqlite_path = os.getenv("SQLITE_PATH", "./dev_database.db")
+print(f"Using SQLite database at: {sqlite_path}")
 
-def clear_tables(db):
-    """Очистка всех таблиц базы данных"""
-    try:
-        # Порядок очистки важен из-за внешних ключей
-        logger.info("Очистка таблицы debt_movements")
-        db.query(DebtMovement).delete()
+def clear_database(force=False):
+    """Очистка всех таблиц базы данных напрямую через SQLite"""
+    if not force:
+        print("WARNING: The database will be completely cleared!")
+        answer = input("Are you sure you want to clear all data? (y/n): ")
         
-        logger.info("Очистка таблицы transactions")
-        db.query(Transaction).delete()
-        
-        logger.info("Очистка таблицы invoice_items")
-        db.query(InvoiceItem).delete()
-        
-        logger.info("Очистка таблицы invoices")
-        db.query(Invoice).delete()
-        
-        logger.info("Очистка таблицы contracts")
-        db.query(Contract).delete()
-        
-        logger.info("Очистка таблицы materials")
-        db.query(Material).delete()
-        
-        logger.info("Очистка таблицы suppliers")
-        db.query(Supplier).delete()
-        
-        logger.info("Очистка таблицы clients")
-        db.query(Client).delete()
-        
-        db.commit()
-        logger.info("Все таблицы успешно очищены")
-        
-    except Exception as e:
-        logger.error(f"Ошибка при очистке таблиц: {str(e)}")
-        db.rollback()
-        raise
-
-def reset_sequences():
-    """Сброс последовательностей (для PostgreSQL)"""
-    try:
-        with engine.connect() as connection:
-            # Проверяем, что используется PostgreSQL
-            if 'postgresql' in engine.url.drivername:
-                logger.info("Сброс последовательностей в PostgreSQL")
-                sql = text("SELECT pg_catalog.setval(pg_get_serial_sequence('table_name', 'id'), 1, false);")
-                connection.execute(sql)
-                logger.info("Последовательности успешно сброшены")
-    except Exception as e:
-        logger.error(f"Ошибка при сбросе последовательностей: {str(e)}")
-        # Этот сбой некритичный, можно продолжить работу скрипта
-
-def main():
-    """Основная функция очистки базы данных"""
-    logger.info("Начало очистки базы данных")
-    
-    # Запрос подтверждения
-    confirm = input("Вы уверены, что хотите очистить все данные из базы? (y/n): ")
-    if confirm.lower() != 'y':
-        logger.info("Очистка отменена пользователем")
-        return
-    
-    # Создание сессии
-    db = SessionLocal()
+        if answer.lower() != 'y':
+            print("Operation cancelled.")
+            return
     
     try:
-        # Очистка таблиц
-        clear_tables(db)
+        # Подключаемся к базе данных
+        conn = sqlite3.connect(sqlite_path)
+        cursor = conn.cursor()
         
-        # Сброс последовательностей (для PostgreSQL)
-        reset_sequences()
+        # Получаем список всех таблиц (кроме системных и представлений)
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'")
+        tables = cursor.fetchall()
         
-        logger.info("Очистка базы данных завершена успешно")
+        # Отключаем проверку внешних ключей для чистки
+        cursor.execute("PRAGMA foreign_keys = OFF")
+        
+        # Очищаем каждую таблицу
+        for table in tables:
+            table_name = table[0]
+            print(f"Clearing table: {table_name}")
+            cursor.execute(f"DELETE FROM {table_name}")
+        
+        # Включаем проверку внешних ключей обратно
+        cursor.execute("PRAGMA foreign_keys = ON")
+        
+        # Применяем изменения
+        conn.commit()
+        print("All tables have been cleared successfully")
         
     except Exception as e:
-        logger.error(f"Ошибка при очистке базы данных: {str(e)}")
-        raise
+        print(f"Error during database clearing: {str(e)}")
+        if conn:
+            conn.rollback()
     finally:
-        db.close()
+        if conn:
+            conn.close()
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description='Clear the database tables')
+    parser.add_argument('--force', '-f', action='store_true', help='Force clearing without confirmation')
+    args = parser.parse_args()
+    
+    clear_database(force=args.force)

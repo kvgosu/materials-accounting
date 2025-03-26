@@ -2,12 +2,14 @@
 import os
 import sys
 import uuid
-
-# Добавляем путь к корню проекта
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 from datetime import date, datetime, timedelta
-from sqlalchemy.orm import Session
+
+# Добавляем корневую директорию проекта в путь поиска модулей
+script_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.abspath(os.path.join(script_dir, '..'))
+sys.path.insert(0, root_dir)
+
+# Теперь импорты должны работать корректно
 from app.database.db import SessionLocal, init_db, create_views
 from app.database.models import (
     Client, Supplier, Contract, Material, Invoice, 
@@ -37,19 +39,19 @@ def seed_test_data():
             ),
             Client(
                 id=uuid.uuid4(),
-                name="ЗАО 'СтройМастер'",
+                name="ОАО 'СтройМастер'",
                 contact_person="Петров Петр",
-                phone="+7 (999) 765-43-21",
-                email="petrov@stroymaster.ru",
-                address="г. Санкт-Петербург, ул. Невская, 5"
+                phone="+7 (704) 765-43-21",
+                email="petrov@stroymaster.kz",
+                address="г. Шымкент, ул. Гепари, 5"
             ),
             Client(
                 id=uuid.uuid4(),
                 name="ИП Сидоров А.А.",
                 contact_person="Сидоров Алексей",
-                phone="+7 (999) 111-22-33",
-                email="sidorov@example.com",
-                address="г. Казань, ул. Баумана, 15"
+                phone="+7 (701) 111-22-33",
+                email="sidorov@example.kz",
+                address="г. Алматы, ул. Абая, 15"
             )
         ]
         
@@ -57,27 +59,27 @@ def seed_test_data():
         suppliers = [
             Supplier(
                 id=uuid.uuid4(),
-                name="ООО 'МеталлПром'",
+                name="ТОО 'МеталлПром'",
                 contact_person="Смирнов Василий",
-                phone="+7 (999) 444-55-66",
-                email="smirnov@metallprom.ru",
-                address="г. Екатеринбург, ул. Мира, 20"
+                phone="+7 (748) 444-55-66",
+                email="smirnov@metallprom.kz",
+                address="г. Павлодар, ул. Мыгали, 20"
             ),
             Supplier(
                 id=uuid.uuid4(),
-                name="ЗАО 'ЛесТорг'",
+                name="ОАО 'ЛесТорг'",
                 contact_person="Кузнецова Елена",
-                phone="+7 (999) 777-88-99",
-                email="kuznetsova@lestorg.ru",
-                address="г. Новосибирск, ул. Красная, 30"
+                phone="+7 (707) 777-88-99",
+                email="kuznetsova@lestorg.kz",
+                address="г. Астана, ул. Карсы, 30"
             ),
             Supplier(
                 id=uuid.uuid4(),
-                name="ООО 'СтройМатериалы'",
+                name="ТОО 'СтройМатериалы'",
                 contact_person="Козлов Дмитрий",
-                phone="+7 (999) 333-22-11",
-                email="kozlov@stroymaterials.ru",
-                address="г. Ростов-на-Дону, ул. Советская, 40"
+                phone="+7 (777) 333-22-11",
+                email="kozlov@stroymaterials.kz",
+                address="г. Алматы, ул. Ауэзова, 40"
             )
         ]
         

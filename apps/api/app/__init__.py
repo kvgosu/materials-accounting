@@ -8,12 +8,26 @@ def create_app():
     CORS(app)
     
     # Загрузка конфигурации
-    app.config.from_object('app.config.Config')
+    try:
+        app.config.from_object('app.config.Config')
+    except ImportError:
+        print("WARNING: Configuration module not found. Using default settings.")
+        # Минимальная конфигурация для работы
+        app.config['SECRET_KEY'] = 'dev-key'
+        app.config['DEBUG'] = True
     
     # Инициализация базы данных
-    init_db(app)
+    with app.app_context():
+        try:
+            init_db()
+        except Exception as e:
+            print(f"WARNING: Database initialization failed: {e}")
     
     # Регистрация GraphQL
     register_graphql_view(app)
+    
+    @app.route('/')
+    def index():
+        return {"message": "Materials Accounting API is running"}
     
     return app

@@ -4,10 +4,31 @@
   "projectType": "application",
   "sourceRoot": "apps/api/api",
   "targets": {
+    "serve": {
+      "executor": "@nxlv/python:run-commands",
+      "options": {
+        "command": "cd apps/api && python -m flask run --debug",
+        "cwd": "."
+      }
+    },
     "lock": {
       "executor": "@nxlv/python:lock",
       "options": {
         "update": false
+      }
+    },
+    "init-db": {
+      "executor": "@nxlv/python:run-commands",
+      "options": {
+        "command": "cd apps/api && python scripts/direct_init_db.py",
+        "cwd": "."
+      }
+    },
+    "clean-db": {
+      "executor": "@nxlv/python:run-commands",
+      "options": {
+        "command": "cd apps/api && python scripts/clear_db.py --force",
+        "cwd": "."
       }
     },
     "sync": {
