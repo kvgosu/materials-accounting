@@ -83,8 +83,17 @@
     "@nx/next": {
       "application": {
         "style": "css",
-        "linter": "eslint"
+        "linter": "eslint",
+        "bundler": "webpack",
+        "babel": true
       }
+    },
+    "component": {
+      "style": "css"
+    },
+    "library": {
+      "style": "css",
+      "linter": "eslint"
     },
     "@nx/react": {
       "library": {
@@ -99,8 +108,32 @@
         "script": "tools/scripts/sync-schema.js"
       }
     },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["vercel --prod"],
+        "cwd": "."
+      }
+    },
+    "deploy:preview": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["vercel"],
+        "cwd": "."
+      }
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
     "test": {
-      "dependsOn": ["^build"]
+      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
+    },
+    "lint": {
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+    },
+    "e2e": {
+      "inputs": ["default", "^production"]
     }
   }
 }
