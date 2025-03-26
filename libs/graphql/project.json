@@ -1,0 +1,52 @@
+{
+    "name": "graphql",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/graphql/src",
+    "projectType": "library",
+    "targets": {
+      "build": {
+        "executor": "@nx/rollup:rollup",
+        "outputs": ["{options.outputPath}"],
+        "options": {
+          "outputPath": "dist/libs/graphql",
+          "tsConfig": "libs/graphql/tsconfig.lib.json",
+          "project": "libs/graphql/package.json",
+          "entryFile": "libs/graphql/src/index.ts",
+          "external": ["react/jsx-runtime"],
+          "rollupConfig": "libs/graphql/rollup.config.cjs",
+          "compiler": "swc",
+          "assets": [
+            {
+              "glob": "libs/graphql/README.md",
+              "input": ".",
+              "output": "."
+            }
+          ]
+        }
+      },
+      "lint": {
+        "executor": "@nx/eslint:lint",
+        "outputs": ["{options.outputFile}"]
+      },
+      "test": {
+        "executor": "@nx/jest:jest",
+        "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+        "options": {
+          "jestConfig": "libs/graphql/jest.config.ts"
+        }
+      },
+      "generate-types": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "npx graphql-codegen"
+        }
+      },
+      "sync-schema": {
+        "executor": "nx:run-commands",
+        "options": {
+          "command": "node tools/scripts/sync-schema.js"
+        }
+      }
+    },
+    "tags": []
+  }

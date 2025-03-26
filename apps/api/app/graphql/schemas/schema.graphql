@@ -1,0 +1,31 @@
+
+type Query {
+  clients: [Client!]!
+  suppliers: [Supplier!]!
+  materials: [Material!]!
+}
+
+type Client {
+  id: ID!
+  name: String!
+  contactPerson: String
+  phone: String
+  email: String
+  address: String
+}
+
+type Supplier {
+  id: ID!
+  name: String!
+  contactPerson: String
+  phone: String
+  email: String
+  address: String
+}
+
+type Material {
+  id: ID!
+  name: String!
+  unit: String!
+  description: String
+}

@@ -1,0 +1,6 @@
+schema: libs/graphql/src/schemas/**/*.graphql
+documents: null
+generates:
+  libs/graphql/src/generated/types.ts:
+    plugins:
+      - typescript

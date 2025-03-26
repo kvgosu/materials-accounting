@@ -1,0 +1,43 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "apps/api/main.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "apps/web/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/apps/web"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "apps/api/main.py"
+    },
+    {
+      "src": "/(.*\\.(js|json|css|ico|png|jpg|jpeg|svg|woff|woff2|ttf|eot)$)",
+      "dest": "apps/web/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "apps/web/index.html"
+    }
+  ],
+  "env": {
+    "PYTHON_VERSION": "3.9"
+  },
+  "build": {
+    "env": {
+      "NODE_ENV": "production"
+    }
+  },
+  "public": false,
+  "github": {
+    "enabled": true,
+    "silent": false
+  }
+}
