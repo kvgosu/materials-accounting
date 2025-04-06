@@ -1,0 +1,1561 @@
+.\app\__init__.py:6:1: E302 expected 2 blank lines, found 1
+.\app\__init__.py:9:1: W293 blank line contains whitespace
+.\app\__init__.py:18:1: W293 blank line contains whitespace
+.\app\__init__.py:25:1: W293 blank line contains whitespace
+.\app\__init__.py:28:1: W293 blank line contains whitespace
+.\app\__init__.py:32:1: W293 blank line contains whitespace
+.\app\__init__.py:33:15: W292 no newline at end of file
+.\app\app.py:6:24: W292 no newline at end of file
+.\app\config.py:6:1: E302 expected 2 blank lines, found 1
+.\app\config.py:8:1: W293 blank line contains whitespace
+.\app\config.py:11:1: W293 blank line contains whitespace
+.\app\config.py:14:1: W293 blank line contains whitespace
+.\app\config.py:17:1: W293 blank line contains whitespace
+.\app\config.py:20:1: W293 blank line contains whitespace
+.\app\config.py:22:70: W292 no newline at end of file
+.\app\database\__init__.py:6:42: W291 trailing whitespace
+.\app\database\__init__.py:9:58: W291 trailing whitespace
+.\app\database\__init__.py:12:2: W292 no newline at end of file
+.\app\database\db.py:2:1: F401 'sqlalchemy.MetaData' imported but unused
+.\app\database\db.py:16:64: W291 trailing whitespace
+.\app\database\db.py:31:11: F541 f-string is missing placeholders
+.\app\database\db.py:40:1: E302 expected 2 blank lines, found 1
+.\app\database\db.py:48:1: E302 expected 2 blank lines, found 1
+.\app\database\db.py:52:1: E302 expected 2 blank lines, found 1
+.\app\database\db.py:57:1: W293 blank line contains whitespace
+.\app\database\db.py:63:19: W291 trailing whitespace
+.\app\database\db.py:68:77: W291 trailing whitespace
+.\app\database\db.py:71:17: W291 trailing whitespace
+.\app\database\db.py:73:21: W291 trailing whitespace
+.\app\database\db.py:82:1: W293 blank line contains whitespace
+.\app\database\db.py:86:23: W291 trailing whitespace
+.\app\database\db.py:91:81: W291 trailing whitespace
+.\app\database\db.py:94:21: W291 trailing whitespace
+.\app\database\db.py:96:25: W291 trailing whitespace
+.\app\database\db.py:102:50: W292 no newline at end of file
+.\app\database\generate_demo_data.py:15:1: F401 'uuid' imported but unused
+.\app\database\generate_demo_data.py:17:1: F401 'datetime.datetime' imported but unused
+.\app\database\generate_demo_data.py:23:1: E402 module level import not at top of file
+.\app\database\generate_demo_data.py:24:1: F401 'app.database.models.InvoiceItem' imported but unused
+.\app\database\generate_demo_data.py:24:1: F401 'app.database.models.DebtMovement' imported but unused
+.\app\database\generate_demo_data.py:24:1: F401 'app.database.models.DebtDirection' imported but unused
+.\app\database\generate_demo_data.py:24:1: F401 'app.database.models.DebtDimension' imported but unused
+.\app\database\generate_demo_data.py:24:1: E402 module level import not at top of file
+.\app\database\generate_demo_data.py:25:42: W291 trailing whitespace
+.\app\database\generate_demo_data.py:29:1: E402 module level import not at top of file
+.\app\database\generate_demo_data.py:34:1: E302 expected 2 blank lines, found 1
+.\app\database\generate_demo_data.py:39:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:43:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:52:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:56:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:61:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:65:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:69:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:74:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:77:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:88:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:98:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:107:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:112:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:115:1: E302 expected 2 blank lines, found 1
+.\app\database\generate_demo_data.py:119:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:124:1: E302 expected 2 blank lines, found 1
+.\app\database\generate_demo_data.py:127:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:132:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:137:32: W291 trailing whitespace
+.\app\database\generate_demo_data.py:143:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:145:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:148:1: E302 expected 2 blank lines, found 1
+.\app\database\generate_demo_data.py:151:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:154:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:163:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:169:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:172:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:175:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:177:1: W293 blank line contains whitespace
+.\app\database\generate_demo_data.py:185:1: E305 expected 2 blank lines after class or function definition, found 1
+.\app\database\generate_demo_data.py:186:11: W292 no newline at end of file
+.\app\database\models.py:3:1: F401 'typing.List' imported but unused
+.\app\database\models.py:3:1: F401 'typing.Optional' imported but unused
+.\app\database\models.py:4:1: F401 'sqlalchemy.Integer' imported but unused
+.\app\database\models.py:4:1: F401 'sqlalchemy.Boolean' imported but unused
+.\app\database\models.py:4:1: F401 'sqlalchemy.Table' imported but unused
+.\app\database\models.py:4:1: F401 'sqlalchemy.func' imported but unused
+.\app\database\models.py:4:1: F401 'sqlalchemy.case' imported but unused
+.\app\database\models.py:4:1: F401 'sqlalchemy.select' imported but unused
+.\app\database\models.py:5:36: W291 trailing whitespace
+.\app\database\models.py:6:38: W291 trailing whitespace
+.\app\database\models.py:11:1: F401 'sqlalchemy.orm.backref' imported but unused
+.\app\database\models.py:14:1: F401 'uuid' imported but unused
+.\app\database\models.py:21:1: E302 expected 2 blank lines, found 1
+.\app\database\models.py:42:1: E302 expected 2 blank lines, found 1
+.\app\database\models.py:61:1: E302 expected 2 blank lines, found 1
+.\app\database\models.py:81:1: E302 expected 2 blank lines, found 1
+.\app\database\models.py:99:1: E302 expected 2 blank lines, found 1
+.\app\database\models.py:116:1: W293 blank line contains whitespace
+.\app\database\models.py:118:1: E302 expected 2 blank lines, found 1
+.\app\database\models.py:124:1: E302 expected 2 blank lines, found 1
+.\app\database\models.py:143:1: E302 expected 2 blank lines, found 1
+.\app\database\models.py:161:1: E302 expected 2 blank lines, found 1
+.\app\database\models.py:166:67: W291 trailing whitespace
+.\app\database\models.py:167:54: W291 trailing whitespace
+.\app\database\models.py:184:1: E302 expected 2 blank lines, found 1
+.\app\database\models.py:198:1: E302 expected 2 blank lines, found 1
+.\app\database\models.py:203:1: W293 blank line contains whitespace
+.\app\database\models.py:205:67: W291 trailing whitespace
+.\app\database\models.py:206:34: W291 trailing whitespace
+.\app\database\models.py:209:1: W293 blank line contains whitespace
+.\app\database\models.py:211:67: W291 trailing whitespace
+.\app\database\models.py:212:36: W291 trailing whitespace
+.\app\database\models.py:215:1: W293 blank line contains whitespace
+.\app\database\models.py:217:67: W291 trailing whitespace
+.\app\database\models.py:218:36: W291 trailing whitespace
+.\app\database\models.py:221:1: W293 blank line contains whitespace
+.\app\database\models.py:238:1: E302 expected 2 blank lines, found 1
+.\app\database\models.py:242:67: W291 trailing whitespace
+.\app\database\models.py:246:67: W291 trailing whitespace
+.\app\database\models.py:262:1: E302 expected 2 blank lines, found 1
+.\app\database\models.py:266:67: W291 trailing whitespace
+.\app\database\models.py:270:67: W291 trailing whitespace
+.\app\database\models.py:274:67: W291 trailing whitespace
+.\app\database\models.py:292:1: E302 expected 2 blank lines, found 1
+.\app\database\models.py:298:67: W291 trailing whitespace
+.\app\database\models.py:303:67: W291 trailing whitespace
+.\app\database\models.py:307:67: W291 trailing whitespace
+.\app\database\models.py:317:67: W291 trailing whitespace
+.\app\database\models.py:321:67: W291 trailing whitespace
+.\app\database\models.py:324:1: W293 blank line contains whitespace
+.\app\database\models.py:337:1: E302 expected 2 blank lines, found 1
+.\app\database\models.py:339:1: W293 blank line contains whitespace
+.\app\database\models.py:342:1: W293 blank line contains whitespace
+.\app\database\models.py:345:67: W291 trailing whitespace
+.\app\database\models.py:349:67: W291 trailing whitespace
+.\app\database\models.py:355:1: W293 blank line contains whitespace
+.\app\database\models.py:358:40: W292 no newline at end of file
+.\app\database\repositories.py:3:1: F401 'sqlalchemy.and_' imported but unused
+.\app\database\repositories.py:3:1: F401 'sqlalchemy.select' imported but unused
+.\app\database\repositories.py:5:1: F401 'typing.Tuple' imported but unused
+.\app\database\repositories.py:7:51: W291 trailing whitespace
+.\app\database\repositories.py:13:1: E302 expected 2 blank lines, found 1
+.\app\database\repositories.py:15:1: W293 blank line contains whitespace
+.\app\database\repositories.py:19:1: W293 blank line contains whitespace
+.\app\database\repositories.py:23:1: W293 blank line contains whitespace
+.\app\database\repositories.py:32:1: W293 blank line contains whitespace
+.\app\database\repositories.py:56:1: W293 blank line contains whitespace
+.\app\database\repositories.py:63:1: E302 expected 2 blank lines, found 1
+.\app\database\repositories.py:66:1: W293 blank line contains whitespace
+.\app\database\repositories.py:69:1: W293 blank line contains whitespace
+.\app\database\repositories.py:73:1: W293 blank line contains whitespace
+.\app\database\repositories.py:75:1: W293 blank line contains whitespace
+.\app\database\repositories.py:82:1: W293 blank line contains whitespace
+.\app\database\repositories.py:87:1: W293 blank line contains whitespace
+.\app\database\repositories.py:90:1: W293 blank line contains whitespace
+.\app\database\repositories.py:94:1: W293 blank line contains whitespace
+.\app\database\repositories.py:99:1: W293 blank line contains whitespace
+.\app\database\repositories.py:105:1: E302 expected 2 blank lines, found 1
+.\app\database\repositories.py:108:1: W293 blank line contains whitespace
+.\app\database\repositories.py:111:1: W293 blank line contains whitespace
+.\app\database\repositories.py:115:1: W293 blank line contains whitespace
+.\app\database\repositories.py:117:1: W293 blank line contains whitespace
+.\app\database\repositories.py:124:1: W293 blank line contains whitespace
+.\app\database\repositories.py:129:1: W293 blank line contains whitespace
+.\app\database\repositories.py:132:1: W293 blank line contains whitespace
+.\app\database\repositories.py:136:1: W293 blank line contains whitespace
+.\app\database\repositories.py:141:1: W293 blank line contains whitespace
+.\app\database\repositories.py:147:1: E302 expected 2 blank lines, found 1
+.\app\database\repositories.py:150:1: W293 blank line contains whitespace
+.\app\database\repositories.py:151:22: W291 trailing whitespace
+.\app\database\repositories.py:152:16: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:152:30: W291 trailing whitespace
+.\app\database\repositories.py:153:16: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:153:33: W291 trailing whitespace
+.\app\database\repositories.py:154:16: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:155:16: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:158:1: W293 blank line contains whitespace
+.\app\database\repositories.py:164:1: W293 blank line contains whitespace
+.\app\database\repositories.py:169:1: W293 blank line contains whitespace
+.\app\database\repositories.py:172:1: W293 blank line contains whitespace
+.\app\database\repositories.py:177:1: W293 blank line contains whitespace
+.\app\database\repositories.py:179:1: W293 blank line contains whitespace
+.\app\database\repositories.py:181:1: W293 blank line contains whitespace
+.\app\database\repositories.py:191:1: W293 blank line contains whitespace
+.\app\database\repositories.py:198:1: W293 blank line contains whitespace
+.\app\database\repositories.py:203:1: W293 blank line contains whitespace
+.\app\database\repositories.py:206:1: W293 blank line contains whitespace
+.\app\database\repositories.py:210:1: W293 blank line contains whitespace
+.\app\database\repositories.py:215:1: W293 blank line contains whitespace
+.\app\database\repositories.py:221:1: E302 expected 2 blank lines, found 1
+.\app\database\repositories.py:224:1: W293 blank line contains whitespace
+.\app\database\repositories.py:227:1: W293 blank line contains whitespace
+.\app\database\repositories.py:230:1: W293 blank line contains whitespace
+.\app\database\repositories.py:232:1: W293 blank line contains whitespace
+.\app\database\repositories.py:239:1: W293 blank line contains whitespace
+.\app\database\repositories.py:244:1: W293 blank line contains whitespace
+.\app\database\repositories.py:247:1: W293 blank line contains whitespace
+.\app\database\repositories.py:251:1: W293 blank line contains whitespace
+.\app\database\repositories.py:256:1: W293 blank line contains whitespace
+.\app\database\repositories.py:262:1: E302 expected 2 blank lines, found 1
+.\app\database\repositories.py:265:1: W293 blank line contains whitespace
+.\app\database\repositories.py:266:22: W291 trailing whitespace
+.\app\database\repositories.py:267:16: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:267:30: W291 trailing whitespace
+.\app\database\repositories.py:268:16: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:268:33: W291 trailing whitespace
+.\app\database\repositories.py:269:16: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:270:16: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:271:16: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:272:16: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:273:16: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:274:16: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:275:1: W293 blank line contains whitespace
+.\app\database\repositories.py:277:1: W293 blank line contains whitespace
+.\app\database\repositories.py:280:1: W293 blank line contains whitespace
+.\app\database\repositories.py:283:1: W293 blank line contains whitespace
+.\app\database\repositories.py:286:1: W293 blank line contains whitespace
+.\app\database\repositories.py:289:1: W293 blank line contains whitespace
+.\app\database\repositories.py:292:1: W293 blank line contains whitespace
+.\app\database\repositories.py:295:1: W293 blank line contains whitespace
+.\app\database\repositories.py:297:1: W293 blank line contains whitespace
+.\app\database\repositories.py:302:1: W293 blank line contains whitespace
+.\app\database\repositories.py:310:1: W293 blank line contains whitespace
+.\app\database\repositories.py:314:1: W293 blank line contains whitespace
+.\app\database\repositories.py:318:1: W293 blank line contains whitespace
+.\app\database\repositories.py:322:1: W293 blank line contains whitespace
+.\app\database\repositories.py:325:1: W293 blank line contains whitespace
+.\app\database\repositories.py:327:1: W293 blank line contains whitespace
+.\app\database\repositories.py:331:1: W293 blank line contains whitespace
+.\app\database\repositories.py:336:1: W293 blank line contains whitespace
+.\app\database\repositories.py:340:1: W293 blank line contains whitespace
+.\app\database\repositories.py:341:121: E501 line too long (125 > 120 characters)
+.\app\database\repositories.py:346:1: W293 blank line contains whitespace
+.\app\database\repositories.py:350:1: W293 blank line contains whitespace
+.\app\database\repositories.py:355:1: W293 blank line contains whitespace
+.\app\database\repositories.py:359:1: W293 blank line contains whitespace
+.\app\database\repositories.py:366:1: W293 blank line contains whitespace
+.\app\database\repositories.py:370:1: W293 blank line contains whitespace
+.\app\database\repositories.py:375:1: W293 blank line contains whitespace
+.\app\database\repositories.py:379:1: W293 blank line contains whitespace
+.\app\database\repositories.py:385:1: W293 blank line contains whitespace
+.\app\database\repositories.py:391:1: W293 blank line contains whitespace
+.\app\database\repositories.py:396:1: W293 blank line contains whitespace
+.\app\database\repositories.py:400:1: W293 blank line contains whitespace
+.\app\database\repositories.py:407:1: W293 blank line contains whitespace
+.\app\database\repositories.py:410:1: W293 blank line contains whitespace
+.\app\database\repositories.py:412:13: F841 local variable 'client_transaction' is assigned to but never used
+.\app\database\repositories.py:420:1: W293 blank line contains whitespace
+.\app\database\repositories.py:422:13: F841 local variable 'supplier_transaction' is assigned to but never used
+.\app\database\repositories.py:430:1: W293 blank line contains whitespace
+.\app\database\repositories.py:432:1: W293 blank line contains whitespace
+.\app\database\repositories.py:444:1: W293 blank line contains whitespace
+.\app\database\repositories.py:456:1: W293 blank line contains whitespace
+.\app\database\repositories.py:461:1: W293 blank line contains whitespace
+.\app\database\repositories.py:466:1: E302 expected 2 blank lines, found 1
+.\app\database\repositories.py:469:1: W293 blank line contains whitespace
+.\app\database\repositories.py:471:1: W293 blank line contains whitespace
+.\app\database\repositories.py:475:1: W293 blank line contains whitespace
+.\app\database\repositories.py:482:1: W293 blank line contains whitespace
+.\app\database\repositories.py:485:1: W293 blank line contains whitespace
+.\app\database\repositories.py:487:1: W293 blank line contains whitespace
+.\app\database\repositories.py:491:1: W293 blank line contains whitespace
+.\app\database\repositories.py:496:1: W293 blank line contains whitespace
+.\app\database\repositories.py:500:1: W293 blank line contains whitespace
+.\app\database\repositories.py:509:1: W293 blank line contains whitespace
+.\app\database\repositories.py:513:1: W293 blank line contains whitespace
+.\app\database\repositories.py:521:1: W293 blank line contains whitespace
+.\app\database\repositories.py:524:1: W293 blank line contains whitespace
+.\app\database\repositories.py:528:1: W293 blank line contains whitespace
+.\app\database\repositories.py:532:1: W293 blank line contains whitespace
+.\app\database\repositories.py:539:1: W293 blank line contains whitespace
+.\app\database\repositories.py:543:1: W293 blank line contains whitespace
+.\app\database\repositories.py:545:1: E302 expected 2 blank lines, found 1
+.\app\database\repositories.py:548:1: W293 blank line contains whitespace
+.\app\database\repositories.py:550:31: W291 trailing whitespace
+.\app\database\repositories.py:551:34: W291 trailing whitespace
+.\app\database\repositories.py:558:1: W293 blank line contains whitespace
+.\app\database\repositories.py:561:1: W293 blank line contains whitespace
+.\app\database\repositories.py:565:1: W293 blank line contains whitespace
+.\app\database\repositories.py:568:1: W293 blank line contains whitespace
+.\app\database\repositories.py:571:1: W293 blank line contains whitespace
+.\app\database\repositories.py:580:1: W293 blank line contains whitespace
+.\app\database\repositories.py:583:1: W293 blank line contains whitespace
+.\app\database\repositories.py:586:1: W293 blank line contains whitespace
+.\app\database\repositories.py:588:1: W293 blank line contains whitespace
+.\app\database\repositories.py:595:1: W293 blank line contains whitespace
+.\app\database\repositories.py:600:1: W293 blank line contains whitespace
+.\app\database\repositories.py:603:1: W293 blank line contains whitespace
+.\app\database\repositories.py:607:1: W293 blank line contains whitespace
+.\app\database\repositories.py:609:121: E501 line too long (126 > 120 characters)
+.\app\database\repositories.py:620:1: W293 blank line contains whitespace
+.\app\database\repositories.py:633:1: W293 blank line contains whitespace
+.\app\database\repositories.py:636:1: W293 blank line contains whitespace
+.\app\database\repositories.py:638:1: W293 blank line contains whitespace
+.\app\database\repositories.py:642:1: W293 blank line contains whitespace
+.\app\database\repositories.py:644:1: E302 expected 2 blank lines, found 1
+.\app\database\repositories.py:647:1: W293 blank line contains whitespace
+.\app\database\repositories.py:648:22: W291 trailing whitespace
+.\app\database\repositories.py:649:13: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:649:27: W291 trailing whitespace
+.\app\database\repositories.py:650:13: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:650:30: W291 trailing whitespace
+.\app\database\repositories.py:651:13: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:652:13: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:653:13: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:654:13: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:655:13: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:656:13: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:657:1: W293 blank line contains whitespace
+.\app\database\repositories.py:659:1: W293 blank line contains whitespace
+.\app\database\repositories.py:662:1: W293 blank line contains whitespace
+.\app\database\repositories.py:665:1: W293 blank line contains whitespace
+.\app\database\repositories.py:668:1: W293 blank line contains whitespace
+.\app\database\repositories.py:671:1: W293 blank line contains whitespace
+.\app\database\repositories.py:674:1: W293 blank line contains whitespace
+.\app\database\repositories.py:677:1: W293 blank line contains whitespace
+.\app\database\repositories.py:679:1: W293 blank line contains whitespace
+.\app\database\repositories.py:686:1: W293 blank line contains whitespace
+.\app\database\repositories.py:687:27: W291 trailing whitespace
+.\app\database\repositories.py:688:21: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:689:21: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:690:21: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:691:21: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:694:1: W293 blank line contains whitespace
+.\app\database\repositories.py:697:1: W293 blank line contains whitespace
+.\app\database\repositories.py:701:1: W293 blank line contains whitespace
+.\app\database\repositories.py:704:1: W293 blank line contains whitespace
+.\app\database\repositories.py:707:1: W293 blank line contains whitespace
+.\app\database\repositories.py:710:1: W293 blank line contains whitespace
+.\app\database\repositories.py:713:1: W293 blank line contains whitespace
+.\app\database\repositories.py:716:36: W291 trailing whitespace
+.\app\database\repositories.py:732:36: W291 trailing whitespace
+.\app\database\repositories.py:736:1: W293 blank line contains whitespace
+.\app\database\repositories.py:744:1: W293 blank line contains whitespace
+.\app\database\repositories.py:756:1: W293 blank line contains whitespace
+.\app\database\repositories.py:760:22: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:761:22: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:762:22: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:763:22: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:764:22: E128 continuation line under-indented for visual indent
+.\app\database\repositories.py:768:1: W293 blank line contains whitespace
+.\app\database\repositories.py:772:1: W293 blank line contains whitespace
+.\app\database\repositories.py:775:1: W293 blank line contains whitespace
+.\app\database\repositories.py:781:1: W293 blank line contains whitespace
+.\app\database\repositories.py:784:1: W293 blank line contains whitespace
+.\app\database\repositories.py:787:1: W293 blank line contains whitespace
+.\app\database\repositories.py:790:1: W293 blank line contains whitespace
+.\app\database\repositories.py:793:36: W291 trailing whitespace
+.\app\database\repositories.py:809:36: W291 trailing whitespace
+.\app\database\repositories.py:813:1: W293 blank line contains whitespace
+.\app\database\repositories.py:827:1: W293 blank line contains whitespace
+.\app\database\repositories.py:828:25: W292 no newline at end of file
+.\app\database\sqlite_helper.py:9:1: E302 expected 2 blank lines, found 1
+.\app\database\sqlite_helper.py:13:1: W293 blank line contains whitespace
+.\app\database\sqlite_helper.py:18:1: E302 expected 2 blank lines, found 1
+.\app\database\sqlite_helper.py:20:1: W293 blank line contains whitespace
+.\app\database\sqlite_helper.py:23:1: W293 blank line contains whitespace
+.\app\database\sqlite_helper.py:26:1: W293 blank line contains whitespace
+.\app\database\sqlite_helper.py:35:1: W293 blank line contains whitespace
+.\app\database\sqlite_helper.py:48:1: E302 expected 2 blank lines, found 1
+.\app\database\sqlite_helper.py:51:1: W293 blank line contains whitespace
+.\app\database\sqlite_helper.py:70:10: W292 no newline at end of file
+.\app\graphql\resolvers\__init__.py:26:1: E402 module level import not at top of file
+.\app\graphql\resolvers\__init__.py:27:1: E402 module level import not at top of file
+.\app\graphql\resolvers\__init__.py:28:1: E402 module level import not at top of file
+.\app\graphql\resolvers\__init__.py:29:1: E402 module level import not at top of file
+.\app\graphql\resolvers\__init__.py:30:1: E402 module level import not at top of file
+.\app\graphql\resolvers\__init__.py:31:1: E402 module level import not at top of file
+.\app\graphql\resolvers\__init__.py:32:1: E402 module level import not at top of file
+.\app\graphql\resolvers\__init__.py:33:1: E402 module level import not at top of file
+.\app\graphql\resolvers\__init__.py:46:63: W292 no newline at end of file
+.\app\graphql\resolvers\clients.py:4:1: F401 'traceback' imported but unused
+.\app\graphql\resolvers\clients.py:8:40: W291 trailing whitespace
+.\app\graphql\resolvers\clients.py:9:20: E128 continuation line under-indented for visual indent
+.\app\graphql\resolvers\clients.py:10:20: E128 continuation line under-indented for visual indent
+.\app\graphql\resolvers\clients.py:13:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\clients.py:17:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\clients.py:22:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\clients.py:28:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\clients.py:31:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\clients.py:33:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\clients.py:36:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\clients.py:52:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\clients.py:56:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\clients.py:59:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\clients.py:62:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\clients.py:65:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\clients.py:68:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\clients.py:71:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\clients.py:74:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\clients.py:77:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\clients.py:80:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\clients.py:83:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\clients.py:86:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\clients.py:89:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\clients.py:93:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\clients.py:97:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\clients.py:101:64: W292 no newline at end of file
+.\app\graphql\resolvers\contracts.py:6:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\contracts.py:11:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:17:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:21:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:24:19: W291 trailing whitespace
+.\app\graphql\resolvers\contracts.py:25:21: W291 trailing whitespace
+.\app\graphql\resolvers\contracts.py:29:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:34:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:37:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\contracts.py:41:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:44:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:48:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:52:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\contracts.py:56:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:59:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\contracts.py:64:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:68:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\contracts.py:72:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:76:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:79:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:83:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:86:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\contracts.py:90:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:94:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:97:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:100:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:104:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:107:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\contracts.py:111:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:114:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:117:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:121:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\contracts.py:125:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:130:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\contracts.py:134:68: W292 no newline at end of file
+.\app\graphql\resolvers\dashboard.py:2:1: F401 '...database.repositories.ClientRepository' imported but unused
+.\app\graphql\resolvers\dashboard.py:2:1: F401 '...database.repositories.SupplierRepository' imported but unused
+.\app\graphql\resolvers\dashboard.py:2:1: F401 '...database.repositories.ContractRepository' imported but unused
+.\app\graphql\resolvers\dashboard.py:2:1: F401 '...database.repositories.InvoiceRepository' imported but unused
+.\app\graphql\resolvers\dashboard.py:2:1: F401 '...database.repositories.TransactionRepository' imported but unused
+.\app\graphql\resolvers\dashboard.py:3:42: W291 trailing whitespace
+.\app\graphql\resolvers\dashboard.py:4:43: W291 trailing whitespace
+.\app\graphql\resolvers\dashboard.py:7:1: F401 '...database.models.InvoiceStatus' imported but unused
+.\app\graphql\resolvers\dashboard.py:8:32: W291 trailing whitespace
+.\app\graphql\resolvers\dashboard.py:9:35: W291 trailing whitespace
+.\app\graphql\resolvers\dashboard.py:14:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\dashboard.py:18:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\dashboard.py:21:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\dashboard.py:24:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\dashboard.py:31:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\dashboard.py:36:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\dashboard.py:39:121: E501 line too long (121 > 120 characters)
+.\app\graphql\resolvers\dashboard.py:40:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\dashboard.py:43:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\dashboard.py:48:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\dashboard.py:51:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\dashboard.py:62:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\dashboard.py:66:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\dashboard.py:69:57: W292 no newline at end of file
+.\app\graphql\resolvers\debt_movements.py:10:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\debt_movements.py:22:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\debt_movements.py:27:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:36:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:40:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:43:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:46:19: W291 trailing whitespace
+.\app\graphql\resolvers\debt_movements.py:47:21: W291 trailing whitespace
+.\app\graphql\resolvers\debt_movements.py:54:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:57:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\debt_movements.py:62:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:68:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:71:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:74:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:82:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:85:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\debt_movements.py:90:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:97:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:101:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:105:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:108:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:111:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:120:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:124:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\debt_movements.py:128:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:131:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:134:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:137:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\debt_movements.py:141:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:144:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:147:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:150:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\debt_movements.py:154:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:157:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:160:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:163:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\debt_movements.py:167:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:170:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:173:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:176:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\debt_movements.py:180:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:183:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:186:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\debt_movements.py:190:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:193:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:196:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\debt_movements.py:200:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:203:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:206:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\debt_movements.py:210:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:213:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:216:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\debt_movements.py:220:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:223:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:226:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:229:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\debt_movements.py:233:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:236:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:239:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:242:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\debt_movements.py:246:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:249:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:252:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:255:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\debt_movements.py:259:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:262:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:265:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:269:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\debt_movements.py:275:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:282:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:286:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:290:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:293:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:296:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:299:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\debt_movements.py:301:85: W292 no newline at end of file
+.\app\graphql\resolvers\invoices.py:4:23: W291 trailing whitespace
+.\app\graphql\resolvers\invoices.py:5:22: W291 trailing whitespace
+.\app\graphql\resolvers\invoices.py:13:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\invoices.py:18:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:28:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:34:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:37:19: W291 trailing whitespace
+.\app\graphql\resolvers\invoices.py:38:21: W291 trailing whitespace
+.\app\graphql\resolvers\invoices.py:46:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:49:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\invoices.py:53:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:56:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:60:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\invoices.py:64:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:67:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\invoices.py:71:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:74:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\invoices.py:78:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:81:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\invoices.py:87:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\invoices.py:91:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:96:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\invoices.py:101:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\invoices.py:105:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:109:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\invoices.py:113:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:123:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:132:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:135:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:138:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\invoices.py:142:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:145:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:148:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:151:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:154:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:157:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:160:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:163:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:170:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:173:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:176:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:179:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:182:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:184:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:187:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:190:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:193:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\invoices.py:197:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:200:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:203:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:206:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\invoices.py:210:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:213:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:216:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:219:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:222:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:226:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:229:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\invoices.py:233:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:236:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:239:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:243:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:247:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\invoices.py:251:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:259:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:264:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\invoices.py:270:64: W292 no newline at end of file
+.\app\graphql\resolvers\materials.py:5:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\materials.py:9:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\materials.py:14:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\materials.py:17:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\materials.py:20:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\materials.py:24:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\materials.py:27:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\materials.py:31:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\materials.py:35:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\materials.py:38:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\materials.py:41:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\materials.py:44:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\materials.py:47:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\materials.py:50:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\materials.py:53:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\materials.py:56:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\materials.py:59:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\materials.py:62:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\materials.py:65:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\materials.py:69:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\materials.py:73:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\materials.py:77:68: W292 no newline at end of file
+.\app\graphql\resolvers\suppliers.py:5:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\suppliers.py:9:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\suppliers.py:14:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\suppliers.py:17:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\suppliers.py:20:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\suppliers.py:24:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\suppliers.py:27:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\suppliers.py:31:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\suppliers.py:35:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\suppliers.py:38:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\suppliers.py:41:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\suppliers.py:44:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\suppliers.py:47:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\suppliers.py:50:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\suppliers.py:53:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\suppliers.py:56:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\suppliers.py:59:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\suppliers.py:62:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\suppliers.py:65:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\suppliers.py:69:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\suppliers.py:73:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\suppliers.py:77:68: W292 no newline at end of file
+.\app\graphql\resolvers\transactions.py:2:1: F401 'datetime.date' imported but unused
+.\app\graphql\resolvers\transactions.py:3:1: F401 'typing.List' imported but unused
+.\app\graphql\resolvers\transactions.py:3:1: F401 'typing.Optional' imported but unused
+.\app\graphql\resolvers\transactions.py:3:1: F401 'typing.Dict' imported but unused
+.\app\graphql\resolvers\transactions.py:3:1: F401 'typing.Any' imported but unused
+.\app\graphql\resolvers\transactions.py:3:1: F401 'typing.Tuple' imported but unused
+.\app\graphql\resolvers\transactions.py:4:1: F401 'uuid' imported but unused
+.\app\graphql\resolvers\transactions.py:12:1: F401 '...database.models.DebtDimension' imported but unused
+.\app\graphql\resolvers\transactions.py:12:1: F401 '...database.models.DebtDirection' imported but unused
+.\app\graphql\resolvers\transactions.py:12:1: F401 '...database.models.TransactionType' imported but unused
+.\app\graphql\resolvers\transactions.py:17:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\transactions.py:22:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:32:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:38:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:41:19: W291 trailing whitespace
+.\app\graphql\resolvers\transactions.py:42:21: W291 trailing whitespace
+.\app\graphql\resolvers\transactions.py:50:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:53:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\transactions.py:57:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:60:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:63:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\transactions.py:67:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:73:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:77:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:85:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:88:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\transactions.py:92:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:99:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:103:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:112:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:116:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\transactions.py:120:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:123:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:126:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\transactions.py:130:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:133:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:136:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\transactions.py:140:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:143:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:146:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\transactions.py:150:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:153:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:156:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\transactions.py:160:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:163:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:166:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\transactions.py:170:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:173:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:176:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\transactions.py:180:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:183:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:187:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\transactions.py:191:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:197:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:203:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:211:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:214:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\transactions.py:218:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:224:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:227:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:235:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:239:1: E302 expected 2 blank lines, found 1
+.\app\graphql\resolvers\transactions.py:246:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:252:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:257:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:262:1: W293 blank line contains whitespace
+.\app\graphql\resolvers\transactions.py:265:88: W292 no newline at end of file
+.\app\graphql\schema.py:15:2: W292 no newline at end of file
+.\app\graphql\schema_loader.py:11:1: E302 expected 2 blank lines, found 1
+.\app\graphql\schema_loader.py:20:1: E302 expected 2 blank lines, found 1
+.\app\graphql\schema_loader.py:26:1: W293 blank line contains whitespace
+.\app\graphql\schema_loader.py:31:1: W293 blank line contains whitespace
+.\app\graphql\schema_loader.py:34:1: W293 blank line contains whitespace
+.\app\graphql\schema_loader.py:36:1: W293 blank line contains whitespace
+.\app\graphql\schema_loader.py:42:1: W293 blank line contains whitespace
+.\app\graphql\schema_loader.py:49:1: W293 blank line contains whitespace
+.\app\graphql\schema_loader.py:57:1: W293 blank line contains whitespace
+.\app\graphql\schema_loader.py:60:1: W293 blank line contains whitespace
+.\app\graphql\schema_loader.py:64:1: W293 blank line contains whitespace
+.\app\graphql\schema_loader.py:70:1: W293 blank line contains whitespace
+.\app\graphql\schema_loader.py:74:1: W293 blank line contains whitespace
+.\app\graphql\schema_loader.py:110:1: W293 blank line contains whitespace
+.\app\graphql\schema_loader.py:115:1: W293 blank line contains whitespace
+.\app\graphql\schema_loader.py:204:1: W293 blank line contains whitespace
+.\app\graphql\schema_loader.py:208:1: W293 blank line contains whitespace
+.\app\graphql\schema_loader.py:211:1: W293 blank line contains whitespace
+.\app\graphql\schema_loader.py:214:1: W293 blank line contains whitespace
+.\app\graphql\schema_loader.py:222:31: W292 no newline at end of file
+.\app\graphql\schema_transformer.py:4:1: E302 expected 2 blank lines, found 1
+.\app\graphql\schema_transformer.py:9:1: E302 expected 2 blank lines, found 1
+.\app\graphql\schema_transformer.py:13:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:16:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:23:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:29:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:32:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:34:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:36:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:40:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:44:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:47:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:49:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:51:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:54:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:59:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:62:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:64:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:67:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:70:1: E302 expected 2 blank lines, found 1
+.\app\graphql\schema_transformer.py:73:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:76:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:83:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:88:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:91:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:99:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:104:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:108:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:111:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:114:1: W293 blank line contains whitespace
+.\app\graphql\schema_transformer.py:115:30: W292 no newline at end of file
+.\app\graphql\view.py:4:1: F401 'ariadne.explorer.Explorer' imported but unused
+.\app\graphql\view.py:8:1: E302 expected 2 blank lines, found 1
+.\app\graphql\view.py:10:1: W293 blank line contains whitespace
+.\app\graphql\view.py:42:1: W293 blank line contains whitespace
+.\app\graphql\view.py:47:1: W293 blank line contains whitespace
+.\app\graphql\view.py:50:1: W293 blank line contains whitespace
+.\app\graphql\view.py:57:1: W293 blank line contains whitespace
+.\app\graphql\view.py:59:44: W292 no newline at end of file
+.\app\services\__init__.py:14:2: W292 no newline at end of file
+.\app\services\contract_service.py:10:1: E302 expected 2 blank lines, found 1
+.\app\services\contract_service.py:12:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:17:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:18:32: W291 trailing whitespace
+.\app\services\contract_service.py:19:26: E128 continuation line under-indented for visual indent
+.\app\services\contract_service.py:19:40: W291 trailing whitespace
+.\app\services\contract_service.py:20:26: E128 continuation line under-indented for visual indent
+.\app\services\contract_service.py:20:43: W291 trailing whitespace
+.\app\services\contract_service.py:21:26: E128 continuation line under-indented for visual indent
+.\app\services\contract_service.py:22:26: E128 continuation line under-indented for visual indent
+.\app\services\contract_service.py:25:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:31:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:36:23: W291 trailing whitespace
+.\app\services\contract_service.py:37:25: W291 trailing whitespace
+.\app\services\contract_service.py:41:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:45:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:48:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:53:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:57:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:60:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:65:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:69:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:72:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:75:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:83:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:87:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:93:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:100:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:107:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:111:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:114:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:118:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:122:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:125:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:133:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:139:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:146:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:153:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:156:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:160:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:163:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:168:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:172:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:176:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:183:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:187:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:195:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:197:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:202:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:205:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:212:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:219:1: W293 blank line contains whitespace
+.\app\services\contract_service.py:220:35: W292 no newline at end of file
+.\app\services\dashboard_service.py:6:1: F401 '..database.models.DebtDimension' imported but unused
+.\app\services\dashboard_service.py:16:1: E302 expected 2 blank lines, found 1
+.\app\services\dashboard_service.py:18:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:27:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:31:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:37:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:40:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:44:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:47:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:50:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:53:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:56:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:67:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:69:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:73:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:77:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:87:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:94:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:100:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:102:9: F841 local variable 'transactions' is assigned to but never used
+.\app\services\dashboard_service.py:106:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:111:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:122:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:124:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:128:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:131:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:137:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:143:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:146:121: E501 line too long (124 > 120 characters)
+.\app\services\dashboard_service.py:147:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:153:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:162:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:165:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:168:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:172:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:175:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:181:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:187:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:191:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:197:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:206:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:209:1: W293 blank line contains whitespace
+.\app\services\dashboard_service.py:211:38: W292 no newline at end of file
+.\app\services\debt_service.py:2:1: F401 'datetime.date' imported but unused
+.\app\services\debt_service.py:14:1: E302 expected 2 blank lines, found 1
+.\app\services\debt_service.py:16:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:22:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:24:26: E128 continuation line under-indented for visual indent
+.\app\services\debt_service.py:25:26: E128 continuation line under-indented for visual indent
+.\app\services\debt_service.py:26:26: E128 continuation line under-indented for visual indent
+.\app\services\debt_service.py:27:26: E128 continuation line under-indented for visual indent
+.\app\services\debt_service.py:30:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:36:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:46:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:48:27: E128 continuation line under-indented for visual indent
+.\app\services\debt_service.py:49:27: E128 continuation line under-indented for visual indent
+.\app\services\debt_service.py:50:27: E128 continuation line under-indented for visual indent
+.\app\services\debt_service.py:51:27: E128 continuation line under-indented for visual indent
+.\app\services\debt_service.py:52:27: E128 continuation line under-indented for visual indent
+.\app\services\debt_service.py:55:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:62:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:70:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:74:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:82:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:86:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:89:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:92:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:100:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:106:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:109:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:112:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:116:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:119:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:122:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:130:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:136:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:139:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:142:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:146:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:154:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:157:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:160:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:162:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:166:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:174:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:177:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:180:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:182:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:183:30: W291 trailing whitespace
+.\app\services\debt_service.py:184:24: E128 continuation line under-indented for visual indent
+.\app\services\debt_service.py:185:24: E128 continuation line under-indented for visual indent
+.\app\services\debt_service.py:186:24: E128 continuation line under-indented for visual indent
+.\app\services\debt_service.py:187:24: E128 continuation line under-indented for visual indent
+.\app\services\debt_service.py:188:24: E128 continuation line under-indented for visual indent
+.\app\services\debt_service.py:191:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:198:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:207:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:211:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:219:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:227:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:236:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:245:1: W293 blank line contains whitespace
+.\app\services\debt_service.py:246:22: W292 no newline at end of file
+.\app\services\invoice_service.py:8:23: W291 trailing whitespace
+.\app\services\invoice_service.py:9:22: W291 trailing whitespace
+.\app\services\invoice_service.py:14:1: F401 '..database.models.InvoiceItem' imported but unused
+.\app\services\invoice_service.py:14:1: F401 '..database.models.ContractStatus' imported but unused
+.\app\services\invoice_service.py:20:1: E302 expected 2 blank lines, found 1
+.\app\services\invoice_service.py:22:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:31:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:32:31: W291 trailing whitespace
+.\app\services\invoice_service.py:33:25: E128 continuation line under-indented for visual indent
+.\app\services\invoice_service.py:33:39: W291 trailing whitespace
+.\app\services\invoice_service.py:34:25: E128 continuation line under-indented for visual indent
+.\app\services\invoice_service.py:34:42: W291 trailing whitespace
+.\app\services\invoice_service.py:35:25: E128 continuation line under-indented for visual indent
+.\app\services\invoice_service.py:36:25: E128 continuation line under-indented for visual indent
+.\app\services\invoice_service.py:37:25: E128 continuation line under-indented for visual indent
+.\app\services\invoice_service.py:38:25: E128 continuation line under-indented for visual indent
+.\app\services\invoice_service.py:39:25: E128 continuation line under-indented for visual indent
+.\app\services\invoice_service.py:40:25: E128 continuation line under-indented for visual indent
+.\app\services\invoice_service.py:43:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:53:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:58:23: W291 trailing whitespace
+.\app\services\invoice_service.py:59:25: W291 trailing whitespace
+.\app\services\invoice_service.py:67:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:71:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:75:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:83:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:87:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:91:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:94:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:102:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:106:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:111:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:115:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:120:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:124:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:128:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:132:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:138:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:145:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:149:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:157:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:161:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:167:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:171:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:176:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:179:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:188:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:190:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:194:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:201:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:202:29: W291 trailing whitespace
+.\app\services\invoice_service.py:203:23: E128 continuation line under-indented for visual indent
+.\app\services\invoice_service.py:203:45: W291 trailing whitespace
+.\app\services\invoice_service.py:204:23: E128 continuation line under-indented for visual indent
+.\app\services\invoice_service.py:204:52: W291 trailing whitespace
+.\app\services\invoice_service.py:205:23: E128 continuation line under-indented for visual indent
+.\app\services\invoice_service.py:208:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:213:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:216:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:224:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:228:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:234:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:240:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:247:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:250:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:254:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:258:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:265:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:271:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:275:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:283:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:287:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:293:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:297:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:302:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:305:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:314:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:318:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:320:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:327:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:331:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:334:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:337:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:345:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:349:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:351:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:355:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:358:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:361:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:369:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:373:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:379:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:383:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:387:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:391:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:394:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:397:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:405:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:408:121: E501 line too long (123 > 120 characters)
+.\app\services\invoice_service.py:409:1: W293 blank line contains whitespace
+.\app\services\invoice_service.py:412:31: W292 no newline at end of file
+.\app\services\transaction_service.py:2:1: F401 'datetime.datetime' imported but unused
+.\app\services\transaction_service.py:3:1: F401 'typing.Dict' imported but unused
+.\app\services\transaction_service.py:3:1: F401 'typing.Any' imported but unused
+.\app\services\transaction_service.py:3:1: F401 'typing.Tuple' imported but unused
+.\app\services\transaction_service.py:8:27: W291 trailing whitespace
+.\app\services\transaction_service.py:14:1: F401 '..database.models.DebtMovement' imported but unused
+.\app\services\transaction_service.py:14:1: F401 '..database.models.DebtDimension' imported but unused
+.\app\services\transaction_service.py:14:1: F401 '..database.models.DebtDirection' imported but unused
+.\app\services\transaction_service.py:19:1: E302 expected 2 blank lines, found 1
+.\app\services\transaction_service.py:21:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:29:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:30:35: W291 trailing whitespace
+.\app\services\transaction_service.py:31:29: E128 continuation line under-indented for visual indent
+.\app\services\transaction_service.py:31:43: W291 trailing whitespace
+.\app\services\transaction_service.py:32:29: E128 continuation line under-indented for visual indent
+.\app\services\transaction_service.py:32:46: W291 trailing whitespace
+.\app\services\transaction_service.py:33:29: E128 continuation line under-indented for visual indent
+.\app\services\transaction_service.py:34:29: E128 continuation line under-indented for visual indent
+.\app\services\transaction_service.py:35:29: E128 continuation line under-indented for visual indent
+.\app\services\transaction_service.py:36:29: E128 continuation line under-indented for visual indent
+.\app\services\transaction_service.py:37:29: E128 continuation line under-indented for visual indent
+.\app\services\transaction_service.py:38:29: E128 continuation line under-indented for visual indent
+.\app\services\transaction_service.py:41:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:51:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:56:23: W291 trailing whitespace
+.\app\services\transaction_service.py:57:25: W291 trailing whitespace
+.\app\services\transaction_service.py:65:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:69:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:72:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:77:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:78:38: W291 trailing whitespace
+.\app\services\transaction_service.py:79:31: E128 continuation line under-indented for visual indent
+.\app\services\transaction_service.py:79:52: W291 trailing whitespace
+.\app\services\transaction_service.py:80:31: E128 continuation line under-indented for visual indent
+.\app\services\transaction_service.py:80:45: W291 trailing whitespace
+.\app\services\transaction_service.py:81:31: E128 continuation line under-indented for visual indent
+.\app\services\transaction_service.py:82:31: E128 continuation line under-indented for visual indent
+.\app\services\transaction_service.py:85:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:91:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:94:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:102:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:106:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:110:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:119:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:123:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:124:40: W291 trailing whitespace
+.\app\services\transaction_service.py:125:33: E128 continuation line under-indented for visual indent
+.\app\services\transaction_service.py:125:56: W291 trailing whitespace
+.\app\services\transaction_service.py:126:33: E128 continuation line under-indented for visual indent
+.\app\services\transaction_service.py:126:47: W291 trailing whitespace
+.\app\services\transaction_service.py:127:33: E128 continuation line under-indented for visual indent
+.\app\services\transaction_service.py:128:33: E128 continuation line under-indented for visual indent
+.\app\services\transaction_service.py:131:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:137:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:140:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:148:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:152:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:156:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:165:1: W293 blank line contains whitespace
+.\app\services\transaction_service.py:168:73: W292 no newline at end of file
+.\migrations\env.py:12:1: E402 module level import not at top of file
+.\migrations\env.py:13:1: E402 module level import not at top of file
+.\migrations\env.py:32:1: E302 expected 2 blank lines, found 1
+.\migrations\env.py:38:1: E302 expected 2 blank lines, found 1
+.\migrations\env.py:63:35: W291 trailing whitespace
+.\migrations\env.py:76:28: W292 no newline at end of file
+.\migrations\versions\1b9f5e72a901_initial_migration.py:5:9: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:27:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:30:5: E731 do not assign a lambda expression, use a def
+.\migrations\versions\1b9f5e72a901_initial_migration.py:31:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:40:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:43:48: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:47:60: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:51:94: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:55:48: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:59:61: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:66:121: E501 line too long (132 > 120 characters)
+.\migrations\versions\1b9f5e72a901_initial_migration.py:69:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:76:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:78:9: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:84:63: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:85:18: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:86:63: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:87:18: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:90:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:92:9: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:96:63: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:97:18: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:98:63: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:99:18: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:102:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:104:9: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:110:63: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:111:18: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:112:63: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:113:18: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:116:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:117:5: F841 local variable 'contract_table' is assigned to but never used
+.\migrations\versions\1b9f5e72a901_initial_migration.py:118:9: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:125:63: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:126:18: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:127:63: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:128:18: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:132:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:140:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:141:5: F841 local variable 'invoice_table' is assigned to but never used
+.\migrations\versions\1b9f5e72a901_initial_migration.py:142:9: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:151:63: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:152:18: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:153:63: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:154:18: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:160:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:168:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:170:9: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:177:63: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:178:18: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:179:63: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:180:18: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:185:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:186:5: F841 local variable 'transaction_table' is assigned to but never used
+.\migrations\versions\1b9f5e72a901_initial_migration.py:187:9: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:195:63: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:196:18: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:197:63: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:198:18: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:204:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:212:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:213:5: F841 local variable 'debt_movement_table' is assigned to but never used
+.\migrations\versions\1b9f5e72a901_initial_migration.py:214:9: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:223:63: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:224:18: E128 continuation line under-indented for visual indent
+.\migrations\versions\1b9f5e72a901_initial_migration.py:233:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:248:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:267:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:272:15: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:277:73: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:280:13: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:282:17: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:289:15: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:294:73: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:297:13: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:299:17: W291 trailing whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:302:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:308:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:311:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:317:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:336:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:346:1: W293 blank line contains whitespace
+.\migrations\versions\1b9f5e72a901_initial_migration.py:354:35: W292 no newline at end of file
+.\scripts\clear_db.py:18:1: E302 expected 2 blank lines, found 1
+.\scripts\clear_db.py:23:1: W293 blank line contains whitespace
+.\scripts\clear_db.py:27:1: W293 blank line contains whitespace
+.\scripts\clear_db.py:32:1: W293 blank line contains whitespace
+.\scripts\clear_db.py:36:1: W293 blank line contains whitespace
+.\scripts\clear_db.py:39:1: W293 blank line contains whitespace
+.\scripts\clear_db.py:45:1: W293 blank line contains whitespace
+.\scripts\clear_db.py:48:1: W293 blank line contains whitespace
+.\scripts\clear_db.py:52:1: W293 blank line contains whitespace
+.\scripts\clear_db.py:61:1: E305 expected 2 blank lines after class or function definition, found 1
+.\scripts\clear_db.py:65:1: W293 blank line contains whitespace
+.\scripts\clear_db.py:66:37: W292 no newline at end of file
+.\scripts\direct_init_db.py:4:1: F401 'uuid' imported but unused
+.\scripts\direct_init_db.py:5:1: F401 'datetime.datetime' imported but unused
+.\scripts\direct_init_db.py:15:24: W291 trailing whitespace
+.\scripts\direct_init_db.py:26:1: E402 module level import not at top of file
+.\scripts\direct_init_db.py:27:1: E402 module level import not at top of file
+.\scripts\direct_init_db.py:28:42: W291 trailing whitespace
+.\scripts\direct_init_db.py:32:1: E302 expected 2 blank lines, found 1
+.\scripts\direct_init_db.py:40:1: W293 blank line contains whitespace
+.\scripts\direct_init_db.py:43:1: W293 blank line contains whitespace
+.\scripts\direct_init_db.py:49:1: W293 blank line contains whitespace
+.\scripts\direct_init_db.py:74:1: W293 blank line contains whitespace
+.\scripts\direct_init_db.py:77:1: W293 blank line contains whitespace
+.\scripts\direct_init_db.py:102:1: W293 blank line contains whitespace
+.\scripts\direct_init_db.py:105:1: W293 blank line contains whitespace
+.\scripts\direct_init_db.py:134:1: W293 blank line contains whitespace
+.\scripts\direct_init_db.py:137:1: W293 blank line contains whitespace
+.\scripts\direct_init_db.py:140:1: W293 blank line contains whitespace
+.\scripts\direct_init_db.py:168:1: W293 blank line contains whitespace
+.\scripts\direct_init_db.py:171:1: W293 blank line contains whitespace
+.\scripts\direct_init_db.py:175:1: W293 blank line contains whitespace
+.\scripts\direct_init_db.py:182:1: E305 expected 2 blank lines after class or function definition, found 1
+.\scripts\direct_init_db.py:183:20: W292 no newline at end of file
+.\scripts\direct_init_db_native.py:19:1: E402 module level import not at top of file
+.\scripts\direct_init_db_native.py:27:1: E302 expected 2 blank lines, found 1
+.\scripts\direct_init_db_native.py:31:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:45:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:58:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:69:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:84:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:103:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:119:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:137:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:158:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:163:15: W291 trailing whitespace
+.\scripts\direct_init_db_native.py:168:73: W291 trailing whitespace
+.\scripts\direct_init_db_native.py:171:13: W291 trailing whitespace
+.\scripts\direct_init_db_native.py:173:17: W291 trailing whitespace
+.\scripts\direct_init_db_native.py:179:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:182:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:186:1: E302 expected 2 blank lines, found 1
+.\scripts\direct_init_db_native.py:190:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:193:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:198:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:203:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:208:121: E501 line too long (180 > 120 characters)
+.\scripts\direct_init_db_native.py:209:121: E501 line too long (172 > 120 characters)
+.\scripts\direct_init_db_native.py:210:121: E501 line too long (168 > 120 characters)
+.\scripts\direct_init_db_native.py:212:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:217:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:220:121: E501 line too long (179 > 120 characters)
+.\scripts\direct_init_db_native.py:221:121: E501 line too long (173 > 120 characters)
+.\scripts\direct_init_db_native.py:222:121: E501 line too long (183 > 120 characters)
+.\scripts\direct_init_db_native.py:224:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:229:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:233:121: E501 line too long (123 > 120 characters)
+.\scripts\direct_init_db_native.py:234:121: E501 line too long (137 > 120 characters)
+.\scripts\direct_init_db_native.py:235:121: E501 line too long (122 > 120 characters)
+.\scripts\direct_init_db_native.py:236:121: E501 line too long (136 > 120 characters)
+.\scripts\direct_init_db_native.py:238:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:243:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:246:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:248:121: E501 line too long (167 > 120 characters)
+.\scripts\direct_init_db_native.py:249:121: E501 line too long (167 > 120 characters)
+.\scripts\direct_init_db_native.py:250:121: E501 line too long (166 > 120 characters)
+.\scripts\direct_init_db_native.py:252:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:254:121: E501 line too long (131 > 120 characters)
+.\scripts\direct_init_db_native.py:257:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:260:1: W293 blank line contains whitespace
+.\scripts\direct_init_db_native.py:267:1: E305 expected 2 blank lines after class or function definition, found 1
+.\scripts\direct_init_db_native.py:269:21: W292 no newline at end of file
+.\scripts\init_db.py:5:1: F401 'datetime.datetime' imported but unused
+.\scripts\init_db.py:13:1: E402 module level import not at top of file
+.\scripts\init_db.py:14:1: F401 'app.database.models.Invoice' imported but unused
+.\scripts\init_db.py:14:1: F401 'app.database.models.InvoiceItem' imported but unused
+.\scripts\init_db.py:14:1: F401 'app.database.models.Transaction' imported but unused
+.\scripts\init_db.py:14:1: F401 'app.database.models.DebtMovement' imported but unused
+.\scripts\init_db.py:14:1: F401 'app.database.models.InvoiceStatus' imported but unused
+.\scripts\init_db.py:14:1: F401 'app.database.models.TransactionType' imported but unused
+.\scripts\init_db.py:14:1: F401 'app.database.models.DebtDimension' imported but unused
+.\scripts\init_db.py:14:1: F401 'app.database.models.DebtDirection' imported but unused
+.\scripts\init_db.py:14:1: E402 module level import not at top of file
+.\scripts\init_db.py:15:51: W291 trailing whitespace
+.\scripts\init_db.py:27:1: E302 expected 2 blank lines, found 1
+.\scripts\init_db.py:57:1: W293 blank line contains whitespace
+.\scripts\init_db.py:85:1: W293 blank line contains whitespace
+.\scripts\init_db.py:119:1: W293 blank line contains whitespace
+.\scripts\init_db.py:123:1: W293 blank line contains whitespace
+.\scripts\init_db.py:154:1: W293 blank line contains whitespace
+.\scripts\init_db.py:158:1: W293 blank line contains whitespace
+.\scripts\init_db.py:160:1: W293 blank line contains whitespace
+.\scripts\init_db.py:167:1: E305 expected 2 blank lines after class or function definition, found 1
+.\scripts\init_db.py:168:21: W292 no newline at end of file
+.\tests\conftest.py:5:1: F401 'uuid' imported but unused
+.\tests\conftest.py:6:1: F401 'datetime.datetime' imported but unused
+.\tests\conftest.py:12:1: F401 'app.database.db.get_db' imported but unused
+.\tests\conftest.py:13:1: F401 'app.database.models.Transaction' imported but unused
+.\tests\conftest.py:13:1: F401 'app.database.models.DebtMovement' imported but unused
+.\tests\conftest.py:13:1: F401 'app.database.models.TransactionType' imported but unused
+.\tests\conftest.py:13:1: F401 'app.database.models.DebtDimension' imported but unused
+.\tests\conftest.py:13:1: F401 'app.database.models.DebtDirection' imported but unused
+.\tests\conftest.py:14:48: W291 trailing whitespace
+.\tests\conftest.py:21:1: E302 expected 2 blank lines, found 1
+.\tests\conftest.py:26:1: W293 blank line contains whitespace
+.\tests\conftest.py:34:1: W293 blank line contains whitespace
+.\tests\conftest.py:40:1: W293 blank line contains whitespace
+.\tests\conftest.py:42:1: W293 blank line contains whitespace
+.\tests\conftest.py:50:1: E302 expected 2 blank lines, found 1
+.\tests\conftest.py:55:1: E302 expected 2 blank lines, found 1
+.\tests\conftest.py:60:1: E302 expected 2 blank lines, found 1
+.\tests\conftest.py:67:1: E302 expected 2 blank lines, found 1
+.\tests\conftest.py:72:1: W293 blank line contains whitespace
+.\tests\conftest.py:76:1: W293 blank line contains whitespace
+.\tests\conftest.py:79:1: W293 blank line contains whitespace
+.\tests\conftest.py:89:1: E302 expected 2 blank lines, found 1
+.\tests\conftest.py:103:1: E302 expected 2 blank lines, found 1
+.\tests\conftest.py:117:1: E302 expected 2 blank lines, found 1
+.\tests\conftest.py:133:1: E302 expected 2 blank lines, found 1
+.\tests\conftest.py:145:1: E302 expected 2 blank lines, found 1
+.\tests\conftest.py:160:1: W293 blank line contains whitespace
+.\tests\conftest.py:164:1: W293 blank line contains whitespace
+.\tests\conftest.py:171:1: W293 blank line contains whitespace
+.\tests\conftest.py:183:1: W293 blank line contains whitespace
+.\tests\conftest.py:185:1: W293 blank line contains whitespace
+.\tests\conftest.py:189:1: W293 blank line contains whitespace
+.\tests\conftest.py:193:1: E302 expected 2 blank lines, found 1
+.\tests\conftest.py:197:1: W293 blank line contains whitespace
+.\tests\conftest.py:200:1: W293 blank line contains whitespace
+.\tests\conftest.py:203:1: E302 expected 2 blank lines, found 1
+.\tests\conftest.py:207:5: F401 'app.database.db.get_db as original_get_db' imported but unused
+.\tests\conftest.py:208:1: W293 blank line contains whitespace
+.\tests\conftest.py:215:1: W293 blank line contains whitespace
+.\tests\conftest.py:220:1: W293 blank line contains whitespace
+.\tests\conftest.py:231:1: W293 blank line contains whitespace
+.\tests\conftest.py:232:26: W292 no newline at end of file
+.\tests\functional\test_debt_calculations.py:6:1: F401 'uuid' imported but unused
+.\tests\functional\test_debt_calculations.py:8:1: F401 'app.database.models.TransactionType' imported but unused
+.\tests\functional\test_debt_calculations.py:8:1: F401 'app.database.models.DebtDirection' imported but unused
+.\tests\functional\test_debt_calculations.py:9:36: W291 trailing whitespace
+.\tests\functional\test_debt_calculations.py:13:23: W291 trailing whitespace
+.\tests\functional\test_debt_calculations.py:27:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:31:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:34:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:37:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:40:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:52:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:58:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:62:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:70:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:77:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:85:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:92:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:101:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:109:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:125:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:134:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:139:5: F841 local variable 'month_end' is assigned to but never used
+.\tests\functional\test_debt_calculations.py:140:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:148:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:155:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:159:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:167:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:175:121: E501 line too long (123 > 120 characters)
+.\tests\functional\test_debt_calculations.py:182:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:187:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:197:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:205:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:213:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:216:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:220:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:224:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:228:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:232:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:239:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:242:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:245:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:257:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:260:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:263:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:266:1: W293 blank line contains whitespace
+.\tests\functional\test_debt_calculations.py:268:86: W292 no newline at end of file
+.\tests\functional\test_invoice_workflow.py:5:1: F401 'datetime.timedelta' imported but unused
+.\tests\functional\test_invoice_workflow.py:6:1: F401 'uuid' imported but unused
+.\tests\functional\test_invoice_workflow.py:9:36: W291 trailing whitespace
+.\tests\functional\test_invoice_workflow.py:13:23: W291 trailing whitespace
+.\tests\functional\test_invoice_workflow.py:18:1: E302 expected 2 blank lines, found 1
+.\tests\functional\test_invoice_workflow.py:21:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:30:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:39:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:44:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:50:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:58:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:61:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:64:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:74:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:78:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:81:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:88:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:95:1: E302 expected 2 blank lines, found 1
+.\tests\functional\test_invoice_workflow.py:98:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:108:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:112:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:116:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:119:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:123:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:127:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:130:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:134:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:138:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:142:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:145:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:150:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:155:1: E302 expected 2 blank lines, found 1
+.\tests\functional\test_invoice_workflow.py:158:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:167:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:175:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:180:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:188:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:198:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:202:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:208:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:216:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:220:1: E302 expected 2 blank lines, found 1
+.\tests\functional\test_invoice_workflow.py:228:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:238:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:245:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:253:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:257:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:261:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:263:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:268:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:272:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:277:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:285:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:287:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:289:5: F841 local variable 'payment_tx' is assigned to but never used
+.\tests\functional\test_invoice_workflow.py:295:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:301:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:305:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:308:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:311:1: W293 blank line contains whitespace
+.\tests\functional\test_invoice_workflow.py:315:50: W292 no newline at end of file
+.\tests\functional\test_performance.py:11:1: F401 'app.database.models.Invoice' imported but unused
+.\tests\functional\test_performance.py:11:1: F401 'app.database.models.InvoiceItem' imported but unused
+.\tests\functional\test_performance.py:15:1: F401 'app.database.repositories.SupplierRepository' imported but unused
+.\tests\functional\test_performance.py:15:1: F401 'app.database.repositories.MaterialRepository' imported but unused
+.\tests\functional\test_performance.py:15:1: F401 'app.database.repositories.ContractRepository' imported but unused
+.\tests\functional\test_performance.py:25:1: E302 expected 2 blank lines, found 1
+.\tests\functional\test_performance.py:39:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:51:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:61:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:67:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:71:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:87:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:90:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:94:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:102:1: E302 expected 2 blank lines, found 1
+.\tests\functional\test_performance.py:113:1: E302 expected 2 blank lines, found 1
+.\tests\functional\test_performance.py:116:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:121:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:125:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:130:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:134:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:137:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:141:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:147:1: E302 expected 2 blank lines, found 1
+.\tests\functional\test_performance.py:150:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:156:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:167:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:175:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:183:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:188:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:194:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:199:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:204:1: E302 expected 2 blank lines, found 1
+.\tests\functional\test_performance.py:208:5: F841 local variable 'transaction_repo' is assigned to but never used
+.\tests\functional\test_performance.py:210:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:217:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:226:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:233:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:241:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:244:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:249:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:253:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:257:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:264:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:268:1: E302 expected 2 blank lines, found 1
+.\tests\functional\test_performance.py:283:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:286:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:292:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:307:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:310:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:316:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:331:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:334:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:340:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:341:1: E302 expected 2 blank lines, found 1
+.\tests\functional\test_performance.py:351:1: W293 blank line contains whitespace
+.\tests\functional\test_performance.py:354:53: W292 no newline at end of file
+.\tests\integration\graphql\test_client_queries.py:5:1: F401 'json' imported but unused
+.\tests\integration\graphql\test_client_queries.py:7:1: E302 expected 2 blank lines, found 1
+.\tests\integration\graphql\test_client_queries.py:22:1: W293 blank line contains whitespace
+.\tests\integration\graphql\test_client_queries.py:25:1: W293 blank line contains whitespace
+.\tests\integration\graphql\test_client_queries.py:33:1: W293 blank line contains whitespace
+.\tests\integration\graphql\test_client_queries.py:45:1: E302 expected 2 blank lines, found 1
+.\tests\integration\graphql\test_client_queries.py:61:1: W293 blank line contains whitespace
+.\tests\integration\graphql\test_client_queries.py:64:1: W293 blank line contains whitespace
+.\tests\integration\graphql\test_client_queries.py:71:1: W293 blank line contains whitespace
+.\tests\integration\graphql\test_client_queries.py:79:1: E302 expected 2 blank lines, found 1
+.\tests\integration\graphql\test_client_queries.py:91:1: W293 blank line contains whitespace
+.\tests\integration\graphql\test_client_queries.py:94:1: W293 blank line contains whitespace
+.\tests\integration\graphql\test_client_queries.py:102:1: E302 expected 2 blank lines, found 1
+.\tests\integration\graphql\test_client_queries.py:128:1: W293 blank line contains whitespace
+.\tests\integration\graphql\test_client_queries.py:131:1: W293 blank line contains whitespace
+.\tests\integration\graphql\test_client_queries.py:138:1: W293 blank line contains whitespace
+.\tests\integration\graphql\test_client_queries.py:147:1: E302 expected 2 blank lines, found 1
+.\tests\integration\graphql\test_client_queries.py:172:1: W293 blank line contains whitespace
+.\tests\integration\graphql\test_client_queries.py:175:1: W293 blank line contains whitespace
+.\tests\integration\graphql\test_client_queries.py:182:1: W293 blank line contains whitespace
+.\tests\integration\graphql\test_client_queries.py:192:1: E302 expected 2 blank lines, found 1
+.\tests\integration\graphql\test_client_queries.py:203:1: W293 blank line contains whitespace
+.\tests\integration\graphql\test_client_queries.py:212:1: W293 blank line contains whitespace
+.\tests\integration\graphql\test_client_queries.py:215:1: W293 blank line contains whitespace
+.\tests\integration\graphql\test_client_queries.py:223:1: W293 blank line contains whitespace
+.\tests\integration\graphql\test_client_queries.py:235:1: W293 blank line contains whitespace
+.\tests\integration\graphql\test_client_queries.py:236:1: E302 expected 2 blank lines, found 1
+.\tests\integration\graphql\test_client_queries.py:246:1: W293 blank line contains whitespace
+.\tests\integration\graphql\test_client_queries.py:248:5: F811 redefinition of unused 'json' from line 5
+.\tests\integration\graphql\test_client_queries.py:249:53: W292 no newline at end of file
+.\tests\test_app.py:6:1: E302 expected 2 blank lines, found 1
+.\tests\test_app.py:9:1: W293 blank line contains whitespace
+.\tests\test_app.py:14:1: E302 expected 2 blank lines, found 1
+.\tests\test_app.py:17:1: W293 blank line contains whitespace
+.\tests\test_app.py:21:1: E302 expected 2 blank lines, found 1
+.\tests\test_app.py:24:1: W293 blank line contains whitespace
+.\tests\test_app.py:30:49: W292 no newline at end of file
+.\tests\unit\repositories\test_client_repository.py:5:1: F401 'pytest' imported but unused
+.\tests\unit\repositories\test_client_repository.py:10:1: E302 expected 2 blank lines, found 1
+.\tests\unit\repositories\test_client_repository.py:21:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:24:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:32:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:38:1: E302 expected 2 blank lines, found 1
+.\tests\unit\repositories\test_client_repository.py:43:28: W291 trailing whitespace
+.\tests\unit\repositories\test_client_repository.py:49:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:52:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:60:1: E302 expected 2 blank lines, found 1
+.\tests\unit\repositories\test_client_repository.py:65:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:68:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:72:1: E302 expected 2 blank lines, found 1
+.\tests\unit\repositories\test_client_repository.py:83:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:86:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:91:1: E302 expected 2 blank lines, found 1
+.\tests\unit\repositories\test_client_repository.py:102:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:107:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:115:1: E302 expected 2 blank lines, found 1
+.\tests\unit\repositories\test_client_repository.py:120:30: W291 trailing whitespace
+.\tests\unit\repositories\test_client_repository.py:126:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:132:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:135:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:141:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:148:1: E302 expected 2 blank lines, found 1
+.\tests\unit\repositories\test_client_repository.py:153:30: W291 trailing whitespace
+.\tests\unit\repositories\test_client_repository.py:160:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:165:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:168:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:176:1: E302 expected 2 blank lines, found 1
+.\tests\unit\repositories\test_client_repository.py:182:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:185:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:189:1: E302 expected 2 blank lines, found 1
+.\tests\unit\repositories\test_client_repository.py:197:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:200:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:206:1: E302 expected 2 blank lines, found 1
+.\tests\unit\repositories\test_client_repository.py:211:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:214:1: W293 blank line contains whitespace
+.\tests\unit\repositories\test_client_repository.py:216:27: W292 no newline at end of file

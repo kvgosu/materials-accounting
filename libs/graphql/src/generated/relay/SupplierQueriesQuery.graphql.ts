@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<eecfc598ed34b38435a3529f1659cd1a>>
+ * @generated SignedSource<<2dfbc9a64b187e07bb754b4d977249f8>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -17,7 +17,7 @@ export type SupplierQueriesQuery$variables = {
 };
 export type SupplierQueriesQuery$data = {
   readonly suppliers: ReadonlyArray<{
-    readonly " $fragmentSpreads": FragmentRefs<"SupplierFragments_supplierDetails">;
+    readonly " $fragmentSpreads": FragmentRefs<"SupplierFragments_list">;
   }>;
 };
 export type SupplierQueriesQuery = {
@@ -80,7 +80,7 @@ return {
           {
             "args": null,
             "kind": "FragmentSpread",
-            "name": "SupplierFragments_supplierDetails"
+            "name": "SupplierFragments_list"
           }
         ],
         "storageKey": null
@@ -169,16 +169,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "8323ffca780529aad19dc87541b9f707",
+    "cacheID": "59322b193c75ca646ba3a7e612d6ca75",
     "id": null,
     "metadata": {},
     "name": "SupplierQueriesQuery",
     "operationKind": "query",
-    "text": "query SupplierQueriesQuery(\n  $skip: Int\n  $limit: Int\n  $search: String\n) {\n  suppliers(skip: $skip, limit: $limit, search: $search) {\n    ...SupplierFragments_supplierDetails\n    id\n  }\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment SupplierFragments_supplierDetails on Supplier {\n  ...SupplierFragments_supplier\n  created_at\n  updated_at\n}\n"
+    "text": "query SupplierQueriesQuery(\n  $skip: Int\n  $limit: Int\n  $search: String\n) {\n  suppliers(skip: $skip, limit: $limit, search: $search) {\n    ...SupplierFragments_list\n    id\n  }\n}\n\nfragment SupplierFragments_list on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n  created_at\n  updated_at\n}\n"
   }
 };
 })();
 
-(node as any).hash = "ab284c7c0269fea4b087cb03558a7dd6";
+(node as any).hash = "280cabdd45c3d7b985e29b20fb5af086";
 
 export default node;

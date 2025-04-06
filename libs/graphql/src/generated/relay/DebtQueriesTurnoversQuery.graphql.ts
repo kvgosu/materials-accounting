@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0d52955ea90fa504aca5a5a34dde2dc9>>
+ * @generated SignedSource<<1a4d68ecd36fc51f4625e7e73a5cf0e7>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -20,7 +20,7 @@ export type DebtQueriesTurnoversQuery$variables = {
 };
 export type DebtQueriesTurnoversQuery$data = {
   readonly debt_turnovers: ReadonlyArray<{
-    readonly " $fragmentSpreads": FragmentRefs<"DebtFragments_debtTurnover">;
+    readonly " $fragmentSpreads": FragmentRefs<"DebtFragments_debtTurnoverList">;
   }>;
 };
 export type DebtQueriesTurnoversQuery = {
@@ -150,7 +150,7 @@ return {
           {
             "args": null,
             "kind": "FragmentSpread",
-            "name": "DebtFragments_debtTurnover"
+            "name": "DebtFragments_debtTurnoverList"
           }
         ],
         "storageKey": null
@@ -248,16 +248,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "a8150bf9523563a1369ff9f81a84571d",
+    "cacheID": "08564ca5cd6232539a76de9b1a36755f",
     "id": null,
     "metadata": {},
     "name": "DebtQueriesTurnoversQuery",
     "operationKind": "query",
-    "text": "query DebtQueriesTurnoversQuery(\n  $client_id: ID\n  $supplier_id: ID\n  $dimension: DebtDimension\n  $start_date: String!\n  $end_date: String!\n) {\n  debt_turnovers(client_id: $client_id, supplier_id: $supplier_id, dimension: $dimension, start_date: $start_date, end_date: $end_date) {\n    ...DebtFragments_debtTurnover\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment DebtFragments_debtTurnover on DebtTurnover {\n  id\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  dimension\n  debit\n  credit\n  balance\n  start_date\n  end_date\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n"
+    "text": "query DebtQueriesTurnoversQuery(\n  $client_id: ID\n  $supplier_id: ID\n  $dimension: DebtDimension\n  $start_date: String!\n  $end_date: String!\n) {\n  debt_turnovers(client_id: $client_id, supplier_id: $supplier_id, dimension: $dimension, start_date: $start_date, end_date: $end_date) {\n    ...DebtFragments_debtTurnoverList\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment DebtFragments_debtTurnoverList on DebtTurnover {\n  id\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  dimension\n  debit\n  credit\n  balance\n  start_date\n  end_date\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n"
   }
 };
 })();
 
-(node as any).hash = "b39416a44bf7effcc01bb90814907034";
+(node as any).hash = "aca44382810ef1fdee2335b91ee9468b";
 
 export default node;

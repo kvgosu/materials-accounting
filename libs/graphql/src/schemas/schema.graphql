@@ -2,32 +2,136 @@ type Query {
   # Клиенты
   clients(skip: Int, limit: Int, search: String): [Client!]!
   client(id: ID!): Client
-  
-  # Поставщики
   suppliers(skip: Int, limit: Int, search: String): [Supplier!]!
   supplier(id: ID!): Supplier
-  
-  # Материалы
+  price_lists(
+    supplier_id: ID,
+    is_active: Boolean,
+    date_from: String,
+    date_to: String,
+    skip: Int,
+    limit: Int
+  ): [SupplierPriceList!]!
+  price_list(id: ID!): SupplierPriceList
+  price_list_items(
+    price_list_id: ID!,
+    search: String,
+    skip: Int,
+    limit: Int
+  ): [PriceListItem!]!
+  current_material_price(
+    material_id: ID!, 
+    supplier_id: ID!
+  ): PriceListItem
   materials(skip: Int, limit: Int, search: String): [Material!]!
   material(id: ID!): Material
+  contracts(skip: Int, limit: Int, client_id: ID, status: ContractStatus): [Contract!]!
+  contract(id: ID!): Contract
+  invoices(
+    skip: Int, 
+    limit: Int, 
+    client_id: ID, 
+    supplier_id: ID, 
+    contract_id: ID,
+    status: InvoiceStatus,
+    date_from: String,
+    date_to: String
+  ): [Invoice!]!
+  invoice(id: ID!): Invoice
+  transactions(
+    skip: Int, 
+    limit: Int, 
+    client_id: ID, 
+    supplier_id: ID, 
+    invoice_id: ID,
+    type: TransactionType,
+    date_from: String,
+    date_to: String
+  ): [Transaction!]!
+  transaction(id: ID!): Transaction
+  debt_balances(
+    client_id: ID, 
+    supplier_id: ID,
+    dimension: DebtDimension,
+    as_of_date: String
+  ): [DebtBalance!]!
+  debt_movements(
+    skip: Int, 
+    limit: Int, 
+    client_id: ID, 
+    supplier_id: ID,
+    dimension: DebtDimension,
+    period_from: String,
+    period_to: String
+  ): [DebtMovement!]!
+  debt_turnovers(
+    client_id: ID,
+    supplier_id: ID,
+    dimension: DebtDimension,
+    start_date: String!,
+    end_date: String!
+  ): [DebtTurnover!]!
+  dashboard: Dashboard!
 }
 
 type Client {
   id: ID!
   name: String!
-  contactPerson: String
+  contact_person: String
   phone: String
   email: String
   address: String
+  created_at: String
+  updated_at: String
+  contracts: [Contract!]
+  invoices: [Invoice!]
+  transactions: [Transaction!]
+  debt_movements: [DebtMovement!]
+  debt_balance: Float
 }
 
 type Supplier {
   id: ID!
   name: String!
-  contactPerson: String
+  contact_person: String
   phone: String
   email: String
   address: String
+  price_lists: [SupplierPriceList!]
+  latest_price_list: SupplierPriceList
+  created_at: String
+  updated_at: String
+  invoices: [Invoice!]
+  transactions: [Transaction!]
+  debt_movements: [DebtMovement!]
+  debt_balance: Float
+}
+
+type SupplierPriceList {
+  id: ID!
+  supplier: Supplier!
+  date: String!
+  file_name: String
+  is_active: Boolean!
+  items: [PriceListItem!]!
+  created_at: String
+  updated_at: String
+}
+
+type PriceListItem {
+  id: ID!
+  price_list: SupplierPriceList!
+  supplier_code: String
+  barcode: String
+  name: String!
+  article: String
+  description: String
+  vat_rate: Float!
+  price: Float!
+  availability: Int!
+  material: Material
+  created_at: String
+  updated_at: String
 }
 
 type Material {
@@ -35,29 +139,188 @@ type Material {
   name: String!
   unit: String!
   description: String
+  created_at: String
+  updated_at: String
+  invoice_items: [InvoiceItem!]
 }
+
+type Contract {
+  id: ID!
+  number: String!
+  date: String!
+  client: Client!
+  markup_percentage: Float!
+  status: ContractStatus!
+  expiration_date: String
+  created_at: String
+  updated_at: String
+  invoices: [Invoice!]
+}
+
+type Invoice {
+  id: ID!
+  number: String!
+  date: String!
+  client: Client!
+  supplier: Supplier!
+  contract: Contract!
+  total_amount: Float!
+  total_with_markup: Float!
+  status: InvoiceStatus!
+  created_at: String
+  updated_at: String
+  items: [InvoiceItem!]!
+  transactions: [Transaction!]
+  debt_movements: [DebtMovement!]
+}
+
+type InvoiceItem {
+  id: ID!
+  invoice: Invoice!
+  material: Material!
+  quantity: Float!
+  price: Float!
+  amount: Float!
+  amount_with_markup: Float!
+  created_at: String
+  updated_at: String
+}
+
+type Transaction {
+  id: ID!
+  date: String!
+  type: TransactionType!
+  amount: Float!
+  description: String
+  invoice: Invoice
+  client: Client
+  supplier: Supplier
+  debt_movements: [DebtMovement!]
+  created_at: String
+  updated_at: String
+}
+
+type DebtBalance {
+  id: ID!
+  client: Client
+  supplier: Supplier
+  dimension: DebtDimension!
+  balance: Float!
+  as_of_date: String!
+}
+
+type DebtMovement {
+  id: ID!
+  period: String!
+  document_id: ID!
+  document_type: String!
+  client: Client
+  supplier: Supplier
+  amount: Float!
+  direction: DebtDirection!
+  dimension: DebtDimension!
+  invoice: Invoice
+  transaction: Transaction
+  created_at: String!
+}
+
+type DebtTurnover {
+  id: ID!
+  client: Client
+  supplier: Supplier
+  dimension: DebtDimension!
+  debit: Float!
+  credit: Float!
+  balance: Float!
+  start_date: String!
+  end_date: String!
+}
+
+type Dashboard {
+  clients_count: Int!
+  suppliers_count: Int!
+  active_contracts_count: Int!
+  client_debts_sum: Float!
+  supplier_debts_sum: Float!
+  recent_invoices: [Invoice!]!
+  recent_transactions: [Transaction!]!
+}
+
+# Перечисления
+
+enum ContractStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum InvoiceStatus {
+  CREATED
+  PROCESSED
+  CLOSED
+}
+
+enum TransactionType {
+  CLIENT_DEBT
+  SUPPLIER_DEBT
+  CLIENT_PAYMENT
+  SUPPLIER_PAYMENT
+}
+
+enum DebtDimension {
+  CLIENT_DEBT
+  SUPPLIER_DEBT
+}
+
+enum DebtDirection {
+  DEBIT
+  CREDIT
+}
+
+# Мутации
 
 type Mutation {
   # Клиенты
-  createClient(input: CreateClientInput!): CreateClientPayload!
-  updateClient(id: ID!, input: UpdateClientInput!): UpdateClientPayload!
-  deleteClient(id: ID!): DeleteClientPayload!
+  create_client(input: CreateClientInput!): CreateClientPayload!
+  update_client(id: ID!, input: UpdateClientInput!): UpdateClientPayload!
+  delete_client(id: ID!): DeleteClientPayload!
   
   # Поставщики
-  createSupplier(input: CreateSupplierInput!): CreateSupplierPayload!
-  updateSupplier(id: ID!, input: UpdateSupplierInput!): UpdateSupplierPayload!
-  deleteSupplier(id: ID!): DeleteSupplierPayload!
-  
+  create_supplier(input: CreateSupplierInput!): CreateSupplierPayload!
+  update_supplier(id: ID!, input: UpdateSupplierInput!): UpdateSupplierPayload!
+  delete_supplier(id: ID!): DeleteSupplierPayload!
+  upload_price_list(input: UploadPriceListInput!): UploadPriceListPayload!
+  deactivate_price_list(id: ID!): DeactivatePriceListPayload!
+  activate_price_list(id: ID!): ActivatePriceListPayload!
+  generate_template(supplier_id: ID!): GenerateTemplatePayload!
+  link_price_list_item_to_material(item_id: ID!, material_id: ID!): LinkItemToMaterialPayload!
+  update_price_list_item(item_id: ID!, input: UpdatePriceListItemInput!): UpdatePriceListItemPayload!
+
   # Материалы
-  createMaterial(input: CreateMaterialInput!): CreateMaterialPayload!
-  updateMaterial(id: ID!, input: UpdateMaterialInput!): UpdateMaterialPayload!
-  deleteMaterial(id: ID!): DeleteMaterialPayload!
+  create_material(input: CreateMaterialInput!): CreateMaterialPayload!
+  update_material(id: ID!, input: UpdateMaterialInput!): UpdateMaterialPayload!
+  delete_material(id: ID!): DeleteMaterialPayload!
+  
+  # Договоры
+  create_contract(input: CreateContractInput!): CreateContractPayload!
+  update_contract(id: ID!, input: UpdateContractInput!): UpdateContractPayload!
+  delete_contract(id: ID!): DeleteContractPayload!
+  
+  # Накладные
+  create_invoice(input: CreateInvoiceInput!): CreateInvoicePayload!
+  update_invoice(id: ID!, input: UpdateInvoiceInput!): UpdateInvoicePayload!
+  delete_invoice(id: ID!): DeleteInvoicePayload!
+  process_invoice(id: ID!): ProcessInvoicePayload!
+  close_invoice(id: ID!): CloseInvoicePayload!
+  
+  # Платежи
+  register_client_payment(input: RegisterClientPaymentInput!): RegisterClientPaymentPayload!
+  register_supplier_payment(input: RegisterSupplierPaymentInput!): RegisterSupplierPaymentPayload!
 }
 
 # Входные типы для клиентов
 input CreateClientInput {
   name: String!
-  contactPerson: String
+  contact_person: String
   phone: String
   email: String
   address: String
@@ -65,7 +328,7 @@ input CreateClientInput {
 
 input UpdateClientInput {
   name: String
-  contactPerson: String
+  contact_person: String
   phone: String
   email: String
   address: String
@@ -86,7 +349,7 @@ type DeleteClientPayload {
 # Входные типы для поставщиков
 input CreateSupplierInput {
   name: String!
-  contactPerson: String
+  contact_person: String
   phone: String
   email: String
   address: String
@@ -94,7 +357,7 @@ input CreateSupplierInput {
 
 input UpdateSupplierInput {
   name: String
-  contactPerson: String
+  contact_person: String
   phone: String
   email: String
   address: String
@@ -111,6 +374,53 @@ type UpdateSupplierPayload {
 type DeleteSupplierPayload {
   success: Boolean!
 }
+
+input UploadPriceListInput {
+  supplier_id: ID!
+  date: String!
+  file: Upload!
+}
+
+type UploadPriceListPayload {
+  price_list: SupplierPriceList!
+  processed_items: Int!
+  skipped_items: Int!
+}
+
+type DeactivatePriceListPayload {
+  success: Boolean!
+}
+
+type ActivatePriceListPayload {
+  success: Boolean!
+}
+
+type GenerateTemplatePayload {
+  download_url: String!
+}
+
+input UpdatePriceListItemInput {
+  supplier_code: String
+  barcode: String
+  name: String
+  article: String
+  description: String
+  vat_rate: Float
+  price: Float
+  availability: Int
+  material_id: ID
+}
+
+type UpdatePriceListItemPayload {
+  item: PriceListItem!
+}
+
+type LinkItemToMaterialPayload {
+  item: PriceListItem!
+  material: Material!
+}
+
+scalar Upload
 
 # Входные типы для материалов
 input CreateMaterialInput {
@@ -135,4 +445,111 @@ type UpdateMaterialPayload {
 
 type DeleteMaterialPayload {
   success: Boolean!
+}
+
+# Входные типы для договоров
+input CreateContractInput {
+  client_id: ID!
+  number: String!
+  date: String!
+  markup_percentage: Float!
+  status: ContractStatus!
+  expiration_date: String
+}
+
+input UpdateContractInput {
+  client_id: ID
+  number: String
+  date: String
+  markup_percentage: Float
+  status: ContractStatus
+  expiration_date: String
+}
+
+type CreateContractPayload {
+  contract: Contract!
+}
+
+type UpdateContractPayload {
+  contract: Contract!
+}
+
+type DeleteContractPayload {
+  success: Boolean!
+}
+
+# Входные типы для накладных
+input CreateInvoiceInput {
+  number: String!
+  date: String!
+  client_id: ID!
+  supplier_id: ID!
+  contract_id: ID!
+  items: [CreateInvoiceItemInput!]!
+}
+
+input CreateInvoiceItemInput {
+  material_id: ID!
+  quantity: Float!
+  price: Float!
+}
+
+input UpdateInvoiceInput {
+  number: String
+  date: String
+  client_id: ID
+  supplier_id: ID
+  contract_id: ID
+  items: [UpdateInvoiceItemInput!]
+}
+
+input UpdateInvoiceItemInput {
+  id: ID
+  material_id: ID
+  quantity: Float
+  price: Float
+}
+
+type CreateInvoicePayload {
+  invoice: Invoice!
+}
+
+type UpdateInvoicePayload {
+  invoice: Invoice!
+}
+
+type DeleteInvoicePayload {
+  success: Boolean!
+}
+
+type ProcessInvoicePayload {
+  invoice: Invoice!
+  transactions: [Transaction!]!
+}
+
+type CloseInvoicePayload {
+  invoice: Invoice!
+}
+
+# Входные типы для платежей
+input RegisterClientPaymentInput {
+  client_id: ID!
+  amount: Float!
+  date: String!
+  description: String
+}
+
+input RegisterSupplierPaymentInput {
+  supplier_id: ID!
+  amount: Float!
+  date: String!
+  description: String
+}
+
+type RegisterClientPaymentPayload {
+  transaction: Transaction!
+}
+
+type RegisterSupplierPaymentPayload {
+  transaction: Transaction!
 }

@@ -39,12 +39,7 @@
     {
       "plugin": "@nx/next/plugin",
       "options": {
-        "startTargetName": "start",
-        "buildTargetName": "build",
-        "devTargetName": "dev",
-        "serveStaticTargetName": "serve-static",
-        "buildDepsTargetName": "build-deps",
-        "watchDepsTargetName": "watch-deps"
+        "svgr": false
       }
     },
     {
@@ -99,6 +94,18 @@
       "library": {
         "unitTestRunner": "none"
       }
+    },
+    "@nx/workspace:run-commands": {
+      "outputs": [],
+      "dependsOn": []
+    },
+    "relay-compile": {
+      "factory": "./tools/generators/relay-compile",
+      "schema": "./tools/generators/relay-compile/schema.json"
+    },
+    "graphql-codegen": {
+      "factory": "./tools/generators/graphql-codegen",
+      "schema": "./tools/generators/graphql-codegen/schema.json"
     }
   },
   "targetDefaults": {
@@ -106,6 +113,18 @@
       "executor": "@nx/js:node",
       "options": {
         "script": "tools/scripts/sync-schema.js"
+      }
+    },
+    "relay": {
+      "executor": "@nx/workspace:run-commands",
+      "options": {
+        "command": "nx g relay-compile"
+      }
+    },
+    "codegen": {
+      "executor": "@nx/workspace:run-commands",
+      "options": {
+        "command": "nx generate graphql-codegen"
       }
     },
     "deploy": {

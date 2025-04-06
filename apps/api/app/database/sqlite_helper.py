@@ -1,23 +1,16 @@
 # app/database/sqlite_helper.py
-"""
-Вспомогательный модуль для обеспечения совместимости между SQLite и PostgreSQL
-"""
+
 import os
 from sqlalchemy import Column, String, TypeDecorator
 from sqlalchemy.dialects import postgresql
 import uuid
 
-# Определяем, используем ли мы SQLite
-def is_using_sqlite():
-    """Проверяем, используется ли SQLite в качестве базы данных"""
+def is_using_sqlite(db=None):
+    if db is not None:
+        return 'sqlite' in db.bind.dialect.name
     database_url = os.getenv("DATABASE_URL", "")
-    dev_mode = os.getenv("DEV_MODE", "false").lower() == "true"
-    return dev_mode or not database_url or database_url.startswith("sqlite:")
-
-# Создаем свой тип для UUID, который будет совместим с SQLite
+    return database_url.startswith("sqlite:") or not database_url or os.getenv("DEV_MODE", "false").lower() == "true"
 class UUIDType(TypeDecorator):
-    """Тип для хранения UUID, совместимый с SQLite и PostgreSQL"""
-    
     impl = String
     cache_ok = True
     
@@ -25,7 +18,6 @@ class UUIDType(TypeDecorator):
         super(UUIDType, self).__init__(length=length, **kwargs)
     
     def process_bind_param(self, value, dialect):
-        """Конвертация перед сохранением в БД"""
         if value is None:
             return None
         if isinstance(value, uuid.UUID):
@@ -33,7 +25,6 @@ class UUIDType(TypeDecorator):
         return value
     
     def process_result_value(self, value, dialect):
-        """Конвертация после получения из БД"""
         if value is None:
             return value
         if not isinstance(value, uuid.UUID) and isinstance(value, (str, bytes)):
@@ -42,15 +33,8 @@ class UUIDType(TypeDecorator):
             except (ValueError, TypeError):
                 return value
         return value
-
-# UUID тип, совместимый с SQLite
-def get_uuid_column(nullable=False, primary_key=False, **kwargs):
-    """
-    Возвращает UUID колонку, совместимую как с SQLite, так и с PostgreSQL
     
-    В SQLite режиме используется String(36) с автоматической конвертацией
-    В PostgreSQL режиме используется нативный тип UUID
-    """
+def get_uuid_column(nullable=False, primary_key=False, **kwargs):
     if is_using_sqlite():
         return Column(
             UUIDType(36),

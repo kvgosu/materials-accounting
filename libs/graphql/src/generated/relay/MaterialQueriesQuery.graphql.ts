@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9f0f1ff00cfcaa3cebdf98b2febd22f6>>
+ * @generated SignedSource<<17495979e48325cd96f84fe89aeac93f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -17,7 +17,7 @@ export type MaterialQueriesQuery$variables = {
 };
 export type MaterialQueriesQuery$data = {
   readonly materials: ReadonlyArray<{
-    readonly " $fragmentSpreads": FragmentRefs<"MaterialFragments_materialDetails">;
+    readonly " $fragmentSpreads": FragmentRefs<"MaterialFragments_list">;
   }>;
 };
 export type MaterialQueriesQuery = {
@@ -80,7 +80,7 @@ return {
           {
             "args": null,
             "kind": "FragmentSpread",
-            "name": "MaterialFragments_materialDetails"
+            "name": "MaterialFragments_list"
           }
         ],
         "storageKey": null
@@ -155,16 +155,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "0c005b2a2b13f74d033f5fde0cc61189",
+    "cacheID": "f4e92ddbed87800ec2b8b404527bd645",
     "id": null,
     "metadata": {},
     "name": "MaterialQueriesQuery",
     "operationKind": "query",
-    "text": "query MaterialQueriesQuery(\n  $skip: Int\n  $limit: Int\n  $search: String\n) {\n  materials(skip: $skip, limit: $limit, search: $search) {\n    ...MaterialFragments_materialDetails\n    id\n  }\n}\n\nfragment MaterialFragments_material on Material {\n  id\n  name\n  unit\n  description\n}\n\nfragment MaterialFragments_materialDetails on Material {\n  ...MaterialFragments_material\n  created_at\n  updated_at\n}\n"
+    "text": "query MaterialQueriesQuery(\n  $skip: Int\n  $limit: Int\n  $search: String\n) {\n  materials(skip: $skip, limit: $limit, search: $search) {\n    ...MaterialFragments_list\n    id\n  }\n}\n\nfragment MaterialFragments_list on Material {\n  id\n  name\n  unit\n  description\n  created_at\n  updated_at\n}\n"
   }
 };
 })();
 
-(node as any).hash = "823e37a4c75ff45cd19bc96be5232576";
+(node as any).hash = "175a4b79021ccbaafc4e3c10e7e888aa";
 
 export default node;

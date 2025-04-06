@@ -11,10 +11,25 @@
         "cwd": "."
       }
     },
-    "lock": {
-      "executor": "@nxlv/python:lock",
+    "migrate": {
+      "executor": "@nxlv/python:run-commands",
       "options": {
-        "update": false
+        "command": "cd apps/api && alembic upgrade head",
+        "cwd": "."
+      }
+    },
+    "stamp-migrations": {
+      "executor": "@nxlv/python:run-commands",
+      "options": {
+        "command": "cd apps/api && alembic stamp head",
+        "cwd": "."
+      }
+    },
+    "lock": {
+      "executor": "@nxlv/python:run-commands",
+      "options": {
+        "command": "cd {projectRoot} && poetry lock",
+        "cwd": "."
       }
     },
     "init-db": {
@@ -66,6 +81,20 @@
       },
       "cache": true
     },
+    "install-all": {
+      "executor": "@nxlv/python:run-commands",
+      "options": {
+        "command": "cd {projectRoot} && poetry lock && poetry install",
+        "cwd": "."
+      }
+    },
+    "install-test-deps": {
+      "executor": "@nxlv/python:run-commands",
+      "options": {
+        "command": "cd {projectRoot} && poetry add --group dev pytest-xdist@^3.5.0",
+        "cwd": "."
+      }
+    },
     "test": {
       "executor": "@nxlv/python:run-commands",
       "outputs": [
@@ -73,9 +102,70 @@
         "{workspaceRoot}/coverage/{projectRoot}"
       ],
       "options": {
-        "command": "poetry run pytest tests/",
-        "cwd": "{projectRoot}"
+        "command": "cd {projectRoot} && poetry run pytest tests/",
+        "cwd": "."
       },
+      "dependsOn": ["install-all"],
+      "cache": true
+    },
+    "test:unit": {
+      "executor": "@nxlv/python:run-commands",
+      "outputs": [
+        "{workspaceRoot}/reports/{projectRoot}/unittests"
+      ],
+      "options": {
+        "command": "cd {projectRoot} && poetry run pytest tests/unit/ -v",
+        "cwd": "."
+      },
+      "dependsOn": ["install-all"],
+      "cache": true
+    },
+    "test:integration": {
+      "executor": "@nxlv/python:run-commands",
+      "outputs": [
+        "{workspaceRoot}/reports/{projectRoot}/integration"
+      ],
+      "options": {
+        "command": "cd {projectRoot} && poetry run pytest tests/integration/ -v",
+        "cwd": "."
+      },
+      "dependsOn": ["install-all"],
+      "cache": true
+    },
+    "test:functional": {
+      "executor": "@nxlv/python:run-commands",
+      "outputs": [
+        "{workspaceRoot}/reports/{projectRoot}/functional"
+      ],
+      "options": {
+        "command": "cd {projectRoot} && poetry run pytest tests/functional/ -v",
+        "cwd": "."
+      },
+      "dependsOn": ["install-all"],
+      "cache": true
+    },
+    "test:performance": {
+      "executor": "@nxlv/python:run-commands",
+      "outputs": [
+        "{workspaceRoot}/reports/{projectRoot}/performance"
+      ],
+      "options": {
+        "command": "cd {projectRoot} && poetry run pytest tests/functional/test_performance.py -v",
+        "cwd": "."
+      },
+      "dependsOn": ["install-all"],
+      "cache": true
+    },
+    "test:cov": {
+      "executor": "@nxlv/python:run-commands",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "command": "cd {projectRoot} && poetry run pytest --cov=app",
+        "cwd": "."
+      },
+      "dependsOn": ["install-all"],
       "cache": true
     },
     "install": {

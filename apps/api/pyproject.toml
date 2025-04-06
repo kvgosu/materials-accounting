@@ -1,12 +1,22 @@
 [tool.coverage.run]
 branch = true
-source = [ "api" ]
+source = [ "app" ]
 
 [tool.coverage.report]
 exclude_lines = ['if TYPE_CHECKING:']
 show_missing = true
 
 [tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+markers = [
+    "unit: Unit tests",
+    "integration: Integration tests",
+    "functional: Functional tests",
+    "performance: Performance tests"
+]
 addopts = """
  --cov
  --cov-report html:'../../coverage/apps/api/html'
@@ -23,8 +33,9 @@ authors = [ ]
 license = 'Proprietary'
 readme = 'README.md'
 
+  # Исправляем директорию пакета
   [[tool.poetry.packages]]
-  include = "api"
+  include = "app"
 
   [tool.poetry.dependencies]
   python = ">=3.9,<3.11"
@@ -37,6 +48,8 @@ readme = 'README.md'
   python-dotenv = "^1.1.0"
   gunicorn = "^23.0.0"
   graphql-core = "3.2.5"
+  openpyxl = "^3.1.5"
+  pandas = "^2.2.3"
 
   [tool.poetry.group.dev.dependencies]
   autopep8 = "2.3.1"
@@ -45,6 +58,7 @@ readme = 'README.md'
   pytest-sugar = "1.0.0"
   pytest-cov = "6.0.0"
   pytest-html = "4.1.1"
+  pytest-xdist = "^3.5.0"
 
 [build-system]
 requires = ["poetry-core"]

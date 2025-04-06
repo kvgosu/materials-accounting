@@ -46,3 +46,4 @@ Thumbs.db
 out
 test-output
 apps/api/.env
+.env

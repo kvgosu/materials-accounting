@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c146531a123afda0b7e9d9d3eba63629>>
+ * @generated SignedSource<<f12645e803fe320778a9e441c5e0ccd5>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,14 +9,20 @@
 // @ts-nocheck
 
 import { ReaderFragment } from 'relay-runtime';
+export type ContractStatus = "ACTIVE" | "INACTIVE" | "%future added value";
 import { FragmentRefs } from "relay-runtime";
 export type ContractFragments_contractDetails$data = {
   readonly client: {
-    readonly " $fragmentSpreads": FragmentRefs<"ClientFragments_client">;
+    readonly " $fragmentSpreads": FragmentRefs<"ClientFragments_clientDetails">;
   };
   readonly created_at: string | null | undefined;
+  readonly date: string;
+  readonly expiration_date: string | null | undefined;
+  readonly id: string;
+  readonly markup_percentage: number;
+  readonly number: string;
+  readonly status: ContractStatus;
   readonly updated_at: string | null | undefined;
-  readonly " $fragmentSpreads": FragmentRefs<"ContractFragments_contract">;
   readonly " $fragmentType": "ContractFragments_contractDetails";
 };
 export type ContractFragments_contractDetails$key = {
@@ -31,9 +37,46 @@ const node: ReaderFragment = {
   "name": "ContractFragments_contractDetails",
   "selections": [
     {
+      "alias": null,
       "args": null,
-      "kind": "FragmentSpread",
-      "name": "ContractFragments_contract"
+      "kind": "ScalarField",
+      "name": "id",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "number",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "date",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "markup_percentage",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "status",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "expiration_date",
+      "storageKey": null
     },
     {
       "alias": null,
@@ -46,7 +89,7 @@ const node: ReaderFragment = {
         {
           "args": null,
           "kind": "FragmentSpread",
-          "name": "ClientFragments_client"
+          "name": "ClientFragments_clientDetails"
         }
       ],
       "storageKey": null
@@ -70,6 +113,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "fc7e4ff9ee268a5b34bfcf8df55a5a78";
+(node as any).hash = "51f431781fe8ed4d9761b764979dbc81";
 
 export default node;

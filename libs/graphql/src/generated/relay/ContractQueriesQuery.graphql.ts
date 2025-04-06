@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<445ca3b216d4dae6e4281ff6452362b8>>
+ * @generated SignedSource<<e30e2d94f66a572a513d2c4c1586e1f2>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -19,7 +19,7 @@ export type ContractQueriesQuery$variables = {
 };
 export type ContractQueriesQuery$data = {
   readonly contracts: ReadonlyArray<{
-    readonly " $fragmentSpreads": FragmentRefs<"ContractFragments_contractDetails">;
+    readonly " $fragmentSpreads": FragmentRefs<"ContractFragments_list">;
   }>;
 };
 export type ContractQueriesQuery = {
@@ -100,7 +100,7 @@ return {
           {
             "args": null,
             "kind": "FragmentSpread",
-            "name": "ContractFragments_contractDetails"
+            "name": "ContractFragments_list"
           }
         ],
         "storageKey": null
@@ -148,13 +148,6 @@ return {
             "args": null,
             "kind": "ScalarField",
             "name": "markup_percentage",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "status",
             "storageKey": null
           },
           {
@@ -231,16 +224,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "bd17ded80793d4a1d4c4fae4a5b743f9",
+    "cacheID": "240908289dfc50f1f9e760ad47b44241",
     "id": null,
     "metadata": {},
     "name": "ContractQueriesQuery",
     "operationKind": "query",
-    "text": "query ContractQueriesQuery(\n  $skip: Int\n  $limit: Int\n  $client_id: ID\n  $status: ContractStatus\n) {\n  contracts(skip: $skip, limit: $limit, client_id: $client_id, status: $status) {\n    ...ContractFragments_contractDetails\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment ContractFragments_contract on Contract {\n  id\n  number\n  date\n  markup_percentage\n  status\n  expiration_date\n}\n\nfragment ContractFragments_contractDetails on Contract {\n  ...ContractFragments_contract\n  client {\n    ...ClientFragments_client\n    id\n  }\n  created_at\n  updated_at\n}\n"
+    "text": "query ContractQueriesQuery(\n  $skip: Int\n  $limit: Int\n  $client_id: ID\n  $status: ContractStatus\n) {\n  contracts(skip: $skip, limit: $limit, client_id: $client_id, status: $status) {\n    ...ContractFragments_list\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment ContractFragments_list on Contract {\n  id\n  number\n  date\n  markup_percentage\n  expiration_date\n  client {\n    ...ClientFragments_client\n    id\n  }\n  created_at\n  updated_at\n}\n"
   }
 };
 })();
 
-(node as any).hash = "aeaf1a7a16c08ea1bea8c52b890974cb";
+(node as any).hash = "de8d44c701346443d99efd08291ea5c2";
 
 export default node;

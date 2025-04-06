@@ -1,0 +1,11 @@
+{
+    "presets": ["next/babel"],
+    "plugins": [
+        [
+            "relay",
+            {
+                "artifactDirectory": "../../libs/graphql/src/generated/relay"
+            }
+        ]
+    ]
+}

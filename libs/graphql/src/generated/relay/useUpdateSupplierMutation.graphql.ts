@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<c42c554d12625057b0e1d708f835e27f>>
+ * @generated SignedSource<<2215f598f064dcff0f906e05a4910459>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -173,6 +173,13 @@ return {
                 "kind": "ScalarField",
                 "name": "updated_at",
                 "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "debt_balance",
+                "storageKey": null
               }
             ],
             "storageKey": null
@@ -183,12 +190,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "7de29ed7762f00c1639e6b6b7d957567",
+    "cacheID": "180c78c3acbb1ed4430312f64f8ed391",
     "id": null,
     "metadata": {},
     "name": "useUpdateSupplierMutation",
     "operationKind": "mutation",
-    "text": "mutation useUpdateSupplierMutation(\n  $id: ID!\n  $input: UpdateSupplierInput!\n) {\n  update_supplier(id: $id, input: $input) {\n    supplier {\n      ...SupplierFragments_supplierDetails\n      id\n    }\n  }\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment SupplierFragments_supplierDetails on Supplier {\n  ...SupplierFragments_supplier\n  created_at\n  updated_at\n}\n"
+    "text": "mutation useUpdateSupplierMutation(\n  $id: ID!\n  $input: UpdateSupplierInput!\n) {\n  update_supplier(id: $id, input: $input) {\n    supplier {\n      ...SupplierFragments_supplierDetails\n      id\n    }\n  }\n}\n\nfragment SupplierFragments_supplierDetails on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n  created_at\n  updated_at\n  debt_balance\n}\n"
   }
 };
 })();

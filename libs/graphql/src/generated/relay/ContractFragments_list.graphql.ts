@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a709a83f7e1b5a3d11090eb3f1a6fcbc>>
+ * @generated SignedSource<<fe7bcd359f71e4e0e608683bf810c385>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,7 +9,6 @@
 // @ts-nocheck
 
 import { ReaderFragment } from 'relay-runtime';
-export type ContractStatus = "ACTIVE" | "INACTIVE" | "%future added value";
 import { FragmentRefs } from "relay-runtime";
 export type ContractFragments_list$data = ReadonlyArray<{
   readonly client: {
@@ -21,7 +20,6 @@ export type ContractFragments_list$data = ReadonlyArray<{
   readonly id: string;
   readonly markup_percentage: number;
   readonly number: string;
-  readonly status: ContractStatus;
   readonly updated_at: string | null | undefined;
   readonly " $fragmentType": "ContractFragments_list";
 }>;
@@ -70,13 +68,6 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "status",
-      "storageKey": null
-    },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
       "name": "expiration_date",
       "storageKey": null
     },
@@ -115,6 +106,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "273c56fa3f830aa18f570c7b43615c92";
+(node as any).hash = "d5a683d47d33aa1e7f0972c4f3e684ae";
 
 export default node;

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<ef35a9ee58745773d6926834bc307c3c>>
+ * @generated SignedSource<<ed34b4642bbef0c3a84829a864c3dbba>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -154,13 +154,6 @@ return {
             "alias": null,
             "args": null,
             "kind": "ScalarField",
-            "name": "status",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
             "name": "expiration_date",
             "storageKey": null
           },
@@ -231,12 +224,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "748735d4d4aea1033a0ff2f68dcf69f1",
+    "cacheID": "ade55f076a9a53c7b75df3575dfffe30",
     "id": null,
     "metadata": {},
     "name": "useContractsQuery",
     "operationKind": "query",
-    "text": "query useContractsQuery(\n  $skip: Int\n  $limit: Int\n  $client_id: ID\n  $status: ContractStatus\n) {\n  contracts(skip: $skip, limit: $limit, client_id: $client_id, status: $status) {\n    ...ContractFragments_list\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment ContractFragments_list on Contract {\n  id\n  number\n  date\n  markup_percentage\n  status\n  expiration_date\n  client {\n    ...ClientFragments_client\n    id\n  }\n  created_at\n  updated_at\n}\n"
+    "text": "query useContractsQuery(\n  $skip: Int\n  $limit: Int\n  $client_id: ID\n  $status: ContractStatus\n) {\n  contracts(skip: $skip, limit: $limit, client_id: $client_id, status: $status) {\n    ...ContractFragments_list\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment ContractFragments_list on Contract {\n  id\n  number\n  date\n  markup_percentage\n  expiration_date\n  client {\n    ...ClientFragments_client\n    id\n  }\n  created_at\n  updated_at\n}\n"
   }
 };
 })();

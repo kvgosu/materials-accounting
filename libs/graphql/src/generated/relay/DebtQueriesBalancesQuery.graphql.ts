@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f7b06b0037c9ed381daafd954d12c6fb>>
+ * @generated SignedSource<<2ad58645d302677f09324ed223176b38>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -19,7 +19,7 @@ export type DebtQueriesBalancesQuery$variables = {
 };
 export type DebtQueriesBalancesQuery$data = {
   readonly debt_balances: ReadonlyArray<{
-    readonly " $fragmentSpreads": FragmentRefs<"DebtFragments_debtBalance">;
+    readonly " $fragmentSpreads": FragmentRefs<"DebtFragments_debtBalanceList">;
   }>;
 };
 export type DebtQueriesBalancesQuery = {
@@ -138,7 +138,7 @@ return {
           {
             "args": null,
             "kind": "FragmentSpread",
-            "name": "DebtFragments_debtBalance"
+            "name": "DebtFragments_debtBalanceList"
           }
         ],
         "storageKey": null
@@ -214,16 +214,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "cf9b706c9f2693440856edb7f23ac5fb",
+    "cacheID": "cbdc1dd412135dad2641fe5258d80741",
     "id": null,
     "metadata": {},
     "name": "DebtQueriesBalancesQuery",
     "operationKind": "query",
-    "text": "query DebtQueriesBalancesQuery(\n  $client_id: ID\n  $supplier_id: ID\n  $dimension: DebtDimension\n  $as_of_date: String\n) {\n  debt_balances(client_id: $client_id, supplier_id: $supplier_id, dimension: $dimension, as_of_date: $as_of_date) {\n    ...DebtFragments_debtBalance\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment DebtFragments_debtBalance on DebtBalance {\n  id\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  dimension\n  balance\n  as_of_date\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n"
+    "text": "query DebtQueriesBalancesQuery(\n  $client_id: ID\n  $supplier_id: ID\n  $dimension: DebtDimension\n  $as_of_date: String\n) {\n  debt_balances(client_id: $client_id, supplier_id: $supplier_id, dimension: $dimension, as_of_date: $as_of_date) {\n    ...DebtFragments_debtBalanceList\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment DebtFragments_debtBalanceList on DebtBalance {\n  id\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  dimension\n  balance\n  as_of_date\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n"
   }
 };
 })();
 
-(node as any).hash = "4bc394b7f5b28300548a2f265662de80";
+(node as any).hash = "b42b3c3ae0032225fa5d03a1038ce708";
 
 export default node;

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<67beb370b7bdb0b729f4f731da3332c9>>
+ * @generated SignedSource<<d2d4f63e4ce07d46cb9a56bbe7635459>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -16,13 +16,13 @@ export type InvoiceQueriesInvoiceQuery$variables = {
 export type InvoiceQueriesInvoiceQuery$data = {
   readonly invoice: {
     readonly debt_movements: ReadonlyArray<{
-      readonly " $fragmentSpreads": FragmentRefs<"DebtFragments_debtMovement">;
+      readonly " $fragmentSpreads": FragmentRefs<"DebtFragments_debtMovementList">;
     }> | null | undefined;
     readonly items: ReadonlyArray<{
-      readonly " $fragmentSpreads": FragmentRefs<"InvoiceFragments_invoiceItem">;
+      readonly " $fragmentSpreads": FragmentRefs<"InvoiceFragments_invoiceItemList">;
     }>;
     readonly transactions: ReadonlyArray<{
-      readonly " $fragmentSpreads": FragmentRefs<"TransactionFragments_transaction">;
+      readonly " $fragmentSpreads": FragmentRefs<"TransactionFragments_list">;
     }> | null | undefined;
     readonly " $fragmentSpreads": FragmentRefs<"InvoiceFragments_invoiceDetails">;
   } | null | undefined;
@@ -72,83 +72,189 @@ v5 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "status",
+  "name": "total_amount",
   "storageKey": null
 },
 v6 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "name",
+  "name": "total_with_markup",
   "storageKey": null
 },
-v7 = [
-  (v2/*: any*/),
-  (v6/*: any*/),
-  {
-    "alias": null,
-    "args": null,
-    "kind": "ScalarField",
-    "name": "contact_person",
-    "storageKey": null
-  },
-  {
-    "alias": null,
-    "args": null,
-    "kind": "ScalarField",
-    "name": "phone",
-    "storageKey": null
-  },
-  {
-    "alias": null,
-    "args": null,
-    "kind": "ScalarField",
-    "name": "email",
-    "storageKey": null
-  },
-  {
-    "alias": null,
-    "args": null,
-    "kind": "ScalarField",
-    "name": "address",
-    "storageKey": null
-  }
-],
+v7 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "status",
+  "storageKey": null
+},
 v8 = {
   "alias": null,
   "args": null,
-  "concreteType": "Client",
-  "kind": "LinkedField",
-  "name": "client",
-  "plural": false,
-  "selections": (v7/*: any*/),
+  "kind": "ScalarField",
+  "name": "name",
   "storageKey": null
 },
 v9 = {
   "alias": null,
   "args": null,
-  "concreteType": "Supplier",
-  "kind": "LinkedField",
-  "name": "supplier",
-  "plural": false,
-  "selections": (v7/*: any*/),
+  "kind": "ScalarField",
+  "name": "contact_person",
   "storageKey": null
 },
 v10 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "created_at",
+  "name": "phone",
   "storageKey": null
 },
 v11 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "amount",
+  "name": "email",
   "storageKey": null
 },
 v12 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "address",
+  "storageKey": null
+},
+v13 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "markup_percentage",
+  "storageKey": null
+},
+v14 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "expiration_date",
+  "storageKey": null
+},
+v15 = [
+  (v2/*: any*/),
+  (v8/*: any*/),
+  (v9/*: any*/),
+  (v10/*: any*/),
+  (v11/*: any*/),
+  (v12/*: any*/)
+],
+v16 = {
+  "alias": null,
+  "args": null,
+  "concreteType": "Client",
+  "kind": "LinkedField",
+  "name": "client",
+  "plural": false,
+  "selections": (v15/*: any*/),
+  "storageKey": null
+},
+v17 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "created_at",
+  "storageKey": null
+},
+v18 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "updated_at",
+  "storageKey": null
+},
+v19 = {
+  "alias": null,
+  "args": null,
+  "concreteType": "Supplier",
+  "kind": "LinkedField",
+  "name": "supplier",
+  "plural": false,
+  "selections": (v15/*: any*/),
+  "storageKey": null
+},
+v20 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "debt_balance",
+  "storageKey": null
+},
+v21 = {
+  "alias": null,
+  "args": null,
+  "concreteType": "Client",
+  "kind": "LinkedField",
+  "name": "client",
+  "plural": false,
+  "selections": [
+    (v2/*: any*/),
+    (v8/*: any*/),
+    (v9/*: any*/),
+    (v10/*: any*/),
+    (v11/*: any*/),
+    (v12/*: any*/),
+    {
+      "alias": null,
+      "args": null,
+      "concreteType": "Contract",
+      "kind": "LinkedField",
+      "name": "contracts",
+      "plural": true,
+      "selections": [
+        (v2/*: any*/),
+        (v3/*: any*/),
+        (v4/*: any*/),
+        (v13/*: any*/),
+        (v14/*: any*/),
+        (v16/*: any*/),
+        (v17/*: any*/),
+        (v18/*: any*/)
+      ],
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "concreteType": "Invoice",
+      "kind": "LinkedField",
+      "name": "invoices",
+      "plural": true,
+      "selections": [
+        (v2/*: any*/),
+        (v3/*: any*/),
+        (v4/*: any*/),
+        (v5/*: any*/),
+        (v6/*: any*/),
+        (v7/*: any*/),
+        (v16/*: any*/),
+        (v19/*: any*/),
+        (v17/*: any*/),
+        (v18/*: any*/)
+      ],
+      "storageKey": null
+    },
+    (v20/*: any*/),
+    (v17/*: any*/),
+    (v18/*: any*/)
+  ],
+  "storageKey": null
+},
+v22 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "amount",
+  "storageKey": null
+},
+v23 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
@@ -186,7 +292,7 @@ return {
               {
                 "args": null,
                 "kind": "FragmentSpread",
-                "name": "InvoiceFragments_invoiceItem"
+                "name": "InvoiceFragments_invoiceItemList"
               }
             ],
             "storageKey": null
@@ -202,7 +308,7 @@ return {
               {
                 "args": null,
                 "kind": "FragmentSpread",
-                "name": "TransactionFragments_transaction"
+                "name": "TransactionFragments_list"
               }
             ],
             "storageKey": null
@@ -218,7 +324,7 @@ return {
               {
                 "args": null,
                 "kind": "FragmentSpread",
-                "name": "DebtFragments_debtMovement"
+                "name": "DebtFragments_debtMovementList"
               }
             ],
             "storageKey": null
@@ -247,23 +353,30 @@ return {
           (v2/*: any*/),
           (v3/*: any*/),
           (v4/*: any*/),
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "total_amount",
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "total_with_markup",
-            "storageKey": null
-          },
           (v5/*: any*/),
-          (v8/*: any*/),
-          (v9/*: any*/),
+          (v6/*: any*/),
+          (v7/*: any*/),
+          (v21/*: any*/),
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "Supplier",
+            "kind": "LinkedField",
+            "name": "supplier",
+            "plural": false,
+            "selections": [
+              (v2/*: any*/),
+              (v8/*: any*/),
+              (v9/*: any*/),
+              (v10/*: any*/),
+              (v11/*: any*/),
+              (v12/*: any*/),
+              (v17/*: any*/),
+              (v18/*: any*/),
+              (v20/*: any*/)
+            ],
+            "storageKey": null
+          },
           {
             "alias": null,
             "args": null,
@@ -275,32 +388,17 @@ return {
               (v2/*: any*/),
               (v3/*: any*/),
               (v4/*: any*/),
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "markup_percentage",
-                "storageKey": null
-              },
-              (v5/*: any*/),
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "expiration_date",
-                "storageKey": null
-              }
+              (v13/*: any*/),
+              (v7/*: any*/),
+              (v14/*: any*/),
+              (v21/*: any*/),
+              (v17/*: any*/),
+              (v18/*: any*/)
             ],
             "storageKey": null
           },
-          (v10/*: any*/),
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "updated_at",
-            "storageKey": null
-          },
+          (v17/*: any*/),
+          (v18/*: any*/),
           {
             "alias": null,
             "args": null,
@@ -324,7 +422,7 @@ return {
                 "name": "price",
                 "storageKey": null
               },
-              (v11/*: any*/),
+              (v22/*: any*/),
               {
                 "alias": null,
                 "args": null,
@@ -340,8 +438,7 @@ return {
                 "name": "material",
                 "plural": false,
                 "selections": [
-                  (v2/*: any*/),
-                  (v6/*: any*/),
+                  (v8/*: any*/),
                   {
                     "alias": null,
                     "args": null,
@@ -349,7 +446,8 @@ return {
                     "name": "unit",
                     "storageKey": null
                   },
-                  (v12/*: any*/)
+                  (v2/*: any*/),
+                  (v23/*: any*/)
                 ],
                 "storageKey": null
               }
@@ -372,9 +470,13 @@ return {
                 "name": "type",
                 "storageKey": null
               },
-              (v11/*: any*/),
+              (v22/*: any*/),
               (v4/*: any*/),
-              (v12/*: any*/)
+              (v23/*: any*/),
+              (v16/*: any*/),
+              (v19/*: any*/),
+              (v17/*: any*/),
+              (v18/*: any*/)
             ],
             "storageKey": null
           },
@@ -408,7 +510,7 @@ return {
                 "name": "document_type",
                 "storageKey": null
               },
-              (v11/*: any*/),
+              (v22/*: any*/),
               {
                 "alias": null,
                 "args": null,
@@ -423,9 +525,9 @@ return {
                 "name": "dimension",
                 "storageKey": null
               },
-              (v8/*: any*/),
-              (v9/*: any*/),
-              (v10/*: any*/)
+              (v16/*: any*/),
+              (v19/*: any*/),
+              (v17/*: any*/)
             ],
             "storageKey": null
           }
@@ -435,16 +537,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "912f393d4d9c94eb6ffe7a5d73c27d25",
+    "cacheID": "f7bfc6d608f5e679c89706e4e0cb482a",
     "id": null,
     "metadata": {},
     "name": "InvoiceQueriesInvoiceQuery",
     "operationKind": "query",
-    "text": "query InvoiceQueriesInvoiceQuery(\n  $id: ID!\n) {\n  invoice(id: $id) {\n    ...InvoiceFragments_invoiceDetails\n    items {\n      ...InvoiceFragments_invoiceItem\n      id\n    }\n    transactions {\n      ...TransactionFragments_transaction\n      id\n    }\n    debt_movements {\n      ...DebtFragments_debtMovement\n      id\n    }\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment ContractFragments_contract on Contract {\n  id\n  number\n  date\n  markup_percentage\n  status\n  expiration_date\n}\n\nfragment DebtFragments_debtMovement on DebtMovement {\n  id\n  period\n  document_id\n  document_type\n  amount\n  direction\n  dimension\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n}\n\nfragment InvoiceFragments_invoiceBasic on Invoice {\n  id\n  number\n  date\n  total_amount\n  total_with_markup\n  status\n}\n\nfragment InvoiceFragments_invoiceDetails on Invoice {\n  ...InvoiceFragments_invoiceBasic\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  contract {\n    ...ContractFragments_contract\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment InvoiceFragments_invoiceItem on InvoiceItem {\n  id\n  quantity\n  price\n  amount\n  amount_with_markup\n  material {\n    ...MaterialFragments_material\n    id\n  }\n}\n\nfragment MaterialFragments_material on Material {\n  id\n  name\n  unit\n  description\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment TransactionFragments_transaction on Transaction {\n  id\n  type\n  amount\n  date\n  description\n}\n"
+    "text": "query InvoiceQueriesInvoiceQuery(\n  $id: ID!\n) {\n  invoice(id: $id) {\n    ...InvoiceFragments_invoiceDetails\n    items {\n      ...InvoiceFragments_invoiceItemList\n      id\n    }\n    transactions {\n      ...TransactionFragments_list\n      id\n    }\n    debt_movements {\n      ...DebtFragments_debtMovementList\n      id\n    }\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment ClientFragments_clientDetails on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n  contracts {\n    ...ContractFragments_list\n    id\n  }\n  invoices {\n    ...InvoiceFragments_list\n    id\n  }\n  debt_balance\n  created_at\n  updated_at\n}\n\nfragment ContractFragments_contractDetails on Contract {\n  id\n  number\n  date\n  markup_percentage\n  status\n  expiration_date\n  client {\n    ...ClientFragments_clientDetails\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment ContractFragments_list on Contract {\n  id\n  number\n  date\n  markup_percentage\n  expiration_date\n  client {\n    ...ClientFragments_client\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment DebtFragments_debtMovementList on DebtMovement {\n  id\n  period\n  document_id\n  document_type\n  amount\n  direction\n  dimension\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n}\n\nfragment InvoiceFragments_invoiceBasic on Invoice {\n  id\n  number\n  date\n  total_amount\n  total_with_markup\n  status\n}\n\nfragment InvoiceFragments_invoiceDetails on Invoice {\n  ...InvoiceFragments_invoiceBasic\n  client {\n    ...ClientFragments_clientDetails\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplierDetails\n    id\n  }\n  contract {\n    ...ContractFragments_contractDetails\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment InvoiceFragments_invoiceItemList on InvoiceItem {\n  id\n  quantity\n  price\n  amount\n  amount_with_markup\n  material {\n    name\n    unit\n    ...MaterialFragments_material\n    id\n  }\n}\n\nfragment InvoiceFragments_list on Invoice {\n  id\n  number\n  date\n  total_amount\n  total_with_markup\n  status\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment MaterialFragments_material on Material {\n  id\n  name\n  unit\n  description\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment SupplierFragments_supplierDetails on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n  created_at\n  updated_at\n  debt_balance\n}\n\nfragment TransactionFragments_list on Transaction {\n  id\n  type\n  amount\n  date\n  description\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n  updated_at\n}\n"
   }
 };
 })();
 
-(node as any).hash = "098309b376a53ece069ba0385aa4c677";
+(node as any).hash = "816ddf79a1127a4b460b97d081fa1db4";
 
 export default node;

@@ -17,5 +17,14 @@
   },
   "dependencies": {
     "graphql": "^16.10.0"
+  },
+  "devDependencies": {
+    "react-relay": "^18.2.0",
+    "relay-runtime": "^18.2.0",
+    "relay-compiler": "^18.2.0",
+    "@graphql-codegen/cli": "^5.0.5",
+    "@graphql-codegen/typescript": "^4.1.6",
+    "@graphql-codegen/typescript-operations": "^4.6.0",
+    "@graphql-codegen/typescript-react-apollo": "^4.3.2"
   }
 }

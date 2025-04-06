@@ -1,0 +1,54 @@
+'use client'
+
+import { Suspense } from 'react';
+import { graphql, useLazyLoadQuery } from 'react-relay';
+import { <%= entity %>ListQuery } from '../../../generated/<%= entity %>ListQuery.graphql';
+
+const <%= entity %>ListQueryNode = graphql`
+  query <%= entity %>ListQuery {
+    <%= entityPlural %> {
+      id
+      <% fields.filter(f => f.name !== 'id').forEach(field => { %>
+      <%= field.name %><% }) %>
+    }
+  }
+`;
+
+function <%= entity %>List() {
+  const data = useLazyLoadQuery<<%= entity %>ListQuery>(
+    <%= entity %>ListQueryNode,
+    {}
+  );
+
+  return (
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4"><%= entity %> List</h1>
+      <div className="overflow-x-auto">
+        <table className="min-w-full bg-white border">
+          <thead>
+            <tr>
+              <% fields.filter(f => f.name !== 'id').forEach(field => { %>
+              <th className="py-2 px-4 border"><%= field.name %></th><% }) %>
+            </tr>
+          </thead>
+          <tbody>
+            {data.<%= entityPlural %>.map(<%= entityLower %> => (
+              <tr key={<%= entityLower %>.id}>
+                <% fields.filter(f => f.name !== 'id').forEach(field => { %>
+                <td className="py-2 px-4 border">{<%= entityLower %>.<%= field.name %>}</td><% }) %>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+export default function <%= entity %>Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <<%= entity %>List />
+    </Suspense>
+  );
+}

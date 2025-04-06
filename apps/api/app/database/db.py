@@ -7,36 +7,42 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Получение строки подключения из переменных окружения
 DATABASE_URL = os.getenv("DATABASE_URL")
-
-# Проверка режима разработки
 DEV_MODE = os.getenv("DEV_MODE", "false").lower() == "true"
-
-# Vercel с Render и некоторые другие провайдеры используют URL, 
-# начинающиеся с postgres://, но SQLAlchemy 1.4+ требует postgresql://
 if DATABASE_URL and DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+POOL_SIZE = int(os.getenv("POOL_SIZE", "20")) 
+POOL_RECYCLE = int(os.getenv("POOL_RECYCLE", "900"))  
+POOL_TIMEOUT = int(os.getenv("POOL_TIMEOUT", "60"))  
+MAX_OVERFLOW = int(os.getenv("MAX_OVERFLOW", "20"))  
 
-# Для разработки, если DEV_MODE=true или DATABASE_URL не определен, используем SQLite
 if DEV_MODE or not DATABASE_URL:
     SQLITE_PATH = os.getenv("SQLITE_PATH", "./materials_accounting.db")
     DATABASE_URL = f"sqlite:///{SQLITE_PATH}"
     engine = create_engine(
-        DATABASE_URL, connect_args={"check_same_thread": False}
+        DATABASE_URL, 
+        connect_args={"check_same_thread": False},
+        pool_size=POOL_SIZE, 
+        max_overflow=MAX_OVERFLOW,
+        pool_recycle=POOL_RECYCLE,
+        pool_timeout=POOL_TIMEOUT,
+        pool_pre_ping=True
     )
-    print(f"Running in development mode with SQLite at {SQLITE_PATH}")
+    print(f"Running in development mode with SQLite at {SQLITE_PATH} (pool_size={POOL_SIZE})")
 else:
-    engine = create_engine(DATABASE_URL)
-    print(f"Running with PostgreSQL database")
+    engine = create_engine(
+        DATABASE_URL,
+        pool_size=POOL_SIZE,  
+        max_overflow=MAX_OVERFLOW,  
+        pool_recycle=POOL_RECYCLE,  
+        pool_timeout=POOL_TIMEOUT,  
+        pool_pre_ping=True  
+    )
+    print(f"Running with PostgreSQL database (pool_size={POOL_SIZE}, max_overflow={MAX_OVERFLOW})")
 
-# Создание сессии
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
-# Базовый класс для моделей SQLAlchemy
 Base = declarative_base()
 
-# Функция для получения экземпляра DB сессии
 def get_db():
     db = SessionLocal()
     try:
@@ -44,20 +50,14 @@ def get_db():
     finally:
         db.close()
 
-# Функция для инициализации базы данных
 def init_db():
     Base.metadata.create_all(bind=engine)
 
-# Функция для создания представления для остатков долгов
 def create_views():
-    """
-    Создаёт SQL представления. Для SQLite и PostgreSQL разные реализации
-    """
     is_sqlite = DATABASE_URL.startswith('sqlite:')
     
     try:
         if is_sqlite:
-            # Для SQLite используем более простой синтаксис
             view_sql = """
             CREATE VIEW IF NOT EXISTS debt_balances_view AS
             SELECT 
@@ -76,11 +76,8 @@ def create_views():
             with engine.connect() as conn:
                 conn.execute(view_sql)
         else:
-            # Для PostgreSQL нужна функция uuid_generate_v4()
             with engine.connect() as conn:
                 conn.execute("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\";")
-                
-                # Создаем само представление
                 view_sql = """
                 CREATE OR REPLACE VIEW debt_balances_view AS
                 SELECT 
@@ -98,5 +95,4 @@ def create_views():
                 """
                 conn.execute(view_sql)
     except Exception as e:
-        # Логируем ошибку
         print(f"Could not create view: {str(e)}")

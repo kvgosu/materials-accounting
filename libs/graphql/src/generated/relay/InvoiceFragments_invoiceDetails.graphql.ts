@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<903976f5bec9ed18798191c9c13c4bd8>>
+ * @generated SignedSource<<de0d5e48b77e4c20bdf0bd1cf8f4bfb6>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -12,14 +12,14 @@ import { ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type InvoiceFragments_invoiceDetails$data = {
   readonly client: {
-    readonly " $fragmentSpreads": FragmentRefs<"ClientFragments_client">;
+    readonly " $fragmentSpreads": FragmentRefs<"ClientFragments_clientDetails">;
   };
   readonly contract: {
-    readonly " $fragmentSpreads": FragmentRefs<"ContractFragments_contract">;
+    readonly " $fragmentSpreads": FragmentRefs<"ContractFragments_contractDetails">;
   };
   readonly created_at: string | null | undefined;
   readonly supplier: {
-    readonly " $fragmentSpreads": FragmentRefs<"SupplierFragments_supplier">;
+    readonly " $fragmentSpreads": FragmentRefs<"SupplierFragments_supplierDetails">;
   };
   readonly updated_at: string | null | undefined;
   readonly " $fragmentSpreads": FragmentRefs<"InvoiceFragments_invoiceBasic">;
@@ -52,7 +52,7 @@ const node: ReaderFragment = {
         {
           "args": null,
           "kind": "FragmentSpread",
-          "name": "ClientFragments_client"
+          "name": "ClientFragments_clientDetails"
         }
       ],
       "storageKey": null
@@ -68,7 +68,7 @@ const node: ReaderFragment = {
         {
           "args": null,
           "kind": "FragmentSpread",
-          "name": "SupplierFragments_supplier"
+          "name": "SupplierFragments_supplierDetails"
         }
       ],
       "storageKey": null
@@ -84,7 +84,7 @@ const node: ReaderFragment = {
         {
           "args": null,
           "kind": "FragmentSpread",
-          "name": "ContractFragments_contract"
+          "name": "ContractFragments_contractDetails"
         }
       ],
       "storageKey": null
@@ -108,6 +108,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "e57dd12c3662275cde68d4dd180281b8";
+(node as any).hash = "008bbaf75d5541bda82844a64af46814";
 
 export default node;

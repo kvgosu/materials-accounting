@@ -1,21 +1,37 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "dist",
+    "outDir": "../../dist/out-tsc/libs/ui",
     "types": [
-      "node",
-      "@nx/react/typings/cssmodule.d.ts",
-      "@nx/react/typings/image.d.ts"
+      "node"
     ],
     "module": "esnext",
     "moduleResolution": "bundler",
-    "rootDir": "src",
+    "rootDir": ".",
     "jsx": "react-jsx",
-    "tsBuildInfoFile": "dist/tsconfig.lib.tsbuildinfo"
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "../../dist/libs/ui",
+    "sourceMap": true,
+    "inlineSources": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "noUnusedLocals": false,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "tsBuildInfoFile": "../../dist/out-tsc/libs/ui/tsconfig.lib.tsbuildinfo",
+    "paths": {
+      "@materials-accounting/types": ["../../libs/graphql/src/index.ts"]
+    }
   },
+  "files": [],
   "exclude": [
-    "out-tsc",
-    "dist",
     "jest.config.ts",
     "src/**/*.spec.ts",
     "src/**/*.test.ts",

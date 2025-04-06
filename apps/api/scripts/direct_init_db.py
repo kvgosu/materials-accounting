@@ -2,268 +2,156 @@
 import os
 import sys
 import uuid
-import io
 from datetime import date, datetime, timedelta
-import sqlite3
+import io
+import logging
 
-# Настраиваем кодировку консоли для поддержки Unicode в Windows
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
-# Добавляем корневую директорию проекта в путь поиска модулей
+logging.basicConfig(
+    level=logging.INFO, 
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
 script_dir = os.path.dirname(os.path.abspath(__file__))
 root_dir = os.path.abspath(os.path.join(script_dir, '..'))
 sys.path.insert(0, root_dir)
 
-# Загружаем .env файл
-from dotenv import load_dotenv
-load_dotenv()
+from app.database.db import init_db, SessionLocal
+from app.database.models import (
+    Client, Supplier, Material, Contract, 
+    ContractStatus
+)
 
-# Получаем путь к БД из переменной окружения
-sqlite_path = os.getenv("SQLITE_PATH", "./dev_database.db")
-print(f"Using SQLite database at: {sqlite_path}")
-
-# Функция для инициализации базы данных
-def init_db_sqlite():
-    # Создаем соединение
-    conn = sqlite3.connect(sqlite_path)
-    cursor = conn.cursor()
-    
-    # Создаем таблицы
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS clients (
-        id TEXT PRIMARY KEY,
-        name TEXT NOT NULL,
-        contact_person TEXT,
-        phone TEXT,
-        email TEXT,
-        address TEXT,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
-    ''')
-    
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS suppliers (
-        id TEXT PRIMARY KEY,
-        name TEXT NOT NULL,
-        contact_person TEXT,
-        phone TEXT,
-        email TEXT,
-        address TEXT,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
-    ''')
-    
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS materials (
-        id TEXT PRIMARY KEY,
-        name TEXT NOT NULL,
-        unit TEXT NOT NULL,
-        description TEXT,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    )
-    ''')
-    
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS contracts (
-        id TEXT PRIMARY KEY,
-        client_id TEXT NOT NULL,
-        number TEXT NOT NULL,
-        date DATE NOT NULL,
-        markup_percentage REAL NOT NULL DEFAULT 0.0,
-        status TEXT NOT NULL,
-        expiration_date DATE,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (client_id) REFERENCES clients (id)
-    )
-    ''')
-    
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS invoices (
-        id TEXT PRIMARY KEY,
-        number TEXT NOT NULL,
-        date DATE NOT NULL,
-        client_id TEXT NOT NULL,
-        supplier_id TEXT NOT NULL,
-        contract_id TEXT NOT NULL,
-        total_amount REAL NOT NULL DEFAULT 0.0,
-        total_with_markup REAL NOT NULL DEFAULT 0.0,
-        status TEXT NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (client_id) REFERENCES clients (id),
-        FOREIGN KEY (supplier_id) REFERENCES suppliers (id),
-        FOREIGN KEY (contract_id) REFERENCES contracts (id)
-    )
-    ''')
-    
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS invoice_items (
-        id TEXT PRIMARY KEY,
-        invoice_id TEXT NOT NULL,
-        material_id TEXT NOT NULL,
-        quantity REAL NOT NULL,
-        price REAL NOT NULL,
-        amount REAL NOT NULL,
-        amount_with_markup REAL NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (invoice_id) REFERENCES invoices (id),
-        FOREIGN KEY (material_id) REFERENCES materials (id)
-    )
-    ''')
-    
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS transactions (
-        id TEXT PRIMARY KEY,
-        invoice_id TEXT,
-        client_id TEXT,
-        supplier_id TEXT,
-        type TEXT NOT NULL,
-        amount REAL NOT NULL,
-        date DATE NOT NULL,
-        description TEXT,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (invoice_id) REFERENCES invoices (id),
-        FOREIGN KEY (client_id) REFERENCES clients (id),
-        FOREIGN KEY (supplier_id) REFERENCES suppliers (id)
-    )
-    ''')
-    
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS debt_movements (
-        id TEXT PRIMARY KEY,
-        period TIMESTAMP NOT NULL,
-        document_id TEXT NOT NULL,
-        document_type TEXT NOT NULL,
-        client_id TEXT,
-        supplier_id TEXT,
-        amount REAL NOT NULL,
-        direction TEXT NOT NULL,
-        dimension TEXT NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        invoice_id TEXT,
-        transaction_id TEXT,
-        FOREIGN KEY (client_id) REFERENCES clients (id),
-        FOREIGN KEY (supplier_id) REFERENCES suppliers (id),
-        FOREIGN KEY (invoice_id) REFERENCES invoices (id),
-        FOREIGN KEY (transaction_id) REFERENCES transactions (id)
-    )
-    ''')
-    
-    # Создаем представление для остатков долгов
+def init_and_seed():
     try:
-        cursor.execute('''
-        CREATE VIEW IF NOT EXISTS debt_balances_view AS
-        SELECT 
-            hex(randomblob(16)) as id,
-            client_id,
-            supplier_id,
-            dimension,
-            (SUM(CASE WHEN direction = 'DEBIT' THEN amount ELSE 0 END) - 
-             SUM(CASE WHEN direction = 'CREDIT' THEN amount ELSE 0 END)) as balance,
-            datetime('now') as as_of_date
-        FROM 
-            debt_movements
-        GROUP BY 
-            client_id, supplier_id, dimension
-        ''')
-        print("View created successfully")
+        init_db()
+        logger.info("База данных инициализирована успешно")
     except Exception as e:
-        print(f"Could not create view: {str(e)}")
-    
-    conn.commit()
-    conn.close()
-    
-    print("SQLite tables created directly.")
-
-# Функция для заполнения тестовыми данными
-def seed_test_data():
-    # Проверяем, есть ли уже данные
-    conn = sqlite3.connect(sqlite_path)
-    cursor = conn.cursor()
-    
-    cursor.execute("SELECT COUNT(*) FROM clients")
-    count = cursor.fetchone()[0]
-    
-    if count > 0:
-        print("Database already has clients. Skipping test data insertion.")
-        conn.close()
+        logger.error(f"Ошибка при инициализации базы данных: {str(e)}")
         return
+
+    db = SessionLocal()
     
-    # Генерируем UUID для сущностей
-    client_ids = [str(uuid.uuid4()) for _ in range(3)]
-    supplier_ids = [str(uuid.uuid4()) for _ in range(3)]
-    material_ids = [str(uuid.uuid4()) for _ in range(5)]
-    
-    # Заполняем данными
     try:
-        # Клиенты
+        if db.query(Client).count() > 0:
+            logger.warning("В базе данных уже есть клиенты. Пропускаем инициализацию.")
+            return
         clients = [
-            (client_ids[0], "ООО 'Технологии будущего'", "Иванов Иван", "+7 (999) 123-45-67", "ivanov@tech-future.ru", "г. Москва, ул. Ленина, 10", datetime.now(), datetime.now()),
-            (client_ids[1], "ОАО 'СтройМастер'", "Петров Петр", "+7 (704) 765-43-21", "petrov@stroymaster.kz", "г. Шымкент, ул. Гепари, 5", datetime.now(), datetime.now()),
-            (client_ids[2], "ИП Сидоров А.А.", "Сидоров Алексей", "+7 (701) 111-22-33", "sidorov@example.kz", "г. Алматы, ул. Абая, 15", datetime.now(), datetime.now())
+            Client(
+                name="ООО 'Технологии будущего'",
+                contact_person="Иванов Иван",
+                phone="+7 (999) 123-45-67",
+                email="ivanov@tech-future.ru",
+                address="г. Москва, ул. Ленина, 10"
+            ),
+            Client(
+                name="ОАО 'СтройМастер'",
+                contact_person="Петров Петр",
+                phone="+7 (704) 765-43-21",
+                email="petrov@stroymaster.kz",
+                address="г. Шымкент, ул. Гепари, 5"
+            ),
+            Client(
+                name="ИП Сидоров А.А.",
+                contact_person="Сидоров Алексей",
+                phone="+7 (701) 111-22-33",
+                email="sidorov@example.kz",
+                address="г. Алматы, ул. Абая, 15"
+            )
         ]
-        
-        cursor.executemany('''
-            INSERT INTO clients (id, name, contact_person, phone, email, address, created_at, updated_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        ''', clients)
-        
-        # Поставщики
+
+        db.add_all(clients)
+
         suppliers = [
-            (supplier_ids[0], "ТОО 'МеталлПром'", "Смирнов Василий", "+7 (748) 444-55-66", "smirnov@metallprom.kz", "г. Павлодар, ул. Мыгали, 20", datetime.now(), datetime.now()),
-            (supplier_ids[1], "ОАО 'ЛесТорг'", "Кузнецова Елена", "+7 (707) 777-88-99", "kuznetsova@lestorg.kz", "г. Астана, ул. Карсы, 30", datetime.now(), datetime.now()),
-            (supplier_ids[2], "ТОО 'СтройМатериалы'", "Козлов Дмитрий", "+7 (777) 333-22-11", "kozlov@stroymaterials.kz", "г. Алматы, ул. Ауэзова, 40", datetime.now(), datetime.now())
+            Supplier(
+                name="ТОО 'МеталлПром'",
+                contact_person="Смирнов Василий",
+                phone="+7 (748) 444-55-66",
+                email="smirnov@metallprom.kz",
+                address="г. Павлодар, ул. Мыгали, 20"
+            ),
+            Supplier(
+                name="ОАО 'ЛесТорг'",
+                contact_person="Кузнецова Елена",
+                phone="+7 (707) 777-88-99",
+                email="kuznetsova@lestorg.kz",
+                address="г. Астана, ул. Карсы, 30"
+            ),
+            Supplier(
+                name="ТОО 'СтройМатериалы'",
+                contact_person="Козлов Дмитрий",
+                phone="+7 (777) 333-22-11",
+                email="kozlov@stroymaterials.kz",
+                address="г. Алматы, ул. Ауэзова, 40"
+            )
         ]
-        
-        cursor.executemany('''
-            INSERT INTO suppliers (id, name, contact_person, phone, email, address, created_at, updated_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        ''', suppliers)
-        
-        # Материалы
+        db.add_all(suppliers)
         materials = [
-            (material_ids[0], "Цемент М500", "мешок", "Портландцемент М500, 50 кг", datetime.now(), datetime.now()),
-            (material_ids[1], "Арматура 12мм", "метр", "Арматура рифленая, диаметр 12 мм", datetime.now(), datetime.now()),
-            (material_ids[2], "Кирпич облицовочный", "шт", "Кирпич облицовочный красный, 250х120х65 мм", datetime.now(), datetime.now()),
-            (material_ids[3], "Доска обрезная", "м³", "Доска обрезная, сосна, 50х150 мм", datetime.now(), datetime.now()),
-            (material_ids[4], "Песок строительный", "тонна", "Песок строительный мытый, фракция 0-5 мм", datetime.now(), datetime.now())
+            Material(
+                name="Цемент М500",
+                unit="мешок",
+                description="Портландцемент М500, 50 кг"
+            ),
+            Material(
+                name="Арматура 12мм",
+                unit="метр",
+                description="Арматура рифленая, диаметр 12 мм"
+            ),
+            Material(
+                name="Кирпич облицовочный",
+                unit="шт",
+                description="Кирпич облицовочный красный, 250х120х65 мм"
+            ),
+            Material(
+                name="Доска обрезная",
+                unit="м³",
+                description="Доска обрезная, сосна, 50х150 мм"
+            ),
+            Material(
+                name="Песок строительный",
+                unit="тонна",
+                description="Песок строительный мытый, фракция 0-5 мм"
+            )
         ]
-        
-        cursor.executemany('''
-            INSERT INTO materials (id, name, unit, description, created_at, updated_at)
-            VALUES (?, ?, ?, ?, ?, ?)
-        ''', materials)
-        
-        # Договоры
+        db.add_all(materials)
         today = date.today()
-        
         contracts = [
-            (str(uuid.uuid4()), client_ids[0], "ТБ-2025-001", today - timedelta(days=30), 15.0, "ACTIVE", today + timedelta(days=335), datetime.now(), datetime.now()),
-            (str(uuid.uuid4()), client_ids[1], "СМ-2025-001", today - timedelta(days=45), 10.0, "ACTIVE", today + timedelta(days=320), datetime.now(), datetime.now()),
-            (str(uuid.uuid4()), client_ids[2], "ИП-2025-001", today - timedelta(days=60), 20.0, "ACTIVE", today + timedelta(days=305), datetime.now(), datetime.now())
+            Contract(
+                client=clients[0],
+                number=f"Д-001/{today.year}",
+                date=today - timedelta(days=30),
+                markup_percentage=10.0,
+                status=ContractStatus.ACTIVE,
+                expiration_date=today + timedelta(days=365)
+            ),
+            Contract(
+                client=clients[1],
+                number=f"Д-002/{today.year}",
+                date=today - timedelta(days=60),
+                markup_percentage=15.0,
+                status=ContractStatus.ACTIVE,
+                expiration_date=today + timedelta(days=335)
+            ),
+            Contract(
+                client=clients[2],
+                number=f"Д-003/{today.year}",
+                date=today - timedelta(days=90),
+                markup_percentage=20.0,
+                status=ContractStatus.ACTIVE,
+                expiration_date=today + timedelta(days=305)
+            )
         ]
-        
-        cursor.executemany('''
-            INSERT INTO contracts (id, client_id, number, date, markup_percentage, status, expiration_date, created_at, updated_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ''', contracts)
-        
-        conn.commit()
-        print("Database initialized with test data successfully.")
+        db.add_all(contracts)
+        db.commit()
+        logger.info("База данных успешно заполнена тестовыми данными")
         
     except Exception as e:
-        conn.rollback()
-        print(f"Error during data initialization: {str(e)}")
+        db.rollback()
+        logger.error(f"Ошибка при заполнении базы данных: {str(e)}")
     finally:
-        conn.close()
+        db.close()
 
 if __name__ == "__main__":
-    init_db_sqlite()
-    seed_test_data()
+    init_and_seed()

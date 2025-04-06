@@ -1,0 +1,14 @@
+{
+    "$schema": "http://json-schema.org/schema",
+    "cli": "nx",
+    "id": "entity-crud",
+    "type": "object",
+    "properties": {
+      "entity": {
+        "type": "string",
+        "description": "Entity name (must match a type in GraphQL schema)",
+        "x-prompt": "What is the name of the entity?"
+      }
+    },
+    "required": ["entity"]
+  }

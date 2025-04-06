@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0fd94167066eeab6463631f9f6110621>>
+ * @generated SignedSource<<2d79a9f99d43c585995f0f14ccfbbb05>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -23,7 +23,7 @@ export type InvoiceQueriesQuery$variables = {
 };
 export type InvoiceQueriesQuery$data = {
   readonly invoices: ReadonlyArray<{
-    readonly " $fragmentSpreads": FragmentRefs<"InvoiceFragments_invoiceDetails">;
+    readonly " $fragmentSpreads": FragmentRefs<"InvoiceFragments_list">;
   }>;
 };
 export type InvoiceQueriesQuery = {
@@ -121,28 +121,7 @@ v9 = {
   "name": "id",
   "storageKey": null
 },
-v10 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "number",
-  "storageKey": null
-},
-v11 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "date",
-  "storageKey": null
-},
-v12 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "status",
-  "storageKey": null
-},
-v13 = [
+v10 = [
   (v9/*: any*/),
   {
     "alias": null,
@@ -207,7 +186,7 @@ return {
           {
             "args": null,
             "kind": "FragmentSpread",
-            "name": "InvoiceFragments_invoiceDetails"
+            "name": "InvoiceFragments_list"
           }
         ],
         "storageKey": null
@@ -240,8 +219,20 @@ return {
         "plural": true,
         "selections": [
           (v9/*: any*/),
-          (v10/*: any*/),
-          (v11/*: any*/),
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "number",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "date",
+            "storageKey": null
+          },
           {
             "alias": null,
             "args": null,
@@ -256,7 +247,13 @@ return {
             "name": "total_with_markup",
             "storageKey": null
           },
-          (v12/*: any*/),
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "status",
+            "storageKey": null
+          },
           {
             "alias": null,
             "args": null,
@@ -264,7 +261,7 @@ return {
             "kind": "LinkedField",
             "name": "client",
             "plural": false,
-            "selections": (v13/*: any*/),
+            "selections": (v10/*: any*/),
             "storageKey": null
           },
           {
@@ -274,36 +271,7 @@ return {
             "kind": "LinkedField",
             "name": "supplier",
             "plural": false,
-            "selections": (v13/*: any*/),
-            "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": null,
-            "concreteType": "Contract",
-            "kind": "LinkedField",
-            "name": "contract",
-            "plural": false,
-            "selections": [
-              (v9/*: any*/),
-              (v10/*: any*/),
-              (v11/*: any*/),
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "markup_percentage",
-                "storageKey": null
-              },
-              (v12/*: any*/),
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "expiration_date",
-                "storageKey": null
-              }
-            ],
+            "selections": (v10/*: any*/),
             "storageKey": null
           },
           {
@@ -326,16 +294,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "463cba72bd5fb0729417f6ae77d1e5dc",
+    "cacheID": "9d888bad8f030e5b49b061529e344ed9",
     "id": null,
     "metadata": {},
     "name": "InvoiceQueriesQuery",
     "operationKind": "query",
-    "text": "query InvoiceQueriesQuery(\n  $skip: Int\n  $limit: Int\n  $client_id: ID\n  $supplier_id: ID\n  $contract_id: ID\n  $status: InvoiceStatus\n  $date_from: String\n  $date_to: String\n) {\n  invoices(skip: $skip, limit: $limit, client_id: $client_id, supplier_id: $supplier_id, contract_id: $contract_id, status: $status, date_from: $date_from, date_to: $date_to) {\n    ...InvoiceFragments_invoiceDetails\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment ContractFragments_contract on Contract {\n  id\n  number\n  date\n  markup_percentage\n  status\n  expiration_date\n}\n\nfragment InvoiceFragments_invoiceBasic on Invoice {\n  id\n  number\n  date\n  total_amount\n  total_with_markup\n  status\n}\n\nfragment InvoiceFragments_invoiceDetails on Invoice {\n  ...InvoiceFragments_invoiceBasic\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  contract {\n    ...ContractFragments_contract\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n"
+    "text": "query InvoiceQueriesQuery(\n  $skip: Int\n  $limit: Int\n  $client_id: ID\n  $supplier_id: ID\n  $contract_id: ID\n  $status: InvoiceStatus\n  $date_from: String\n  $date_to: String\n) {\n  invoices(skip: $skip, limit: $limit, client_id: $client_id, supplier_id: $supplier_id, contract_id: $contract_id, status: $status, date_from: $date_from, date_to: $date_to) {\n    ...InvoiceFragments_list\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment InvoiceFragments_list on Invoice {\n  id\n  number\n  date\n  total_amount\n  total_with_markup\n  status\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n"
   }
 };
 })();
 
-(node as any).hash = "05e7cd829a7cbec6392a229f95cb7610";
+(node as any).hash = "54d7b06783de602565901ecc5a5fc242";
 
 export default node;

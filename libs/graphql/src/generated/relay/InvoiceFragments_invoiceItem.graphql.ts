@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<3ad07a1dc4657ffd5816bf88e5889fd2>>
+ * @generated SignedSource<<b3e7337894c163aa59eaa4fce0679cb0>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -15,6 +15,8 @@ export type InvoiceFragments_invoiceItem$data = {
   readonly amount_with_markup: number;
   readonly id: string;
   readonly material: {
+    readonly name: string;
+    readonly unit: string;
     readonly " $fragmentSpreads": FragmentRefs<"MaterialFragments_material">;
   };
   readonly price: number;
@@ -76,6 +78,20 @@ const node: ReaderFragment = {
       "plural": false,
       "selections": [
         {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "name",
+          "storageKey": null
+        },
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "unit",
+          "storageKey": null
+        },
+        {
           "args": null,
           "kind": "FragmentSpread",
           "name": "MaterialFragments_material"
@@ -88,6 +104,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "b49aaca8cd71e8fc3c6595252121c351";
+(node as any).hash = "ad239b0fe9629b456b402308e8cb0f36";
 
 export default node;

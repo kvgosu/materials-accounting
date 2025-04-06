@@ -1,14 +1,15 @@
 # app/graphql/schema.py
 from ariadne import make_executable_schema
 from .schema_loader import load_all_schemas
-from .resolvers import query, mutation
+from .resolvers import query, mutation, type_defs
+from .scalars import upload_scalar
 
-# Загружаем схему
-type_defs = load_all_schemas()
+type_defs_schema = load_all_schemas()
 
-# Создаем исполняемую схему с резолверами
 schema = make_executable_schema(
-    type_defs,
+    type_defs_schema,
     query,
-    mutation
+    mutation,
+    upload_scalar,  
+    *type_defs.values()
 )

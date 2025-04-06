@@ -1,4 +1,5 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
     "composite": true,
     "declarationMap": true,
@@ -6,8 +7,8 @@
     "importHelpers": true,
     "isolatedModules": true,
     "lib": ["es2022"],
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
@@ -16,6 +17,13 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "es2022",
-    "customConditions": ["development"]
-  }
+    "baseUrl": ".",
+    "typeRoots": ["./node_modules/@types", "../../libs/types/src"],
+    "paths": {
+      "@materials-accounting/graphql": ["libs/graphql/src/index.ts"],
+      "@materials-accounting/types": ["libs/types/src/index.ts"],
+      "@materials-accounting/ui": ["libs/ui/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
 }

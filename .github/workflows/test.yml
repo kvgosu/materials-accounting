@@ -1,0 +1,80 @@
+# .github/workflows/test.yml
+name: Test
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install Poetry
+      uses: snok/install-poetry@v1
+      with:
+        version: 1.5.1
+        virtualenvs-create: true
+        virtualenvs-in-project: true
+    
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+        cache: 'npm'
+    
+    - name: Install NX and dependencies
+      run: |
+        npm ci
+    
+    - name: Install Python dependencies
+      run: |
+        cd apps/api
+        poetry install
+        poetry add --group dev pytest pytest-cov pytest-xdist
+    
+    - name: Run lint
+      run: |
+        npx nx lint api
+    
+    - name: Run unit tests
+      run: |
+        npx nx test:unit api
+    
+    - name: Run integration tests
+      run: |
+        npx nx test:integration api
+    
+    - name: Run functional tests
+      run: |
+        npx nx test:functional api
+    
+    - name: Generate coverage report
+      run: |
+        npx nx test:cov api
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        directory: ./coverage/apps/api
+        fail_ci_if_error: false
+    
+    - name: Archive test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-reports
+        path: |
+          reports/
+          coverage/
+        retention-days: 7

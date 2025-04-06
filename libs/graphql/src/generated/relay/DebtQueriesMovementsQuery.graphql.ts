@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<91c1cdbaee372663ee5214045322f200>>
+ * @generated SignedSource<<8c907f878dcbc3751e19162ff0766a04>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -22,7 +22,7 @@ export type DebtQueriesMovementsQuery$variables = {
 };
 export type DebtQueriesMovementsQuery$data = {
   readonly debt_movements: ReadonlyArray<{
-    readonly " $fragmentSpreads": FragmentRefs<"DebtFragments_debtMovement">;
+    readonly " $fragmentSpreads": FragmentRefs<"DebtFragments_debtMovementList">;
   }>;
 };
 export type DebtQueriesMovementsQuery = {
@@ -174,7 +174,7 @@ return {
           {
             "args": null,
             "kind": "FragmentSpread",
-            "name": "DebtFragments_debtMovement"
+            "name": "DebtFragments_debtMovementList"
           }
         ],
         "storageKey": null
@@ -281,16 +281,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "1bb3c31d8aaf7826fee78de2b0e9d932",
+    "cacheID": "a1bd4388cb8ca82b5b78e9af049cbafd",
     "id": null,
     "metadata": {},
     "name": "DebtQueriesMovementsQuery",
     "operationKind": "query",
-    "text": "query DebtQueriesMovementsQuery(\n  $skip: Int\n  $limit: Int\n  $client_id: ID\n  $supplier_id: ID\n  $dimension: DebtDimension\n  $period_from: String\n  $period_to: String\n) {\n  debt_movements(skip: $skip, limit: $limit, client_id: $client_id, supplier_id: $supplier_id, dimension: $dimension, period_from: $period_from, period_to: $period_to) {\n    ...DebtFragments_debtMovement\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment DebtFragments_debtMovement on DebtMovement {\n  id\n  period\n  document_id\n  document_type\n  amount\n  direction\n  dimension\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n"
+    "text": "query DebtQueriesMovementsQuery(\n  $skip: Int\n  $limit: Int\n  $client_id: ID\n  $supplier_id: ID\n  $dimension: DebtDimension\n  $period_from: String\n  $period_to: String\n) {\n  debt_movements(skip: $skip, limit: $limit, client_id: $client_id, supplier_id: $supplier_id, dimension: $dimension, period_from: $period_from, period_to: $period_to) {\n    ...DebtFragments_debtMovementList\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment DebtFragments_debtMovementList on DebtMovement {\n  id\n  period\n  document_id\n  document_type\n  amount\n  direction\n  dimension\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n"
   }
 };
 })();
 
-(node as any).hash = "a446b540697af8fff07e304e74e7b649";
+(node as any).hash = "3b5356ced4e92edf73ae3807a2d046f1";
 
 export default node;

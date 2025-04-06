@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<edcdf43923e2a9cc5df590c84a94b81b>>
+ * @generated SignedSource<<32289b6c607faa500113adc2b9388a6d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -17,7 +17,7 @@ export type ClientQueriesQuery$variables = {
 };
 export type ClientQueriesQuery$data = {
   readonly clients: ReadonlyArray<{
-    readonly " $fragmentSpreads": FragmentRefs<"ClientFragments_clientDetails">;
+    readonly " $fragmentSpreads": FragmentRefs<"ClientFragments_list">;
   }>;
 };
 export type ClientQueriesQuery = {
@@ -80,7 +80,7 @@ return {
           {
             "args": null,
             "kind": "FragmentSpread",
-            "name": "ClientFragments_clientDetails"
+            "name": "ClientFragments_list"
           }
         ],
         "storageKey": null
@@ -169,16 +169,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "e1a3e1c21c7e6ccc7c14a92f3acd0066",
+    "cacheID": "9484448cd31496452cdffe61f0379615",
     "id": null,
     "metadata": {},
     "name": "ClientQueriesQuery",
     "operationKind": "query",
-    "text": "query ClientQueriesQuery(\n  $skip: Int\n  $limit: Int\n  $search: String\n) {\n  clients(skip: $skip, limit: $limit, search: $search) {\n    ...ClientFragments_clientDetails\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment ClientFragments_clientDetails on Client {\n  ...ClientFragments_client\n  created_at\n  updated_at\n}\n"
+    "text": "query ClientQueriesQuery(\n  $skip: Int\n  $limit: Int\n  $search: String\n) {\n  clients(skip: $skip, limit: $limit, search: $search) {\n    ...ClientFragments_list\n    id\n  }\n}\n\nfragment ClientFragments_list on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n  created_at\n  updated_at\n}\n"
   }
 };
 })();
 
-(node as any).hash = "259a1d83433c905daed7d348fe7970cd";
+(node as any).hash = "5c9bf9756d4bf11043c6dff39279f707";
 
 export default node;

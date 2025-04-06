@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<474fc81803297bcbbf4d0efa354a733d>>
+ * @generated SignedSource<<4aab5db21eb5ab72e06aad134f34267a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -23,7 +23,7 @@ export type TransactionQueriesQuery$variables = {
 };
 export type TransactionQueriesQuery$data = {
   readonly transactions: ReadonlyArray<{
-    readonly " $fragmentSpreads": FragmentRefs<"TransactionFragments_transactionDetails">;
+    readonly " $fragmentSpreads": FragmentRefs<"TransactionFragments_list">;
   }>;
 };
 export type TransactionQueriesQuery = {
@@ -186,7 +186,7 @@ return {
           {
             "args": null,
             "kind": "FragmentSpread",
-            "name": "TransactionFragments_transactionDetails"
+            "name": "TransactionFragments_list"
           }
         ],
         "storageKey": null
@@ -287,16 +287,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "babf58f4d904753a40960c11a7ced505",
+    "cacheID": "cc437c769fb0b273fa0fa7e02f2302a2",
     "id": null,
     "metadata": {},
     "name": "TransactionQueriesQuery",
     "operationKind": "query",
-    "text": "query TransactionQueriesQuery(\n  $skip: Int\n  $limit: Int\n  $client_id: ID\n  $supplier_id: ID\n  $invoice_id: ID\n  $type: TransactionType\n  $date_from: String\n  $date_to: String\n) {\n  transactions(skip: $skip, limit: $limit, client_id: $client_id, supplier_id: $supplier_id, invoice_id: $invoice_id, type: $type, date_from: $date_from, date_to: $date_to) {\n    ...TransactionFragments_transactionDetails\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment TransactionFragments_transaction on Transaction {\n  id\n  type\n  amount\n  date\n  description\n}\n\nfragment TransactionFragments_transactionDetails on Transaction {\n  ...TransactionFragments_transaction\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n  updated_at\n}\n"
+    "text": "query TransactionQueriesQuery(\n  $skip: Int\n  $limit: Int\n  $client_id: ID\n  $supplier_id: ID\n  $invoice_id: ID\n  $type: TransactionType\n  $date_from: String\n  $date_to: String\n) {\n  transactions(skip: $skip, limit: $limit, client_id: $client_id, supplier_id: $supplier_id, invoice_id: $invoice_id, type: $type, date_from: $date_from, date_to: $date_to) {\n    ...TransactionFragments_list\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment TransactionFragments_list on Transaction {\n  id\n  type\n  amount\n  date\n  description\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n  updated_at\n}\n"
   }
 };
 })();
 
-(node as any).hash = "dce79b3e96e84ca6a5d16ac935b62fd1";
+(node as any).hash = "21076bb9052a0296cd38b313ceabd735";
 
 export default node;

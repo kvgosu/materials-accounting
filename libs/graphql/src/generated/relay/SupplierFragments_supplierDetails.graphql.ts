@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e96c147d5c9633a6a10df221723e95cc>>
+ * @generated SignedSource<<94468fd20afd19bff1454b91b96db4c9>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,9 +11,15 @@
 import { ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type SupplierFragments_supplierDetails$data = {
+  readonly address: string | null | undefined;
+  readonly contact_person: string | null | undefined;
   readonly created_at: string | null | undefined;
+  readonly debt_balance: number | null | undefined;
+  readonly email: string | null | undefined;
+  readonly id: string;
+  readonly name: string;
+  readonly phone: string | null | undefined;
   readonly updated_at: string | null | undefined;
-  readonly " $fragmentSpreads": FragmentRefs<"SupplierFragments_supplier">;
   readonly " $fragmentType": "SupplierFragments_supplierDetails";
 };
 export type SupplierFragments_supplierDetails$key = {
@@ -28,9 +34,46 @@ const node: ReaderFragment = {
   "name": "SupplierFragments_supplierDetails",
   "selections": [
     {
+      "alias": null,
       "args": null,
-      "kind": "FragmentSpread",
-      "name": "SupplierFragments_supplier"
+      "kind": "ScalarField",
+      "name": "id",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "name",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "contact_person",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "phone",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "email",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "address",
+      "storageKey": null
     },
     {
       "alias": null,
@@ -45,12 +88,19 @@ const node: ReaderFragment = {
       "kind": "ScalarField",
       "name": "updated_at",
       "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "debt_balance",
+      "storageKey": null
     }
   ],
   "type": "Supplier",
   "abstractKey": null
 };
 
-(node as any).hash = "2cc8f2b0b48faaff8a7d64231ffebaaf";
+(node as any).hash = "ad11fa3e74fbddd7527df1ec7d1d8c66";
 
 export default node;
