@@ -21,7 +21,9 @@ import {
 } from '@materials-accounting/types';
 import { 
   useInvoices, 
-  InvoiceFragments_list
+  InvoiceFragments_list,
+  ClientFragments_client,
+  SupplierFragments_supplier
 } from '@materials-accounting/graphql';
 import { formatDate, formatCurrency } from '../../utils/format';
 import { Search as SearchIcon, Plus as PlusIcon, RefreshCw } from 'lucide-react';
@@ -110,6 +112,37 @@ export default function InvoicesPage() {
     window.location.reload();
   };
 
+  // Компоненты для ячеек с клиентом и поставщиком
+  const ClientCell = ({ invoice }: { invoice: any }) => {
+    const clientData = useFragment(
+      ClientFragments_client,
+      invoice.client || null
+    );
+    
+    if (!clientData) return <span>-</span>;
+    
+    return (
+      <Link href={`/clients/${clientData.id}/detail`} className="text-blue-600 hover:text-blue-900">
+        {clientData.name}
+      </Link>
+    );
+  };
+
+  const SupplierCell = ({ invoice }: { invoice: any }) => {
+    const supplierData = useFragment(
+      SupplierFragments_supplier,
+      invoice.supplier || null
+    );
+    
+    if (!supplierData) return <span>-</span>;
+    
+    return (
+      <Link href={`/suppliers/${supplierData.id}/detail`} className="text-blue-600 hover:text-blue-900">
+        {supplierData.name}
+      </Link>
+    );
+  };
+
   // Определение колонок для таблицы
   const columns: Column<any>[] = [
     {
@@ -128,21 +161,13 @@ export default function InvoicesPage() {
       id: 'client',
       header: 'Клиент',
       sortable: true,
-      cell: (invoice) => (
-        <Link href={`/clients/${invoice.client?.id}/detail`} className="text-blue-600 hover:text-blue-900">
-          {invoice.client?.name}
-        </Link>
-      )
+      cell: (invoice) => <ClientCell invoice={invoice} />
     },
     {
       id: 'supplier',
       header: 'Поставщик',
       sortable: true,
-      cell: (invoice) => (
-        <Link href={`/suppliers/${invoice.supplier?.id}/detail`} className="text-blue-600 hover:text-blue-900">
-          {invoice.supplier?.name}
-        </Link>
-      )
+      cell: (invoice) => <SupplierCell invoice={invoice} />
     },
     {
       id: 'total_amount',

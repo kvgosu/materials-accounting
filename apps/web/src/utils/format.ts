@@ -6,18 +6,18 @@ import { ru } from 'date-fns/locale';
 export function formatCurrency(value: number): string {
   return new Intl.NumberFormat('ru-RU', {
     style: 'currency',
-    currency: 'RUB',
+    currency: 'KZT',
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   }).format(value);
 }
 
 export function formatMoney(value: number | string, options: { currency?: string; minimumFractionDigits?: number } = {}) {
-  const { currency = 'RUB', minimumFractionDigits = 2 } = options;
+  const { currency = 'KZT', minimumFractionDigits = 2 } = options;
   const numValue = typeof value === 'string' ? parseFloat(value) : value;
   
   if (isNaN(numValue)) {
-    return '0,00 ₽';
+    return '0,00 ₸';
   }
   
   return new Intl.NumberFormat('ru-RU', {

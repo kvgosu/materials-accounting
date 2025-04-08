@@ -1,7 +1,7 @@
-// libs/graphql/src/operations/fragments/debt.ts
 import { graphql } from 'react-relay';
 
-export const DebtMovementDetails = graphql`
+// Фрагменты для движений долгов
+export const DebtMovementFragment = graphql`
   fragment DebtFragments_debtMovement on DebtMovement {
     id
     period
@@ -11,42 +11,44 @@ export const DebtMovementDetails = graphql`
     direction
     dimension
     client {
-      ...ClientFragments_client
+      id
+      name
     }
     supplier {
-      ...SupplierFragments_supplier
+      id
+      name
+    }
+    invoice {
+      id
+      number
+    }
+    transaction {
+      id
+      type
+      amount
     }
     created_at
   }
 `;
 
+// Фрагмент списка движений долгов
 export const DebtMovementListFragment = graphql`
   fragment DebtFragments_debtMovementList on DebtMovement @relay(plural: true) {
-    id
-    period
-    document_id
-    document_type
-    amount
-    direction
-    dimension
-    client {
-      ...ClientFragments_client
-    }
-    supplier {
-      ...SupplierFragments_supplier
-    }
-    created_at
+    ...DebtFragments_debtMovement
   }
 `;
 
-export const DebtBalanceDetails = graphql`
+// Фрагменты для остатков долгов
+export const DebtBalanceFragment = graphql`
   fragment DebtFragments_debtBalance on DebtBalance {
     id
     client {
-      ...ClientFragments_client
+      id
+      name
     }
     supplier {
-      ...SupplierFragments_supplier
+      id
+      name
     }
     dimension
     balance
@@ -54,14 +56,17 @@ export const DebtBalanceDetails = graphql`
   }
 `;
 
+// Фрагмент списка остатков долгов
 export const DebtBalanceListFragment = graphql`
   fragment DebtFragments_debtBalanceList on DebtBalance @relay(plural: true) {
     id
     client {
-      ...ClientFragments_client
+      id
+      name
     }
     supplier {
-      ...SupplierFragments_supplier
+      id
+      name
     }
     dimension
     balance
@@ -69,14 +74,17 @@ export const DebtBalanceListFragment = graphql`
   }
 `;
 
-export const DebtTurnoverDetails = graphql`
+// Фрагменты для оборотов долгов
+export const DebtTurnoverFragment = graphql`
   fragment DebtFragments_debtTurnover on DebtTurnover {
     id
     client {
-      ...ClientFragments_client
+      id
+      name
     }
     supplier {
-      ...SupplierFragments_supplier
+      id
+      name
     }
     dimension
     debit
@@ -87,14 +95,17 @@ export const DebtTurnoverDetails = graphql`
   }
 `;
 
+// Фрагмент списка оборотов долгов
 export const DebtTurnoverListFragment = graphql`
   fragment DebtFragments_debtTurnoverList on DebtTurnover @relay(plural: true) {
     id
     client {
-      ...ClientFragments_client
+      id
+      name
     }
     supplier {
-      ...SupplierFragments_supplier
+      id
+      name
     }
     dimension
     debit

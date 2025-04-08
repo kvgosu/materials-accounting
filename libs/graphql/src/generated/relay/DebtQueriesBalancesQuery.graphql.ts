@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<2ad58645d302677f09324ed223176b38>>
+ * @generated SignedSource<<2ef0350cd66db0ea742446a06a6b107d>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -84,34 +84,6 @@ v6 = [
     "args": null,
     "kind": "ScalarField",
     "name": "name",
-    "storageKey": null
-  },
-  {
-    "alias": null,
-    "args": null,
-    "kind": "ScalarField",
-    "name": "contact_person",
-    "storageKey": null
-  },
-  {
-    "alias": null,
-    "args": null,
-    "kind": "ScalarField",
-    "name": "phone",
-    "storageKey": null
-  },
-  {
-    "alias": null,
-    "args": null,
-    "kind": "ScalarField",
-    "name": "email",
-    "storageKey": null
-  },
-  {
-    "alias": null,
-    "args": null,
-    "kind": "ScalarField",
-    "name": "address",
     "storageKey": null
   }
 ];
@@ -214,12 +186,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "cbdc1dd412135dad2641fe5258d80741",
+    "cacheID": "fa0e9ef7fd4aa867dfc2d1d2512bc908",
     "id": null,
     "metadata": {},
     "name": "DebtQueriesBalancesQuery",
     "operationKind": "query",
-    "text": "query DebtQueriesBalancesQuery(\n  $client_id: ID\n  $supplier_id: ID\n  $dimension: DebtDimension\n  $as_of_date: String\n) {\n  debt_balances(client_id: $client_id, supplier_id: $supplier_id, dimension: $dimension, as_of_date: $as_of_date) {\n    ...DebtFragments_debtBalanceList\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment DebtFragments_debtBalanceList on DebtBalance {\n  id\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  dimension\n  balance\n  as_of_date\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n"
+    "text": "query DebtQueriesBalancesQuery(\n  $client_id: ID\n  $supplier_id: ID\n  $dimension: DebtDimension\n  $as_of_date: String\n) {\n  debt_balances(client_id: $client_id, supplier_id: $supplier_id, dimension: $dimension, as_of_date: $as_of_date) {\n    ...DebtFragments_debtBalanceList\n    id\n  }\n}\n\nfragment DebtFragments_debtBalanceList on DebtBalance {\n  id\n  client {\n    id\n    name\n  }\n  supplier {\n    id\n    name\n  }\n  dimension\n  balance\n  as_of_date\n}\n"
   }
 };
 })();

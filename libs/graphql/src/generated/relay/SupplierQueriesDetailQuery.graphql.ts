@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<e7c18905193492adfd41fe65a753905e>>
+ * @generated SignedSource<<d20a99280d007a609e7da3eca49ca54f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,7 +10,6 @@
 
 import { ConcreteRequest } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type InvoiceStatus = "CLOSED" | "CREATED" | "PROCESSED" | "%future added value";
 export type TransactionType = "CLIENT_DEBT" | "CLIENT_PAYMENT" | "SUPPLIER_DEBT" | "SUPPLIER_PAYMENT" | "%future added value";
 export type SupplierQueriesDetailQuery$variables = {
   id: string;
@@ -25,10 +24,9 @@ export type SupplierQueriesDetailQuery$data = {
       readonly date: string;
       readonly id: string;
       readonly number: string;
-      readonly status: InvoiceStatus;
       readonly total_amount: number;
       readonly total_with_markup: number;
-      readonly " $fragmentSpreads": FragmentRefs<"InvoiceFragments_list">;
+      readonly " $fragmentSpreads": FragmentRefs<"InvoiceFragments_listWithoutStatus">;
     }> | null | undefined;
     readonly transactions: ReadonlyArray<{
       readonly amount: number;
@@ -106,100 +104,97 @@ v8 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "status",
+  "name": "amount",
   "storageKey": null
 },
 v9 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "amount",
+  "name": "type",
   "storageKey": null
 },
 v10 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "type",
+  "name": "name",
   "storageKey": null
 },
 v11 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "name",
+  "name": "contact_person",
   "storageKey": null
 },
 v12 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "contact_person",
+  "name": "phone",
   "storageKey": null
 },
 v13 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "phone",
+  "name": "email",
   "storageKey": null
 },
 v14 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "email",
+  "name": "address",
   "storageKey": null
 },
 v15 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "address",
+  "name": "created_at",
   "storageKey": null
 },
 v16 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "created_at",
-  "storageKey": null
-},
-v17 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
   "name": "updated_at",
   "storageKey": null
 },
-v18 = [
+v17 = [
   (v3/*: any*/),
+  (v10/*: any*/),
   (v11/*: any*/),
   (v12/*: any*/),
   (v13/*: any*/),
-  (v14/*: any*/),
-  (v15/*: any*/)
+  (v14/*: any*/)
 ],
-v19 = {
+v18 = {
   "alias": null,
   "args": null,
   "concreteType": "Client",
   "kind": "LinkedField",
   "name": "client",
   "plural": false,
-  "selections": (v18/*: any*/),
+  "selections": (v17/*: any*/),
   "storageKey": null
 },
-v20 = {
+v19 = {
   "alias": null,
   "args": null,
   "concreteType": "Supplier",
   "kind": "LinkedField",
   "name": "supplier",
   "plural": false,
-  "selections": (v18/*: any*/),
+  "selections": (v17/*: any*/),
   "storageKey": null
-};
+},
+v20 = [
+  (v3/*: any*/),
+  (v10/*: any*/)
+];
 return {
   "fragment": {
     "argumentDefinitions": (v0/*: any*/),
@@ -232,14 +227,13 @@ return {
               {
                 "args": null,
                 "kind": "FragmentSpread",
-                "name": "InvoiceFragments_list"
+                "name": "InvoiceFragments_listWithoutStatus"
               },
               (v3/*: any*/),
               (v4/*: any*/),
               (v5/*: any*/),
               (v6/*: any*/),
-              (v7/*: any*/),
-              (v8/*: any*/)
+              (v7/*: any*/)
             ],
             "storageKey": null
           },
@@ -258,8 +252,8 @@ return {
               },
               (v3/*: any*/),
               (v5/*: any*/),
-              (v9/*: any*/),
-              (v10/*: any*/)
+              (v8/*: any*/),
+              (v9/*: any*/)
             ],
             "storageKey": null
           },
@@ -301,13 +295,13 @@ return {
         "plural": false,
         "selections": [
           (v3/*: any*/),
+          (v10/*: any*/),
           (v11/*: any*/),
           (v12/*: any*/),
           (v13/*: any*/),
           (v14/*: any*/),
           (v15/*: any*/),
           (v16/*: any*/),
-          (v17/*: any*/),
           (v2/*: any*/),
           {
             "alias": null,
@@ -322,11 +316,10 @@ return {
               (v5/*: any*/),
               (v6/*: any*/),
               (v7/*: any*/),
-              (v8/*: any*/),
+              (v18/*: any*/),
               (v19/*: any*/),
-              (v20/*: any*/),
-              (v16/*: any*/),
-              (v17/*: any*/)
+              (v15/*: any*/),
+              (v16/*: any*/)
             ],
             "storageKey": null
           },
@@ -339,8 +332,8 @@ return {
             "plural": true,
             "selections": [
               (v3/*: any*/),
-              (v10/*: any*/),
               (v9/*: any*/),
+              (v8/*: any*/),
               (v5/*: any*/),
               {
                 "alias": null,
@@ -349,10 +342,10 @@ return {
                 "name": "description",
                 "storageKey": null
               },
+              (v18/*: any*/),
               (v19/*: any*/),
-              (v20/*: any*/),
-              (v16/*: any*/),
-              (v17/*: any*/)
+              (v15/*: any*/),
+              (v16/*: any*/)
             ],
             "storageKey": null
           },
@@ -386,7 +379,7 @@ return {
                 "name": "document_type",
                 "storageKey": null
               },
-              (v9/*: any*/),
+              (v8/*: any*/),
               {
                 "alias": null,
                 "args": null,
@@ -401,9 +394,54 @@ return {
                 "name": "dimension",
                 "storageKey": null
               },
-              (v19/*: any*/),
-              (v20/*: any*/),
-              (v16/*: any*/)
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "Client",
+                "kind": "LinkedField",
+                "name": "client",
+                "plural": false,
+                "selections": (v20/*: any*/),
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "Supplier",
+                "kind": "LinkedField",
+                "name": "supplier",
+                "plural": false,
+                "selections": (v20/*: any*/),
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "Invoice",
+                "kind": "LinkedField",
+                "name": "invoice",
+                "plural": false,
+                "selections": [
+                  (v3/*: any*/),
+                  (v4/*: any*/)
+                ],
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "Transaction",
+                "kind": "LinkedField",
+                "name": "transaction",
+                "plural": false,
+                "selections": [
+                  (v3/*: any*/),
+                  (v9/*: any*/),
+                  (v8/*: any*/)
+                ],
+                "storageKey": null
+              },
+              (v15/*: any*/)
             ],
             "storageKey": null
           }
@@ -413,16 +451,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "9897634ab25daa88e93b43d9ce79d96c",
+    "cacheID": "7a048693d562d4101383afe00ab6de4b",
     "id": null,
     "metadata": {},
     "name": "SupplierQueriesDetailQuery",
     "operationKind": "query",
-    "text": "query SupplierQueriesDetailQuery(\n  $id: ID!\n) {\n  supplier(id: $id) {\n    ...SupplierFragments_supplierDetails\n    debt_balance\n    invoices {\n      ...InvoiceFragments_list\n      id\n      number\n      date\n      total_amount\n      total_with_markup\n      status\n    }\n    transactions {\n      ...TransactionFragments_list\n      id\n      date\n      amount\n      type\n    }\n    debt_movements {\n      ...DebtFragments_debtMovementList\n      id\n    }\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment DebtFragments_debtMovementList on DebtMovement {\n  id\n  period\n  document_id\n  document_type\n  amount\n  direction\n  dimension\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n}\n\nfragment InvoiceFragments_list on Invoice {\n  id\n  number\n  date\n  total_amount\n  total_with_markup\n  status\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment SupplierFragments_supplierDetails on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n  created_at\n  updated_at\n  debt_balance\n}\n\nfragment TransactionFragments_list on Transaction {\n  id\n  type\n  amount\n  date\n  description\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n  updated_at\n}\n"
+    "text": "query SupplierQueriesDetailQuery(\n  $id: ID!\n) {\n  supplier(id: $id) {\n    ...SupplierFragments_supplierDetails\n    debt_balance\n    invoices {\n      ...InvoiceFragments_listWithoutStatus\n      id\n      number\n      date\n      total_amount\n      total_with_markup\n    }\n    transactions {\n      ...TransactionFragments_list\n      id\n      date\n      amount\n      type\n    }\n    debt_movements {\n      ...DebtFragments_debtMovementList\n      id\n    }\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment DebtFragments_debtMovement on DebtMovement {\n  id\n  period\n  document_id\n  document_type\n  amount\n  direction\n  dimension\n  client {\n    id\n    name\n  }\n  supplier {\n    id\n    name\n  }\n  invoice {\n    id\n    number\n  }\n  transaction {\n    id\n    type\n    amount\n  }\n  created_at\n}\n\nfragment DebtFragments_debtMovementList on DebtMovement {\n  ...DebtFragments_debtMovement\n}\n\nfragment InvoiceFragments_listWithoutStatus on Invoice {\n  id\n  number\n  date\n  total_amount\n  total_with_markup\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment SupplierFragments_supplierDetails on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n  created_at\n  updated_at\n  debt_balance\n}\n\nfragment TransactionFragments_list on Transaction {\n  id\n  type\n  amount\n  date\n  description\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n  updated_at\n}\n"
   }
 };
 })();
 
-(node as any).hash = "9fef4f4406ace4956d311585744fc07b";
+(node as any).hash = "2e92f9e5c1ce64b34074ed44e7cc643c";
 
 export default node;

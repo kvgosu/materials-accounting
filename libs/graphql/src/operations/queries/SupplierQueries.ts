@@ -15,13 +15,12 @@ export const SupplierQuery = graphql`
       ...SupplierFragments_supplierDetails
       debt_balance
       invoices {
-        ...InvoiceFragments_list
+        ...InvoiceFragments_listWithoutStatus
         id
         number
         date
         total_amount
         total_with_markup
-        status
       }
       transactions {
         ...TransactionFragments_list

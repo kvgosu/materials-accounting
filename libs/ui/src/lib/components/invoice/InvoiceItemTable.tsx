@@ -69,7 +69,7 @@ export function InvoiceItemTable({
   const [newItem, setNewItem] = useState<NewInvoiceItem>({
     materialId: '',
     quantity: 1,
-    price: 0,
+    price: 0.01,
   });
   const [loadingPrice, setLoadingPrice] = useState(false);
   const [materialIdForPrice, setMaterialIdForPrice] = useState<string | null>(null);
@@ -231,9 +231,6 @@ export function InvoiceItemTable({
   };
   const totalAmount = items.reduce((sum, item) => sum + item.amount, 0);
   const totalAmountWithMarkup = items.reduce((sum, item) => sum + item.amountWithMarkup, 0);
-
-  console.log("materials", materials);
-  console.log("items", items);
 
   return (
     <div>

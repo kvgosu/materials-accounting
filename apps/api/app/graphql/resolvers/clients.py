@@ -16,9 +16,6 @@ def get_clients_resolver(obj, info, **kwargs):
     limit = kwargs.get('limit', 100)
     search = kwargs.get('search', None)
     clients = client_repo.get_all(skip=skip, limit=limit, search=search)
-    logger.info(f"!!!! КЛИЕНТЫ НАЙДЕНЫ: {len(clients)} !!!!")
-    for client in clients:
-        logger.info(f"!!!! КЛИЕНТ: ID={client.id} ({type(client.id)}), Name={client.name} !!!!")
     return clients
 
 def get_client_resolver(obj, info, id, **kwargs):

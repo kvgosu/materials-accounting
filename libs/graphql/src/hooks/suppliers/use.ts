@@ -54,7 +54,7 @@ export function useSupplier(id: string) {
           ...SupplierFragments_supplierDetails
           debt_balance
           invoices {
-            ...InvoiceFragments_list
+            ...InvoiceFragments_listWithoutStatus
             id
             number
             date

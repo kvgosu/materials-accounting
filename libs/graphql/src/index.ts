@@ -34,7 +34,8 @@ import {
   InvoiceListFragment,
   InvoiceDetails,
   InvoiceItemDetails,
-  InvoiceItemListFragment
+  InvoiceItemListFragment,
+  InvoiceListWithoutStatusFragment
 } from './operations/fragments/InvoiceFragments';
 import {
   TransactionBasic,
@@ -147,6 +148,7 @@ export const MaterialFragments_materialDetails = MaterialDetails;
 
 export const InvoiceFragments_invoiceBasic = InvoiceBasic;
 export const InvoiceFragments_list = InvoiceListFragment;
+export const InvoiceFragments_listWithoutStatus = InvoiceListWithoutStatusFragment;
 export const InvoiceFragments_invoiceDetails = InvoiceDetails;
 export const InvoiceFragments_invoiceItem = InvoiceItemDetails;
 export const InvoiceFragments_invoiceItemList = InvoiceItemListFragment;

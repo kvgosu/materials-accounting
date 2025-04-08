@@ -17,7 +17,7 @@ import {
   Badge
 } from '@materials-accounting/ui';
 import { ErrorBoundary } from '../../../../components/ErrorBoundary';
-import { ClientFragments_clientDetails, ContractFragments_list, InvoiceFragments_list } from '@materials-accounting/graphql';
+import { ClientFragments_clientDetails, ContractFragments_list, InvoiceFragments_listWithoutStatus } from '@materials-accounting/graphql';
 import { useClient } from '@materials-accounting/graphql';
 import { formatDate, formatCurrency } from '../../../../utils/format';
 import { useParams } from 'next/navigation';
@@ -49,7 +49,7 @@ function ClientDetailContent({ clientId }: { clientId: string }) {
   );
   console.log(client);
   const invoicesArray = useFragment(
-    InvoiceFragments_list,
+    InvoiceFragments_listWithoutStatus,
     (client as any).invoices || []
   );
 

@@ -37,7 +37,7 @@ export const ClientDetails = graphql`
       ...ContractFragments_list
     }
     invoices {
-      ...InvoiceFragments_list
+      ...InvoiceFragments_listWithoutStatus
     }
     debt_balance
     created_at

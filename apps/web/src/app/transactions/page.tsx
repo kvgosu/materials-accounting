@@ -26,13 +26,69 @@ import {
   useTransactions, 
   useRegisterClientPayment,
   useRegisterSupplierPayment,
-  TransactionFragments_list
+  useClients,
+  useSuppliers,
+  TransactionFragments_list,
+  ClientFragments_client,
+  ClientFragments_list,
+  SupplierFragments_supplier,
+  SupplierFragments_list,
+  InvoiceFragments_invoiceBasic
 } from '@materials-accounting/graphql';
 import { formatDate, formatCurrency } from '../../utils/format';
 import { RefreshCw } from 'lucide-react';
 
 const RETRY_DELAY = 2000;
 const MAX_RETRIES = 3;
+
+// Компоненты для ячеек таблицы с использованием фрагментов
+const ClientCell = ({ transaction }: { transaction: any }) => {
+  // Важно: всегда передавать null, если нет данных клиента
+  const clientData = useFragment(
+    ClientFragments_client,
+    transaction.client || null
+  );
+  
+  if (!clientData) return <span>-</span>;
+  
+  return (
+    <Link href={`/clients/${clientData.id}/detail`} className="text-blue-600 hover:text-blue-900">
+      {clientData.name}
+    </Link>
+  );
+};
+
+const SupplierCell = ({ transaction }: { transaction: any }) => {
+  // Важно: всегда передавать null, если нет данных поставщика
+  const supplierData = useFragment(
+    SupplierFragments_supplier,
+    transaction.supplier || null
+  );
+  
+  if (!supplierData) return <span>-</span>;
+  
+  return (
+    <Link href={`/suppliers/${supplierData.id}/detail`} className="text-blue-600 hover:text-blue-900">
+      {supplierData.name}
+    </Link>
+  );
+};
+
+const InvoiceCell = ({ transaction }: { transaction: any }) => {
+  // Важно: всегда передавать null, если нет данных накладной
+  const invoiceData = useFragment(
+    InvoiceFragments_invoiceBasic,
+    transaction.invoice || null
+  );
+  
+  if (!invoiceData) return <span>-</span>;
+  
+  return (
+    <Link href={`/invoices/${invoiceData.id}/detail`} className="text-blue-600 hover:text-blue-900">
+      {invoiceData.number}
+    </Link>
+  );
+};
 
 export default function TransactionsPage() {
   const router = useRouter();
@@ -83,34 +139,48 @@ export default function TransactionsPage() {
     error: supplierPaymentError 
   } = useRegisterSupplierPayment();
   
-  // Загрузка списков клиентов и поставщиков
+  // Получаем данные о клиентах и поставщиках из API
+  const clientsResult = useClients(0, 100);
+  const suppliersResult = useSuppliers(0, 100);
+  
+  // Используем фрагменты для обработки данных
+  const clientsData = useFragment(
+    ClientFragments_list,
+    (clientsResult as any)?.clients || []
+  );
+  
+  const suppliersData = useFragment(
+    SupplierFragments_list,
+    (suppliersResult as any)?.suppliers || []
+  );
+  
+  // Загрузка списков клиентов и поставщиков из API
   useEffect(() => {
     const fetchReferenceData = async () => {
       try {
-        // В реальном приложении здесь были бы запросы к API
-        // Имитируем загрузку данных
-        setTimeout(() => {
-          setClients([
-            { id: '1', name: 'ООО "Восток"' },
-            { id: '2', name: 'ЗАО "Строитель"' },
-            { id: '3', name: 'ИП Сидоров' },
-            { id: '4', name: 'ООО "Юг"' }
-          ]);
-          
-          setSuppliers([
-            { id: '1', name: 'ООО "СтройМатериалы"' },
-            { id: '2', name: 'ЗАО "МеталлПром"' },
-            { id: '3', name: 'ИП Столяров' },
-            { id: '4', name: 'ООО "АвтоЗапчасти"' }
-          ]);
-        }, 300);
+        if (clientsData && Array.isArray(clientsData)) {
+          const formattedClients = clientsData.map((client: any) => ({
+            id: client.id,
+            name: client.name || 'Клиент без названия'
+          }));
+          setClients(formattedClients);
+        }
+        
+        if (suppliersData && Array.isArray(suppliersData)) {
+          const formattedSuppliers = suppliersData.map((supplier: any) => ({
+            id: supplier.id,
+            name: supplier.name || 'Поставщик без названия'
+          }));
+          setSuppliers(formattedSuppliers);
+        }
       } catch (error) {
         console.error('Ошибка при загрузке справочных данных:', error);
+        setDataError('Ошибка при загрузке справочных данных');
       }
     };
     
     fetchReferenceData();
-  }, []);
+  }, [clientsData, suppliersData]);
 
   const withRetry = async (operation: () => Promise<any>, retries = MAX_RETRIES): Promise<any> => {
     try {
@@ -234,6 +304,8 @@ export default function TransactionsPage() {
         description: clientPaymentData.description || undefined
       };
       
+      console.log('Отправка данных платежа клиента:', paymentData);
+      
       await withRetry(() => registerClientPayment(paymentData));
       
       toast({
@@ -281,6 +353,8 @@ export default function TransactionsPage() {
         description: supplierPaymentData.description || undefined
       };
       
+      console.log('Отправка данных платежа поставщику:', paymentData);
+      
       await withRetry(() => registerSupplierPayment(paymentData));
       
       toast({
@@ -310,6 +384,23 @@ export default function TransactionsPage() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  // Отображение компонентов для таблицы без условных хуков
+  const renderEntityCell = (transaction: any) => {
+    if (transaction.client) {
+      return <ClientCell transaction={transaction} />;
+    } else if (transaction.supplier) {
+      return <SupplierCell transaction={transaction} />;
+    }
+    return <span>-</span>;
+  };
+
+  const renderInvoiceCell = (transaction: any) => {
+    if (transaction.invoice) {
+      return <InvoiceCell transaction={transaction} />;
+    }
+    return <span>-</span>;
   };
 
   // Определение колонок для таблицы
@@ -354,22 +445,7 @@ export default function TransactionsPage() {
     {
       id: 'entity',
       header: 'Клиент/Поставщик',
-      cell: (transaction) => {
-        if (transaction.client) {
-          return (
-            <Link href={`/clients/${transaction.client.id}/detail`} className="text-blue-600 hover:text-blue-900">
-              {transaction.client.name}
-            </Link>
-          );
-        } else if (transaction.supplier) {
-          return (
-            <Link href={`/suppliers/${transaction.supplier.id}/detail`} className="text-blue-600 hover:text-blue-900">
-              {transaction.supplier.name}
-            </Link>
-          );
-        }
-        return '-';
-      }
+      cell: renderEntityCell
     },
     {
       id: 'amount',
@@ -382,16 +458,7 @@ export default function TransactionsPage() {
     {
       id: 'invoice',
       header: 'Накладная',
-      cell: (transaction) => {
-        if (transaction.invoice) {
-          return (
-            <Link href={`/invoices/${transaction.invoice.id}/detail`} className="text-blue-600 hover:text-blue-900">
-              {transaction.invoice.number}
-            </Link>
-          );
-        }
-        return '-';
-      }
+      cell: renderInvoiceCell
     },
     {
       id: 'description',
@@ -401,6 +468,9 @@ export default function TransactionsPage() {
   ];
 
   const totalCount = Array.isArray(transactions) ? transactions.length : 0;
+
+  // Отображаем загрузку, если данные еще не готовы
+  const isLoadingData = (clientsResult as any).loading || (suppliersResult as any).loading;
 
   return (
     <div className="container mx-auto py-6 space-y-6">
@@ -488,7 +558,7 @@ export default function TransactionsPage() {
         columns={columns}
         data={transactions}
         keyField="id"
-        isLoading={isLoading}
+        isLoading={isLoading || isLoadingData}
         noDataMessage="Транзакции не найдены"
         paginationInfo={{
           pageIndex: page,
@@ -504,7 +574,7 @@ export default function TransactionsPage() {
       
       {/* Модальное окно для регистрации оплаты от клиента */}
       <Dialog open={isClientPaymentModalOpen} onOpenChange={setIsClientPaymentModalOpen}>
-        <DialogContent className='bg-white'>
+        <DialogContent className="bg-white">
           <DialogHeader>
             <DialogTitle>Регистрация оплаты от клиента</DialogTitle>
           </DialogHeader>
@@ -517,18 +587,24 @@ export default function TransactionsPage() {
             
             <div>
               <label className="block text-sm font-medium mb-1">Клиент*</label>
-              <select
-                className="w-full p-2 border rounded"
-                value={clientPaymentData.clientId}
-                onChange={(e) => setClientPaymentData({...clientPaymentData, clientId: e.target.value})}
-                disabled={isLoading || clientPaymentLoading}
-                required
-              >
-                <option value="">Выберите клиента</option>
-                {clients.map(client => (
-                  <option key={client.id} value={client.id}>{client.name}</option>
-                ))}
-              </select>
+              {isLoadingData ? (
+                <div className="w-full p-2 border rounded flex items-center justify-center">
+                  <div className="animate-pulse">Загрузка клиентов...</div>
+                </div>
+              ) : (
+                <select
+                  className="w-full p-2 border rounded"
+                  value={clientPaymentData.clientId}
+                  onChange={(e) => setClientPaymentData({...clientPaymentData, clientId: e.target.value})}
+                  disabled={isLoading || clientPaymentLoading}
+                  required
+                >
+                  <option value="">Выберите клиента</option>
+                  {clients.map(client => (
+                    <option key={client.id} value={client.id}>{client.name}</option>
+                  ))}
+                </select>
+              )}
               {clientFormErrors.clientId && (
                 <p className="text-sm text-red-500 mt-1">{clientFormErrors.clientId}</p>
               )}
@@ -586,7 +662,7 @@ export default function TransactionsPage() {
               <Button 
                 type="button"
                 onClick={handleSubmitClientPayment}
-                disabled={isLoading || clientPaymentLoading}
+                disabled={isLoading || clientPaymentLoading || isLoadingData}
               >
                 {isLoading || clientPaymentLoading ? 'Сохранение...' : 'Сохранить'}
               </Button>
@@ -597,7 +673,7 @@ export default function TransactionsPage() {
       
       {/* Модальное окно для регистрации оплаты поставщику */}
       <Dialog open={isSupplierPaymentModalOpen} onOpenChange={setIsSupplierPaymentModalOpen}>
-        <DialogContent className='bg-white'>
+        <DialogContent className="bg-white">
           <DialogHeader>
             <DialogTitle>Регистрация оплаты поставщику</DialogTitle>
           </DialogHeader>
@@ -610,18 +686,24 @@ export default function TransactionsPage() {
             
             <div>
               <label className="block text-sm font-medium mb-1">Поставщик*</label>
-              <select
-                className="w-full p-2 border rounded"
-                value={supplierPaymentData.supplierId}
-                onChange={(e) => setSupplierPaymentData({...supplierPaymentData, supplierId: e.target.value})}
-                disabled={isLoading || supplierPaymentLoading}
-                required
-              >
-                <option value="">Выберите поставщика</option>
-                {suppliers.map(supplier => (
-                  <option key={supplier.id} value={supplier.id}>{supplier.name}</option>
-                ))}
-              </select>
+              {isLoadingData ? (
+                <div className="w-full p-2 border rounded flex items-center justify-center">
+                  <div className="animate-pulse">Загрузка поставщиков...</div>
+                </div>
+              ) : (
+                <select
+                  className="w-full p-2 border rounded"
+                  value={supplierPaymentData.supplierId}
+                  onChange={(e) => setSupplierPaymentData({...supplierPaymentData, supplierId: e.target.value})}
+                  disabled={isLoading || supplierPaymentLoading}
+                  required
+                >
+                  <option value="">Выберите поставщика</option>
+                  {suppliers.map(supplier => (
+                    <option key={supplier.id} value={supplier.id}>{supplier.name}</option>
+                  ))}
+                </select>
+              )}
               {supplierFormErrors.supplierId && (
                 <p className="text-sm text-red-500 mt-1">{supplierFormErrors.supplierId}</p>
               )}
@@ -679,7 +761,7 @@ export default function TransactionsPage() {
               <Button 
                 type="button"
                 onClick={handleSubmitSupplierPayment}
-                disabled={isLoading || supplierPaymentLoading}
+                disabled={isLoading || supplierPaymentLoading || isLoadingData}
               >
                 {isLoading || supplierPaymentLoading ? 'Сохранение...' : 'Сохранить'}
               </Button>

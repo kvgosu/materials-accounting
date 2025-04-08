@@ -66,8 +66,6 @@ class ClientRepository(BaseRepository):
         logger.setLevel(logging.DEBUG)
         
         try:
-            logger.debug(f"Начало получения клиента с ID: {client_id}")
-            logger.debug(f"Тип ID: {type(client_id)}")
             query = self.db.query(Client).options(
                 joinedload(Client.contracts),
                 joinedload(Client.invoices)
@@ -81,19 +79,7 @@ class ClientRepository(BaseRepository):
             else:
                 entity = query.filter(Client.id == client_id).first()
             if not entity:
-                logger.error(f"Клиент с ID {client_id} не найден")
                 return None
-
-            logger.debug(f"Найден клиент: {entity.name}")
-            logger.debug(f"Количество договоров: {len(entity.contracts)}")
-            
-            for i, contract in enumerate(entity.contracts, 1):
-                logger.debug(f"Договор #{i}:")
-                logger.debug(f"  ID: {contract.id}")
-                logger.debug(f"  Номер: {contract.number}")
-                logger.debug(f"  Статус: {contract.status}")
-                logger.debug(f"  Тип статуса: {type(contract.status)}")
-
             for contract in entity.contracts:
                 contract.status = contract.status.value if hasattr(contract.status, 'value') else str(contract.status)
             
@@ -111,7 +97,6 @@ class ClientRepository(BaseRepository):
             )
             debt_balance = total_debit - total_credit
             setattr(entity, 'debt_balance', debt_balance)
-            logger.debug(f"Остаток долга: {debt_balance}")
             return entity
         except Exception as e:
             logger.error(f"Ошибка при получении клиента: {str(e)}")
@@ -424,33 +409,42 @@ class InvoiceRepository(BaseRepository):
     def __init__(self, db: Session):
         super().__init__(db, Invoice)
         
-    def get_all(self, **kwargs):
-        invoices = None
-        if hasattr(self, '_query_invoices'):
-            invoices = self._query_invoices(**kwargs).all()
-        else:
-            query = self.db.query(self.model) 
-            for key, value in kwargs.items():
-                if hasattr(self.model, key):
-                    query = query.filter(getattr(self.model, key) == value)
-            invoices = query.all()     
-        for invoice in invoices:
-            if hasattr(invoice, 'status'):
+    def get_all(self, 
+                skip: int = 0, 
+                limit: int = 100, 
+                client_id: Optional[uuid.UUID] = None,
+                supplier_id: Optional[uuid.UUID] = None,
+                contract_id: Optional[uuid.UUID] = None,
+                status: Optional[Union[str, InvoiceStatus]] = None,
+                date_from: Optional[date] = None,
+                date_to: Optional[date] = None):
+        
+        query = self.db.query(Invoice)
+        
+        if client_id:
+            query = query.filter(Invoice.client_id == client_id)
+        
+        if supplier_id:
+            query = query.filter(Invoice.supplier_id == supplier_id)
+        
+        if contract_id:
+            query = query.filter(Invoice.contract_id == contract_id)
+        
+        if status is not None:
+            if isinstance(status, str):
                 try:
-                    if invoice.status is None:
-                        invoice.status = "UNKNOWN"
-                    elif hasattr(invoice.status, 'name') and invoice.status.name == 'CREATED':
-                        invoice.status = "CREATED"
-                    elif hasattr(invoice.status, 'name') and invoice.status.name == 'PROCESSED':
-                        invoice.status = "PROCESSED"
-                    elif hasattr(invoice.status, 'name') and invoice.status.name == 'CLOSED':
-                        invoice.status = "CLOSED"
-                    else:
-                        invoice.status = str(invoice.status)
-                except Exception as e:
-                    print(f"Error converting status: {e}")
-                    invoice.status = "UNKNOWN"
-        return invoices
+                    status = InvoiceStatus[status]
+                except KeyError:
+                    pass
+            query = query.filter(Invoice.status == status)
+        
+        if date_from:
+            query = query.filter(Invoice.date >= date_from)
+        
+        if date_to:
+            query = query.filter(Invoice.date <= date_to)
+        
+        return query.order_by(desc(Invoice.date)).offset(skip).limit(limit).all()
     
     def get_with_items(self, invoice_id: uuid.UUID):
         return self.db.query(Invoice).filter(Invoice.id == invoice_id).options(
@@ -677,9 +671,13 @@ class TransactionRepository(BaseRepository):
         return query.order_by(desc(Transaction.date)).offset(skip).limit(limit).all()
     
     def create(self, transaction_data: Dict[str, Any]):
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.info(f"Creating transaction with data: {transaction_data}")
         transaction = Transaction(**transaction_data)
         self.db.add(transaction)
         self.db.commit()
+        logger.info(f"Created transaction: {transaction.id}, client_id: {transaction.client_id}")
         self.db.refresh(transaction)
         return transaction
     
@@ -717,7 +715,33 @@ class TransactionRepository(BaseRepository):
             return transaction   
         except Exception as e:
             self.db.rollback()
-            raise e   
+            raise e
+         
+    def register_supplier_payment(self, supplier_id: uuid.UUID, amount: float, date_obj: date, description: Optional[str] = None):
+        try:
+            transaction = self.create({
+                "supplier_id": supplier_id,
+                "type": TransactionType.SUPPLIER_PAYMENT,
+                "amount": amount,
+                "date": date_obj,
+                "description": description or "Оплата поставщику"
+            })
+            debt_movement_repo = DebtMovementRepository(self.db)
+            debt_movement_repo.create({
+                "period": datetime.combine(date_obj, datetime.min.time()),
+                "document_id": transaction.id,
+                "document_type": "transaction",
+                "transaction_id": transaction.id,
+                "supplier_id": supplier_id,
+                "amount": amount,
+                "direction": DebtDirection.CREDIT,  
+                "dimension": DebtDimension.SUPPLIER_DEBT
+            })
+            self.db.commit()
+            return transaction   
+        except Exception as e:
+            self.db.rollback()
+            raise e       
 class DebtMovementRepository(BaseRepository):
     def __init__(self, db: Session):
         super().__init__(db, DebtMovement)
@@ -764,8 +788,20 @@ class DebtMovementRepository(BaseRepository):
                     supplier_id: Optional[uuid.UUID] = None,
                     dimension: Optional[DebtDimension] = None,
                     as_of_date: Optional[datetime] = None):
+        import logging
+        logger = logging.getLogger(__name__)
+        
+        # Расширенное логирование входящих параметров
+        logger.info(f"Входящие параметры get_balances:")
+        logger.info(f"Client ID: {client_id}")
+        logger.info(f"Supplier ID: {supplier_id}")
+        logger.info(f"Dimension: {dimension}")
+        logger.info(f"As of Date: {as_of_date}")
+
         if as_of_date is None:
-            as_of_date = datetime.now()
+            as_of_date = datetime.now() 
+        
+        # Логирование фильтров
         filters = [DebtMovement.period <= as_of_date]
         if client_id:
             filters.append(DebtMovement.client_id == client_id)
@@ -773,6 +809,17 @@ class DebtMovementRepository(BaseRepository):
             filters.append(DebtMovement.supplier_id == supplier_id)
         if dimension:
             filters.append(DebtMovement.dimension == dimension)
+        
+        logger.info(f"Constructed filters: {[str(f) for f in filters]}")
+
+        # Логирование всех движений долга перед агрегацией
+        all_movements = self.db.query(DebtMovement).filter(*filters).all()
+        logger.info(f"Total matching debt movements: {len(all_movements)}")
+        for movement in all_movements:
+            logger.debug(f"Movement: ID={movement.id}, Client={movement.client_id}, "
+                        f"Supplier={movement.supplier_id}, Amount={movement.amount}, "
+                        f"Direction={movement.direction}, Dimension={movement.dimension}")
+
         subquery = self.db.query(
             DebtMovement.client_id, 
             DebtMovement.supplier_id,
@@ -794,30 +841,67 @@ class DebtMovementRepository(BaseRepository):
             DebtMovement.supplier_id,
             DebtMovement.dimension
         ).subquery()
+
         result = self.db.query(
             subquery.c.client_id,
             subquery.c.supplier_id,
             subquery.c.dimension,
             (subquery.c.debit_amount - subquery.c.credit_amount).label('balance')
         ).all()
+
+        logger.info(f"Aggregation result count: {len(result)}")
+        
         balances = []
         for row in result:
+            balance_value = row.balance if row.balance is not None else 0.0
             balance_data = {
                 'client_id': row.client_id,
                 'supplier_id': row.supplier_id,
                 'dimension': row.dimension,
-                'balance': row.balance,
+                'balance': float(balance_value),  
                 'as_of_date': as_of_date
             }
-            balances.append(balance_data)
+            
+            logger.info(f"Processed balance: {balance_data}")
+            
+            if balance_value != 0 or client_id or supplier_id:
+                balances.append(balance_data)
+
+        logger.info(f"Balances before final processing: {balances}")
+
+        # Дополнительная обработка для пустых результатов
+        if not balances and (client_id or supplier_id):
+            if client_id and (not dimension or dimension == DebtDimension.CLIENT_DEBT):
+                default_balance = {
+                    'client_id': client_id,
+                    'supplier_id': None,
+                    'dimension': DebtDimension.CLIENT_DEBT,
+                    'balance': 0.0,
+                    'as_of_date': as_of_date
+                }
+                logger.info(f"Added default client balance: {default_balance}")
+                balances.append(default_balance)
+            
+            if supplier_id and (not dimension or dimension == DebtDimension.SUPPLIER_DEBT):
+                default_balance = {
+                    'client_id': None,
+                    'supplier_id': supplier_id,
+                    'dimension': DebtDimension.SUPPLIER_DEBT,
+                    'balance': 0.0,
+                    'as_of_date': as_of_date
+                }
+                logger.info(f"Added default supplier balance: {default_balance}")
+                balances.append(default_balance)
+
+        logger.info(f"Final balances: {balances}")
         return balances
 
     def get_turnovers(self,
-                     client_id: Optional[uuid.UUID] = None,
-                     supplier_id: Optional[uuid.UUID] = None,
-                     dimension: Optional[DebtDimension] = None,
-                     start_date: datetime = None,
-                     end_date: datetime = None):
+                    client_id: Optional[uuid.UUID] = None,
+                    supplier_id: Optional[uuid.UUID] = None,
+                    dimension: Optional[DebtDimension] = None,
+                    start_date: datetime = None,
+                    end_date: datetime = None):
         if start_date is None:
             start_date = datetime(datetime.now().year, datetime.now().month, 1)
         if end_date is None:
@@ -855,14 +939,42 @@ class DebtMovementRepository(BaseRepository):
         ).all()
         turnovers = []
         for row in result:
+            debit_value = float(row.debit) if row.debit is not None else 0.0
+            credit_value = float(row.credit) if row.credit is not None else 0.0
+            balance_value = debit_value - credit_value
             turnover_data = {
                 'client_id': row.client_id,
                 'supplier_id': row.supplier_id,
                 'dimension': row.dimension,
-                'debit': row.debit,
-                'credit': row.credit,
+                'debit': debit_value,
+                'credit': credit_value,
+                'balance': balance_value,
                 'start_date': start_date,
                 'end_date': end_date
             }
-            turnovers.append(turnover_data)
+            if debit_value != 0 or credit_value != 0 or client_id or supplier_id:
+                turnovers.append(turnover_data)
+        if not turnovers and (client_id or supplier_id):
+            if client_id and (not dimension or dimension == DebtDimension.CLIENT_DEBT):
+                turnovers.append({
+                    'client_id': client_id,
+                    'supplier_id': None,
+                    'dimension': DebtDimension.CLIENT_DEBT,
+                    'debit': 0.0,
+                    'credit': 0.0,
+                    'balance': 0.0,
+                    'start_date': start_date,
+                    'end_date': end_date
+                })
+            if supplier_id and (not dimension or dimension == DebtDimension.SUPPLIER_DEBT):
+                turnovers.append({
+                    'client_id': None,
+                    'supplier_id': supplier_id,
+                    'dimension': DebtDimension.SUPPLIER_DEBT,
+                    'debit': 0.0,
+                    'credit': 0.0,
+                    'balance': 0.0,
+                    'start_date': start_date,
+                    'end_date': end_date
+                })
         return turnovers

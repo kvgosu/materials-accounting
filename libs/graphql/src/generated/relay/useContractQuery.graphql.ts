@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<1f602d65a2950cb07e5c0389d36caa09>>
+ * @generated SignedSource<<4b12361744ad42e028190c99f39b09a1>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -98,91 +98,103 @@ v8 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "status",
+  "name": "expiration_date",
   "storageKey": null
 },
 v9 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "expiration_date",
+  "name": "name",
   "storageKey": null
 },
 v10 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "name",
+  "name": "contact_person",
   "storageKey": null
 },
 v11 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "contact_person",
+  "name": "phone",
   "storageKey": null
 },
 v12 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "phone",
+  "name": "email",
   "storageKey": null
 },
 v13 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
-  "name": "email",
-  "storageKey": null
-},
-v14 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
   "name": "address",
   "storageKey": null
 },
-v15 = [
+v14 = [
   (v2/*: any*/),
+  (v9/*: any*/),
   (v10/*: any*/),
   (v11/*: any*/),
   (v12/*: any*/),
-  (v13/*: any*/),
-  (v14/*: any*/)
+  (v13/*: any*/)
 ],
-v16 = {
+v15 = {
   "alias": null,
   "args": null,
   "concreteType": "Client",
   "kind": "LinkedField",
   "name": "client",
   "plural": false,
-  "selections": (v15/*: any*/),
+  "selections": (v14/*: any*/),
   "storageKey": null
 },
-v17 = {
+v16 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "created_at",
   "storageKey": null
 },
-v18 = {
+v17 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "updated_at",
   "storageKey": null
 },
-v19 = {
+v18 = {
   "alias": null,
   "args": null,
-  "concreteType": "Supplier",
+  "concreteType": "Invoice",
   "kind": "LinkedField",
-  "name": "supplier",
-  "plural": false,
-  "selections": (v15/*: any*/),
+  "name": "invoices",
+  "plural": true,
+  "selections": [
+    (v2/*: any*/),
+    (v3/*: any*/),
+    (v4/*: any*/),
+    (v5/*: any*/),
+    (v6/*: any*/),
+    (v15/*: any*/),
+    {
+      "alias": null,
+      "args": null,
+      "concreteType": "Supplier",
+      "kind": "LinkedField",
+      "name": "supplier",
+      "plural": false,
+      "selections": (v14/*: any*/),
+      "storageKey": null
+    },
+    (v16/*: any*/),
+    (v17/*: any*/)
+  ],
   "storageKey": null
 };
 return {
@@ -283,8 +295,14 @@ return {
           (v3/*: any*/),
           (v4/*: any*/),
           (v7/*: any*/),
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "status",
+            "storageKey": null
+          },
           (v8/*: any*/),
-          (v9/*: any*/),
           {
             "alias": null,
             "args": null,
@@ -294,11 +312,11 @@ return {
             "plural": false,
             "selections": [
               (v2/*: any*/),
+              (v9/*: any*/),
               (v10/*: any*/),
               (v11/*: any*/),
               (v12/*: any*/),
               (v13/*: any*/),
-              (v14/*: any*/),
               {
                 "alias": null,
                 "args": null,
@@ -311,34 +329,14 @@ return {
                   (v3/*: any*/),
                   (v4/*: any*/),
                   (v7/*: any*/),
-                  (v9/*: any*/),
-                  (v16/*: any*/),
-                  (v17/*: any*/),
-                  (v18/*: any*/)
-                ],
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "concreteType": "Invoice",
-                "kind": "LinkedField",
-                "name": "invoices",
-                "plural": true,
-                "selections": [
-                  (v2/*: any*/),
-                  (v3/*: any*/),
-                  (v4/*: any*/),
-                  (v5/*: any*/),
-                  (v6/*: any*/),
                   (v8/*: any*/),
+                  (v15/*: any*/),
                   (v16/*: any*/),
-                  (v19/*: any*/),
-                  (v17/*: any*/),
-                  (v18/*: any*/)
+                  (v17/*: any*/)
                 ],
                 "storageKey": null
               },
+              (v18/*: any*/),
               {
                 "alias": null,
                 "args": null,
@@ -346,45 +344,26 @@ return {
                 "name": "debt_balance",
                 "storageKey": null
               },
-              (v17/*: any*/),
-              (v18/*: any*/)
+              (v16/*: any*/),
+              (v17/*: any*/)
             ],
             "storageKey": null
           },
+          (v16/*: any*/),
           (v17/*: any*/),
-          (v18/*: any*/),
-          {
-            "alias": null,
-            "args": null,
-            "concreteType": "Invoice",
-            "kind": "LinkedField",
-            "name": "invoices",
-            "plural": true,
-            "selections": [
-              (v2/*: any*/),
-              (v3/*: any*/),
-              (v4/*: any*/),
-              (v5/*: any*/),
-              (v6/*: any*/),
-              (v16/*: any*/),
-              (v19/*: any*/),
-              (v17/*: any*/),
-              (v18/*: any*/)
-            ],
-            "storageKey": null
-          }
+          (v18/*: any*/)
         ],
         "storageKey": null
       }
     ]
   },
   "params": {
-    "cacheID": "9640d805b8ad97da05347e4e0ffb9e44",
+    "cacheID": "76c839340f26f09b85df761e9c26a76f",
     "id": null,
     "metadata": {},
     "name": "useContractQuery",
     "operationKind": "query",
-    "text": "query useContractQuery(\n  $id: ID!\n) {\n  contract(id: $id) {\n    ...ContractFragments_contractDetails\n    invoices {\n      ...InvoiceFragments_listWithoutStatus\n      id\n      number\n      date\n      total_amount\n      total_with_markup\n      supplier {\n        ...SupplierFragments_supplier\n        id\n      }\n      client {\n        ...ClientFragments_client\n        id\n      }\n    }\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment ClientFragments_clientDetails on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n  contracts {\n    ...ContractFragments_list\n    id\n  }\n  invoices {\n    ...InvoiceFragments_list\n    id\n  }\n  debt_balance\n  created_at\n  updated_at\n}\n\nfragment ContractFragments_contractDetails on Contract {\n  id\n  number\n  date\n  markup_percentage\n  status\n  expiration_date\n  client {\n    ...ClientFragments_clientDetails\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment ContractFragments_list on Contract {\n  id\n  number\n  date\n  markup_percentage\n  expiration_date\n  client {\n    ...ClientFragments_client\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment InvoiceFragments_list on Invoice {\n  id\n  number\n  date\n  total_amount\n  total_with_markup\n  status\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment InvoiceFragments_listWithoutStatus on Invoice {\n  id\n  number\n  date\n  total_amount\n  total_with_markup\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n"
+    "text": "query useContractQuery(\n  $id: ID!\n) {\n  contract(id: $id) {\n    ...ContractFragments_contractDetails\n    invoices {\n      ...InvoiceFragments_listWithoutStatus\n      id\n      number\n      date\n      total_amount\n      total_with_markup\n      supplier {\n        ...SupplierFragments_supplier\n        id\n      }\n      client {\n        ...ClientFragments_client\n        id\n      }\n    }\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment ClientFragments_clientDetails on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n  contracts {\n    ...ContractFragments_list\n    id\n  }\n  invoices {\n    ...InvoiceFragments_listWithoutStatus\n    id\n  }\n  debt_balance\n  created_at\n  updated_at\n}\n\nfragment ContractFragments_contractDetails on Contract {\n  id\n  number\n  date\n  markup_percentage\n  status\n  expiration_date\n  client {\n    ...ClientFragments_clientDetails\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment ContractFragments_list on Contract {\n  id\n  number\n  date\n  markup_percentage\n  expiration_date\n  client {\n    ...ClientFragments_client\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment InvoiceFragments_listWithoutStatus on Invoice {\n  id\n  number\n  date\n  total_amount\n  total_with_markup\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n"
   }
 };
 })();

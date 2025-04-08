@@ -1,5 +1,6 @@
 # app/graphql/resolvers/debt_movements.py
 from datetime import datetime
+import uuid
 from ...database.repositories import (
     DebtMovementRepository, ClientRepository,
     SupplierRepository, InvoiceRepository, TransactionRepository
@@ -51,6 +52,26 @@ def get_debt_movements_resolver(obj, info, **kwargs):
             movement.direction = movement.direction.name if hasattr(movement.direction, 'name') else str(movement.direction)        
     return movements
 
+def parse_datetime(date_string):
+    if not date_string:
+        return None
+    
+    # Если дата содержит часть времени (ISO формат с T), отсекаем её
+    if 'T' in date_string:
+        date_string = date_string.split('T')[0]
+    
+    # Пробуем формат YYYY-MM-DD
+    try:
+        return datetime.strptime(date_string, "%Y-%m-%d")
+    except ValueError:
+        pass
+    
+    # Пробуем ISO формат как запасной вариант
+    try:
+        return datetime.fromisoformat(date_string)
+    except ValueError:
+        return None
+
 def get_debt_balances_resolver(obj, info, **kwargs):
     db = info.context["db"]
     debt_repo = DebtMovementRepository(db)
@@ -64,17 +85,31 @@ def get_debt_balances_resolver(obj, info, **kwargs):
         try:
             dimension_obj = DebtDimension[dimension]
         except (KeyError, TypeError):
-            pass      
+            pass
     balances = debt_repo.get_balances(
         client_id=client_id,
         supplier_id=supplier_id,
         dimension=dimension_obj,
         as_of_date=as_of_date_obj
     )
+    result_balances = []
     for balance in balances:
         if 'dimension' in balance and balance['dimension']:
-            balance['dimension'] = balance['dimension'].name if hasattr(balance['dimension'], 'name') else str(balance['dimension'])      
-    return balances
+            balance['dimension'] = balance['dimension'].name if hasattr(balance['dimension'], 'name') else str(balance['dimension'])
+        if 'as_of_date' in balance and balance['as_of_date'] and not isinstance(balance['as_of_date'], str):
+            balance['as_of_date'] = balance['as_of_date'].isoformat()
+        if 'balance' in balance and balance['balance'] is None:
+            balance['balance'] = 0.0
+        if 'client_id' in balance and balance['client_id']:
+            balance['id'] = f"client_{balance['client_id']}_{balance['dimension']}_{as_of_date}"
+        elif 'supplier_id' in balance and balance['supplier_id']:
+            balance['id'] = f"supplier_{balance['supplier_id']}_{balance['dimension']}_{as_of_date}"
+        else:
+            hash_input = f"{balance.get('dimension', '')}-{as_of_date}"
+            balance['id'] = f"balance_{hash(hash_input) % 10000:04d}"
+        if balance.get('balance', 0) != 0 or (client_id or supplier_id):
+            result_balances.append(balance)
+    return result_balances
 
 def get_debt_turnovers_resolver(obj, info, **kwargs):
     db = info.context["db"]
@@ -95,7 +130,7 @@ def get_debt_turnovers_resolver(obj, info, **kwargs):
         try:
             dimension_obj = DebtDimension[dimension]
         except (KeyError, TypeError):
-            pass       
+            pass
     turnovers = debt_repo.get_turnovers(
         client_id=client_id,
         supplier_id=supplier_id,
@@ -103,12 +138,33 @@ def get_debt_turnovers_resolver(obj, info, **kwargs):
         start_date=start_date_obj,
         end_date=end_date_obj
     )
+    result_turnovers = []
     for turnover in turnovers:
         if 'dimension' in turnover and turnover['dimension']:
             turnover['dimension'] = turnover['dimension'].name if hasattr(turnover['dimension'], 'name') else str(turnover['dimension'])
-        if 'direction' in turnover and turnover['direction']:
-            turnover['direction'] = turnover['direction'].name if hasattr(turnover['direction'], 'name') else str(turnover['direction'])       
-    return turnovers
+        if 'start_date' in turnover and turnover['start_date'] and not isinstance(turnover['start_date'], str):
+            turnover['start_date'] = turnover['start_date'].isoformat()
+        if 'end_date' in turnover and turnover['end_date'] and not isinstance(turnover['end_date'], str):
+            turnover['end_date'] = turnover['end_date'].isoformat()
+        if 'debit' in turnover and turnover['debit'] is None:
+            turnover['debit'] = 0.0
+        if 'credit' in turnover and turnover['credit'] is None:
+            turnover['credit'] = 0.0
+        if 'balance' not in turnover:
+            turnover['balance'] = turnover.get('debit', 0) - turnover.get('credit', 0)
+        elif turnover['balance'] is None:
+            turnover['balance'] = turnover.get('debit', 0) - turnover.get('credit', 0)
+        if 'client_id' in turnover and turnover['client_id']:
+            turnover['id'] = f"turnover_client_{turnover['client_id']}_{turnover['dimension']}_{start_date}_{end_date}"
+        elif 'supplier_id' in turnover and turnover['supplier_id']:
+            turnover['id'] = f"turnover_supplier_{turnover['supplier_id']}_{turnover['dimension']}_{start_date}_{end_date}"
+        else:
+            hash_input = f"{turnover.get('dimension', '')}-{start_date}-{end_date}"
+            turnover['id'] = f"turnover_{hash(hash_input) % 10000:04d}"
+        has_movement = turnover.get('debit', 0) != 0 or turnover.get('credit', 0) != 0
+        if has_movement or (client_id or supplier_id):
+            result_turnovers.append(turnover)
+    return result_turnovers
 
 def resolve_debt_movement_client(debt_movement, info):
     if not debt_movement.client_id:

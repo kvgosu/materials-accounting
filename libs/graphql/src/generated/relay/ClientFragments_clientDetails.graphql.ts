@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<4be8cb4dafd1f2b1314090abbda8b9eb>>
+ * @generated SignedSource<<7fe252e39fe517875870c691872e578b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -21,7 +21,7 @@ export type ClientFragments_clientDetails$data = {
   readonly email: string | null | undefined;
   readonly id: string;
   readonly invoices: ReadonlyArray<{
-    readonly " $fragmentSpreads": FragmentRefs<"InvoiceFragments_list">;
+    readonly " $fragmentSpreads": FragmentRefs<"InvoiceFragments_listWithoutStatus">;
   }> | null | undefined;
   readonly name: string;
   readonly phone: string | null | undefined;
@@ -108,7 +108,7 @@ const node: ReaderFragment = {
         {
           "args": null,
           "kind": "FragmentSpread",
-          "name": "InvoiceFragments_list"
+          "name": "InvoiceFragments_listWithoutStatus"
         }
       ],
       "storageKey": null
@@ -139,6 +139,6 @@ const node: ReaderFragment = {
   "abstractKey": null
 };
 
-(node as any).hash = "78961cb3254ca294e97a95d2dbf77364";
+(node as any).hash = "d4701545d374efb4840ae7496fb3c4d4";
 
 export default node;

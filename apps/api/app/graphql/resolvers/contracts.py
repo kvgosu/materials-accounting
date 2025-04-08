@@ -42,8 +42,10 @@ def resolve_contract_invoices(contract, info):
     invoice_repo = InvoiceRepository(db)
     invoices = invoice_repo.get_all(contract_id=contract.id)
     for invoice in invoices:
-        if hasattr(invoice, 'status'):
-            invoice.status = str(invoice.status)
+        if hasattr(invoice, 'status') and invoice.status:
+            if hasattr(invoice.status, 'name'):
+                # Явно преобразуем enum в одно из определенных в схеме значений
+                invoice.status = invoice.status.name  # Например, "CREATED", "PROCESSED"
     return invoices
 
 def create_contract_resolver(obj, info, input, **kwargs):

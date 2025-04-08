@@ -107,11 +107,17 @@ def resolve_transaction_invoice(transaction, info):
     return invoice
 
 def resolve_transaction_client(transaction, info):
+    import logging
+    logger = logging.getLogger(__name__)
+    logger.info(f"Resolving client for transaction {transaction.id}, client_id: {transaction.client_id}")
     if not transaction.client_id:
+        logger.info(f"No client_id for transaction {transaction.id}")
         return None
     db = info.context["db"]
     client_repo = ClientRepository(db)
-    return client_repo.get_by_id(transaction.client_id)
+    client = client_repo.get_by_id(transaction.client_id)
+    logger.info(f"Resolved client: {client.id if client else None}")
+    return client
 
 def resolve_transaction_supplier(transaction, info):
     if not transaction.supplier_id:
@@ -156,9 +162,13 @@ def register_client_payment_resolver(obj, info, input, **kwargs):
     date_str = input.get('date')
     description = input.get('description', 'Оплата от клиента')
     if isinstance(date_str, str):
-        date_obj = datetime.fromisoformat(date_str).date()
+        try:
+            date_obj = datetime.fromisoformat(date_str).date()
+        except ValueError:
+            date_obj = datetime.strptime(date_str, "%Y-%m-%d").date()
     else:
         date_obj = date_str
+    print(f"Регистрация оплаты от клиента. ID: {client_id}, Сумма: {amount}, Дата: {date_obj}")
     transaction = transaction_repo.register_client_payment(
         client_id=client_id,
         amount=amount,
@@ -167,6 +177,7 @@ def register_client_payment_resolver(obj, info, input, **kwargs):
     )
     if transaction and hasattr(transaction, 'type') and transaction.type:
         transaction.type = transaction.type.name if hasattr(transaction.type, 'name') else str(transaction.type)
+    
     return {"transaction": transaction}
 
 def register_supplier_payment_resolver(obj, info, input, **kwargs):
@@ -176,7 +187,10 @@ def register_supplier_payment_resolver(obj, info, input, **kwargs):
     amount = input.get('amount')
     date_str = input.get('date')
     description = input.get('description', 'Оплата поставщику')
-    date_obj = datetime.fromisoformat(date_str)
+    if isinstance(date_str, str):
+        date_obj = datetime.fromisoformat(date_str).date()
+    else:
+        date_obj = date_str
     transaction = transaction_repo.register_supplier_payment(
         supplier_id=supplier_id,
         amount=amount,

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<b35cbe9e0e54e21311e3da13584fe225>>
+ * @generated SignedSource<<d1ec48553cbfc5b5dfb1490d68327fcd>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -267,13 +267,6 @@ return {
                 "name": "total_with_markup",
                 "storageKey": null
               },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "status",
-                "storageKey": null
-              },
               (v11/*: any*/),
               {
                 "alias": null,
@@ -286,7 +279,14 @@ return {
                 "storageKey": null
               },
               (v12/*: any*/),
-              (v13/*: any*/)
+              (v13/*: any*/),
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "status",
+                "storageKey": null
+              }
             ],
             "storageKey": null
           },
@@ -305,12 +305,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "c479755201ce45063ca26b2cf9c989d0",
+    "cacheID": "8d40c6f5c72407cb3bda3171bd3f355b",
     "id": null,
     "metadata": {},
     "name": "useClientQuery",
     "operationKind": "query",
-    "text": "query useClientQuery(\n  $id: ID!\n) {\n  client(id: $id) {\n    ...ClientFragments_clientDetails\n    contracts {\n      ...ContractFragments_list\n      id\n    }\n    invoices {\n      ...InvoiceFragments_list\n      id\n    }\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment ClientFragments_clientDetails on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n  contracts {\n    ...ContractFragments_list\n    id\n  }\n  invoices {\n    ...InvoiceFragments_list\n    id\n  }\n  debt_balance\n  created_at\n  updated_at\n}\n\nfragment ContractFragments_list on Contract {\n  id\n  number\n  date\n  markup_percentage\n  expiration_date\n  client {\n    ...ClientFragments_client\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment InvoiceFragments_list on Invoice {\n  id\n  number\n  date\n  total_amount\n  total_with_markup\n  status\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n"
+    "text": "query useClientQuery(\n  $id: ID!\n) {\n  client(id: $id) {\n    ...ClientFragments_clientDetails\n    contracts {\n      ...ContractFragments_list\n      id\n    }\n    invoices {\n      ...InvoiceFragments_list\n      id\n    }\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment ClientFragments_clientDetails on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n  contracts {\n    ...ContractFragments_list\n    id\n  }\n  invoices {\n    ...InvoiceFragments_listWithoutStatus\n    id\n  }\n  debt_balance\n  created_at\n  updated_at\n}\n\nfragment ContractFragments_list on Contract {\n  id\n  number\n  date\n  markup_percentage\n  expiration_date\n  client {\n    ...ClientFragments_client\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment InvoiceFragments_list on Invoice {\n  id\n  number\n  date\n  total_amount\n  total_with_markup\n  status\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment InvoiceFragments_listWithoutStatus on Invoice {\n  id\n  number\n  date\n  total_amount\n  total_with_markup\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n"
   }
 };
 })();

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<93416f59e463f5a1fb4a6250c4903bba>>
+ * @generated SignedSource<<a7518f22c67dc77ae28866490cf7ca20>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -14,7 +14,8 @@ import { FragmentRefs } from "relay-runtime";
 export type DebtFragments_debtTurnover$data = {
   readonly balance: number;
   readonly client: {
-    readonly " $fragmentSpreads": FragmentRefs<"ClientFragments_client">;
+    readonly id: string;
+    readonly name: string;
   } | null | undefined;
   readonly credit: number;
   readonly debit: number;
@@ -23,7 +24,8 @@ export type DebtFragments_debtTurnover$data = {
   readonly id: string;
   readonly start_date: string;
   readonly supplier: {
-    readonly " $fragmentSpreads": FragmentRefs<"SupplierFragments_supplier">;
+    readonly id: string;
+    readonly name: string;
   } | null | undefined;
   readonly " $fragmentType": "DebtFragments_debtTurnover";
 };
@@ -32,19 +34,31 @@ export type DebtFragments_debtTurnover$key = {
   readonly " $fragmentSpreads": FragmentRefs<"DebtFragments_debtTurnover">;
 };
 
-const node: ReaderFragment = {
+const node: ReaderFragment = (function(){
+var v0 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+},
+v1 = [
+  (v0/*: any*/),
+  {
+    "alias": null,
+    "args": null,
+    "kind": "ScalarField",
+    "name": "name",
+    "storageKey": null
+  }
+];
+return {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
   "name": "DebtFragments_debtTurnover",
   "selections": [
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "id",
-      "storageKey": null
-    },
+    (v0/*: any*/),
     {
       "alias": null,
       "args": null,
@@ -52,13 +66,7 @@ const node: ReaderFragment = {
       "kind": "LinkedField",
       "name": "client",
       "plural": false,
-      "selections": [
-        {
-          "args": null,
-          "kind": "FragmentSpread",
-          "name": "ClientFragments_client"
-        }
-      ],
+      "selections": (v1/*: any*/),
       "storageKey": null
     },
     {
@@ -68,13 +76,7 @@ const node: ReaderFragment = {
       "kind": "LinkedField",
       "name": "supplier",
       "plural": false,
-      "selections": [
-        {
-          "args": null,
-          "kind": "FragmentSpread",
-          "name": "SupplierFragments_supplier"
-        }
-      ],
+      "selections": (v1/*: any*/),
       "storageKey": null
     },
     {
@@ -123,7 +125,8 @@ const node: ReaderFragment = {
   "type": "DebtTurnover",
   "abstractKey": null
 };
+})();
 
-(node as any).hash = "7fc1a9b31b4684837bf9085d0d4d1081";
+(node as any).hash = "dc557d50352cbd5688d0fd154b8cf13f";
 
 export default node;

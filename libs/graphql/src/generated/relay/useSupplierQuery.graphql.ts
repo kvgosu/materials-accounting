@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0fdc951ef753906e2acadea11e09734e>>
+ * @generated SignedSource<<988d127b0185ba9f1e236933e67e967f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -28,7 +28,7 @@ export type useSupplierQuery$data = {
       readonly status: InvoiceStatus;
       readonly total_amount: number;
       readonly total_with_markup: number;
-      readonly " $fragmentSpreads": FragmentRefs<"InvoiceFragments_list">;
+      readonly " $fragmentSpreads": FragmentRefs<"InvoiceFragments_listWithoutStatus">;
     }> | null | undefined;
     readonly transactions: ReadonlyArray<{
       readonly amount: number;
@@ -199,7 +199,11 @@ v20 = {
   "plural": false,
   "selections": (v18/*: any*/),
   "storageKey": null
-};
+},
+v21 = [
+  (v3/*: any*/),
+  (v11/*: any*/)
+];
 return {
   "fragment": {
     "argumentDefinitions": (v0/*: any*/),
@@ -232,7 +236,7 @@ return {
               {
                 "args": null,
                 "kind": "FragmentSpread",
-                "name": "InvoiceFragments_list"
+                "name": "InvoiceFragments_listWithoutStatus"
               },
               (v3/*: any*/),
               (v4/*: any*/),
@@ -322,11 +326,11 @@ return {
               (v5/*: any*/),
               (v6/*: any*/),
               (v7/*: any*/),
-              (v8/*: any*/),
               (v19/*: any*/),
               (v20/*: any*/),
               (v16/*: any*/),
-              (v17/*: any*/)
+              (v17/*: any*/),
+              (v8/*: any*/)
             ],
             "storageKey": null
           },
@@ -401,8 +405,53 @@ return {
                 "name": "dimension",
                 "storageKey": null
               },
-              (v19/*: any*/),
-              (v20/*: any*/),
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "Client",
+                "kind": "LinkedField",
+                "name": "client",
+                "plural": false,
+                "selections": (v21/*: any*/),
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "Supplier",
+                "kind": "LinkedField",
+                "name": "supplier",
+                "plural": false,
+                "selections": (v21/*: any*/),
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "Invoice",
+                "kind": "LinkedField",
+                "name": "invoice",
+                "plural": false,
+                "selections": [
+                  (v3/*: any*/),
+                  (v4/*: any*/)
+                ],
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "Transaction",
+                "kind": "LinkedField",
+                "name": "transaction",
+                "plural": false,
+                "selections": [
+                  (v3/*: any*/),
+                  (v10/*: any*/),
+                  (v9/*: any*/)
+                ],
+                "storageKey": null
+              },
               (v16/*: any*/)
             ],
             "storageKey": null
@@ -413,16 +462,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "a576ef32da6f3419512562b057e90016",
+    "cacheID": "f078f81611752fc0031b065f26b7452d",
     "id": null,
     "metadata": {},
     "name": "useSupplierQuery",
     "operationKind": "query",
-    "text": "query useSupplierQuery(\n  $id: ID!\n) {\n  supplier(id: $id) {\n    ...SupplierFragments_supplierDetails\n    debt_balance\n    invoices {\n      ...InvoiceFragments_list\n      id\n      number\n      date\n      total_amount\n      total_with_markup\n      status\n    }\n    transactions {\n      ...TransactionFragments_list\n      id\n      date\n      amount\n      type\n    }\n    debt_movements {\n      ...DebtFragments_debtMovementList\n      id\n    }\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment DebtFragments_debtMovementList on DebtMovement {\n  id\n  period\n  document_id\n  document_type\n  amount\n  direction\n  dimension\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n}\n\nfragment InvoiceFragments_list on Invoice {\n  id\n  number\n  date\n  total_amount\n  total_with_markup\n  status\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment SupplierFragments_supplierDetails on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n  created_at\n  updated_at\n  debt_balance\n}\n\nfragment TransactionFragments_list on Transaction {\n  id\n  type\n  amount\n  date\n  description\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n  updated_at\n}\n"
+    "text": "query useSupplierQuery(\n  $id: ID!\n) {\n  supplier(id: $id) {\n    ...SupplierFragments_supplierDetails\n    debt_balance\n    invoices {\n      ...InvoiceFragments_listWithoutStatus\n      id\n      number\n      date\n      total_amount\n      total_with_markup\n      status\n    }\n    transactions {\n      ...TransactionFragments_list\n      id\n      date\n      amount\n      type\n    }\n    debt_movements {\n      ...DebtFragments_debtMovementList\n      id\n    }\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment DebtFragments_debtMovement on DebtMovement {\n  id\n  period\n  document_id\n  document_type\n  amount\n  direction\n  dimension\n  client {\n    id\n    name\n  }\n  supplier {\n    id\n    name\n  }\n  invoice {\n    id\n    number\n  }\n  transaction {\n    id\n    type\n    amount\n  }\n  created_at\n}\n\nfragment DebtFragments_debtMovementList on DebtMovement {\n  ...DebtFragments_debtMovement\n}\n\nfragment InvoiceFragments_listWithoutStatus on Invoice {\n  id\n  number\n  date\n  total_amount\n  total_with_markup\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n  updated_at\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment SupplierFragments_supplierDetails on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n  created_at\n  updated_at\n  debt_balance\n}\n\nfragment TransactionFragments_list on Transaction {\n  id\n  type\n  amount\n  date\n  description\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n  updated_at\n}\n"
   }
 };
 })();
 
-(node as any).hash = "6f4b4857b0349120e609e34ac221cb5e";
+(node as any).hash = "fba1b2d15c9f945d403177ef1ad5e915";
 
 export default node;

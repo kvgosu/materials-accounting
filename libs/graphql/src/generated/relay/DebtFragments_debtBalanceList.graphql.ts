@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<b075a566ecc1c7e4d5467cfd83147111>>
+ * @generated SignedSource<<9b0e61887f94f7806a113213a0aaf584>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -15,12 +15,14 @@ export type DebtFragments_debtBalanceList$data = ReadonlyArray<{
   readonly as_of_date: string;
   readonly balance: number;
   readonly client: {
-    readonly " $fragmentSpreads": FragmentRefs<"ClientFragments_client">;
+    readonly id: string;
+    readonly name: string;
   } | null | undefined;
   readonly dimension: DebtDimension;
   readonly id: string;
   readonly supplier: {
-    readonly " $fragmentSpreads": FragmentRefs<"SupplierFragments_supplier">;
+    readonly id: string;
+    readonly name: string;
   } | null | undefined;
   readonly " $fragmentType": "DebtFragments_debtBalanceList";
 }>;
@@ -29,7 +31,25 @@ export type DebtFragments_debtBalanceList$key = ReadonlyArray<{
   readonly " $fragmentSpreads": FragmentRefs<"DebtFragments_debtBalanceList">;
 }>;
 
-const node: ReaderFragment = {
+const node: ReaderFragment = (function(){
+var v0 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+},
+v1 = [
+  (v0/*: any*/),
+  {
+    "alias": null,
+    "args": null,
+    "kind": "ScalarField",
+    "name": "name",
+    "storageKey": null
+  }
+];
+return {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": {
@@ -37,13 +57,7 @@ const node: ReaderFragment = {
   },
   "name": "DebtFragments_debtBalanceList",
   "selections": [
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "id",
-      "storageKey": null
-    },
+    (v0/*: any*/),
     {
       "alias": null,
       "args": null,
@@ -51,13 +65,7 @@ const node: ReaderFragment = {
       "kind": "LinkedField",
       "name": "client",
       "plural": false,
-      "selections": [
-        {
-          "args": null,
-          "kind": "FragmentSpread",
-          "name": "ClientFragments_client"
-        }
-      ],
+      "selections": (v1/*: any*/),
       "storageKey": null
     },
     {
@@ -67,13 +75,7 @@ const node: ReaderFragment = {
       "kind": "LinkedField",
       "name": "supplier",
       "plural": false,
-      "selections": [
-        {
-          "args": null,
-          "kind": "FragmentSpread",
-          "name": "SupplierFragments_supplier"
-        }
-      ],
+      "selections": (v1/*: any*/),
       "storageKey": null
     },
     {
@@ -101,7 +103,8 @@ const node: ReaderFragment = {
   "type": "DebtBalance",
   "abstractKey": null
 };
+})();
 
-(node as any).hash = "9e9cb5c60b8d4090e247393167cdeb9b";
+(node as any).hash = "493c5329b73829cf3adb16bff924e537";
 
 export default node;

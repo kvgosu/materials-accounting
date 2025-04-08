@@ -1,4 +1,3 @@
-// libs/graphql/src/operations/queries/debt.ts
 import { graphql } from 'react-relay';
 
 export const DebtBalancesQuery = graphql`

@@ -72,18 +72,34 @@ function NewContractContent() {
   const handleSubmit = async (data: any) => {
     try {
       setIsLoading(true);
+      
+      console.log('Received form data:', data);
+
+      // Валидация обязательных полей - проверяем оба возможных имени поля
+      const clientId = data.client_id || data.clientId;
+      if (!clientId) {
+        throw new Error('Выберите клиента');
+      }
+      
+      // Проверяем оба возможных имени поля
+      const markupPercentage = data.markup_percentage !== undefined ? 
+        data.markup_percentage : data.markupPercentage;
+      if ((markupPercentage === null || markupPercentage === undefined) && markupPercentage !== 0) {
+        throw new Error('Укажите процент наценки');
+      }
 
       const contractInput = {
-        client_id: data.client_id,
+        client_id: clientId,
         number: data.number,
         date: data.date.toISOString().split('T')[0],
-        markup_percentage: parseFloat(data.markup_percentage),
+        markup_percentage: parseFloat(markupPercentage || 0), // Гарантируем число
         status: data.status,
         expiration_date: data.expiration_date
           ? data.expiration_date.toISOString().split('T')[0]
           : null
       };
 
+      console.log('Sending contract data:', contractInput);
       await createContract(contractInput);
 
       toast({
@@ -112,6 +128,7 @@ function NewContractContent() {
   const initialData = clientIdParam ? {
     client_id: clientIdParam,
     date: new Date(),
+    markup_percentage: 0, // Добавляем значение по умолчанию
     status: ContractStatus.ACTIVE
   } : undefined;
 
@@ -187,6 +204,16 @@ function EditContractContent({ contractId }: { contractId: string }) {
   const handleSubmit = async (data: any) => {
     try {
       setIsLoading(true);
+      
+      // Валидация обязательных полей
+      if (!data.clientId) {
+        throw new Error('Выберите клиента');
+      }
+      
+      if (!data.markupPercentage && data.markupPercentage !== 0) {
+        throw new Error('Укажите процент наценки');
+      }
+      
       const contractInput = {
         id: contractId,
         client_id: data.clientId, 
@@ -194,7 +221,7 @@ function EditContractContent({ contractId }: { contractId: string }) {
         date: data.date instanceof Date 
           ? data.date.toISOString().split('T')[0] 
           : data.date,
-        markup_percentage: parseFloat(data.markupPercentage), 
+        markup_percentage: parseFloat(data.markupPercentage || 0), // Гарантируем число
         status: data.status,
         expiration_date: data.expirationDate 
           ? (data.expirationDate instanceof Date 
@@ -202,6 +229,8 @@ function EditContractContent({ contractId }: { contractId: string }) {
             : data.expirationDate)
           : null
       };
+      
+      console.log('Updating contract with data:', contractInput);
       await updateContract(contractInput);
       toast({
         title: 'Успешно',
@@ -252,7 +281,7 @@ function EditContractContent({ contractId }: { contractId: string }) {
     clientId: contractData?.client?.id || contractData.client?.__id || '',
     number: contractData.number || '',
     date: contractData.date ? new Date(contractData.date) : new Date(),
-    markupPercentage: contractData.markup_percentage || 0,
+    markupPercentage: contractData.markup_percentage !== null ? contractData.markup_percentage : 0,
     status: contractData.status || ContractStatus.ACTIVE,
     expirationDate: contractData.expiration_date
       ? new Date(contractData.expiration_date)

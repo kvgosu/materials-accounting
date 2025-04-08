@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a601b4cc4093e04b8d798d41703a3532>>
+ * @generated SignedSource<<2539d64a621ef2bccddd113bc996677a>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,11 +11,13 @@
 import { ReaderFragment } from 'relay-runtime';
 export type DebtDimension = "CLIENT_DEBT" | "SUPPLIER_DEBT" | "%future added value";
 export type DebtDirection = "CREDIT" | "DEBIT" | "%future added value";
+export type TransactionType = "CLIENT_DEBT" | "CLIENT_PAYMENT" | "SUPPLIER_DEBT" | "SUPPLIER_PAYMENT" | "%future added value";
 import { FragmentRefs } from "relay-runtime";
 export type DebtFragments_debtMovement$data = {
   readonly amount: number;
   readonly client: {
-    readonly " $fragmentSpreads": FragmentRefs<"ClientFragments_client">;
+    readonly id: string;
+    readonly name: string;
   } | null | undefined;
   readonly created_at: string;
   readonly dimension: DebtDimension;
@@ -23,9 +25,19 @@ export type DebtFragments_debtMovement$data = {
   readonly document_id: string;
   readonly document_type: string;
   readonly id: string;
+  readonly invoice: {
+    readonly id: string;
+    readonly number: string;
+  } | null | undefined;
   readonly period: string;
   readonly supplier: {
-    readonly " $fragmentSpreads": FragmentRefs<"SupplierFragments_supplier">;
+    readonly id: string;
+    readonly name: string;
+  } | null | undefined;
+  readonly transaction: {
+    readonly amount: number;
+    readonly id: string;
+    readonly type: TransactionType;
   } | null | undefined;
   readonly " $fragmentType": "DebtFragments_debtMovement";
 };
@@ -34,19 +46,38 @@ export type DebtFragments_debtMovement$key = {
   readonly " $fragmentSpreads": FragmentRefs<"DebtFragments_debtMovement">;
 };
 
-const node: ReaderFragment = {
+const node: ReaderFragment = (function(){
+var v0 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "id",
+  "storageKey": null
+},
+v1 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "amount",
+  "storageKey": null
+},
+v2 = [
+  (v0/*: any*/),
+  {
+    "alias": null,
+    "args": null,
+    "kind": "ScalarField",
+    "name": "name",
+    "storageKey": null
+  }
+];
+return {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
   "name": "DebtFragments_debtMovement",
   "selections": [
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "id",
-      "storageKey": null
-    },
+    (v0/*: any*/),
     {
       "alias": null,
       "args": null,
@@ -68,13 +99,7 @@ const node: ReaderFragment = {
       "name": "document_type",
       "storageKey": null
     },
-    {
-      "alias": null,
-      "args": null,
-      "kind": "ScalarField",
-      "name": "amount",
-      "storageKey": null
-    },
+    (v1/*: any*/),
     {
       "alias": null,
       "args": null,
@@ -96,13 +121,7 @@ const node: ReaderFragment = {
       "kind": "LinkedField",
       "name": "client",
       "plural": false,
-      "selections": [
-        {
-          "args": null,
-          "kind": "FragmentSpread",
-          "name": "ClientFragments_client"
-        }
-      ],
+      "selections": (v2/*: any*/),
       "storageKey": null
     },
     {
@@ -112,12 +131,45 @@ const node: ReaderFragment = {
       "kind": "LinkedField",
       "name": "supplier",
       "plural": false,
+      "selections": (v2/*: any*/),
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "concreteType": "Invoice",
+      "kind": "LinkedField",
+      "name": "invoice",
+      "plural": false,
       "selections": [
+        (v0/*: any*/),
         {
+          "alias": null,
           "args": null,
-          "kind": "FragmentSpread",
-          "name": "SupplierFragments_supplier"
+          "kind": "ScalarField",
+          "name": "number",
+          "storageKey": null
         }
+      ],
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "concreteType": "Transaction",
+      "kind": "LinkedField",
+      "name": "transaction",
+      "plural": false,
+      "selections": [
+        (v0/*: any*/),
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "type",
+          "storageKey": null
+        },
+        (v1/*: any*/)
       ],
       "storageKey": null
     },
@@ -132,7 +184,8 @@ const node: ReaderFragment = {
   "type": "DebtMovement",
   "abstractKey": null
 };
+})();
 
-(node as any).hash = "1fd757e0c02ec335783ab3fd402983b4";
+(node as any).hash = "b18d761dde3c0372f3942e74ca2a9b0f";
 
 export default node;

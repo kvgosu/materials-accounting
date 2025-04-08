@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d9c502848f63e9545ddb7cb7cef00bf2>>
+ * @generated SignedSource<<f13096d153f3c0774d2cb3876aae26eb>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,6 +10,7 @@
 
 import { ConcreteRequest } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
+export type TransactionType = "CLIENT_DEBT" | "CLIENT_PAYMENT" | "SUPPLIER_DEBT" | "SUPPLIER_PAYMENT" | "%future added value";
 export type RegisterSupplierPaymentInput = {
   amount: number;
   date: string;
@@ -22,7 +23,16 @@ export type PaymentMutationsRegisterSupplierMutation$variables = {
 export type PaymentMutationsRegisterSupplierMutation$data = {
   readonly register_supplier_payment: {
     readonly transaction: {
-      readonly " $fragmentSpreads": FragmentRefs<"TransactionFragments_transactionDetails">;
+      readonly amount: number;
+      readonly created_at: string | null | undefined;
+      readonly date: string;
+      readonly description: string | null | undefined;
+      readonly id: string;
+      readonly supplier: {
+        readonly " $fragmentSpreads": FragmentRefs<"SupplierFragments_supplier">;
+      } | null | undefined;
+      readonly type: TransactionType;
+      readonly updated_at: string | null | undefined;
     };
   };
 };
@@ -53,44 +63,48 @@ v2 = {
   "name": "id",
   "storageKey": null
 },
-v3 = [
-  (v2/*: any*/),
-  {
-    "alias": null,
-    "args": null,
-    "kind": "ScalarField",
-    "name": "name",
-    "storageKey": null
-  },
-  {
-    "alias": null,
-    "args": null,
-    "kind": "ScalarField",
-    "name": "contact_person",
-    "storageKey": null
-  },
-  {
-    "alias": null,
-    "args": null,
-    "kind": "ScalarField",
-    "name": "phone",
-    "storageKey": null
-  },
-  {
-    "alias": null,
-    "args": null,
-    "kind": "ScalarField",
-    "name": "email",
-    "storageKey": null
-  },
-  {
-    "alias": null,
-    "args": null,
-    "kind": "ScalarField",
-    "name": "address",
-    "storageKey": null
-  }
-];
+v3 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "type",
+  "storageKey": null
+},
+v4 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "amount",
+  "storageKey": null
+},
+v5 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "date",
+  "storageKey": null
+},
+v6 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "description",
+  "storageKey": null
+},
+v7 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "created_at",
+  "storageKey": null
+},
+v8 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "updated_at",
+  "storageKey": null
+};
 return {
   "fragment": {
     "argumentDefinitions": (v0/*: any*/),
@@ -114,11 +128,29 @@ return {
             "name": "transaction",
             "plural": false,
             "selections": [
+              (v2/*: any*/),
+              (v3/*: any*/),
+              (v4/*: any*/),
+              (v5/*: any*/),
+              (v6/*: any*/),
               {
+                "alias": null,
                 "args": null,
-                "kind": "FragmentSpread",
-                "name": "TransactionFragments_transactionDetails"
-              }
+                "concreteType": "Supplier",
+                "kind": "LinkedField",
+                "name": "supplier",
+                "plural": false,
+                "selections": [
+                  {
+                    "args": null,
+                    "kind": "FragmentSpread",
+                    "name": "SupplierFragments_supplier"
+                  }
+                ],
+                "storageKey": null
+              },
+              (v7/*: any*/),
+              (v8/*: any*/)
             ],
             "storageKey": null
           }
@@ -152,44 +184,10 @@ return {
             "plural": false,
             "selections": [
               (v2/*: any*/),
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "type",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "amount",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "date",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "description",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "concreteType": "Client",
-                "kind": "LinkedField",
-                "name": "client",
-                "plural": false,
-                "selections": (v3/*: any*/),
-                "storageKey": null
-              },
+              (v3/*: any*/),
+              (v4/*: any*/),
+              (v5/*: any*/),
+              (v6/*: any*/),
               {
                 "alias": null,
                 "args": null,
@@ -197,23 +195,48 @@ return {
                 "kind": "LinkedField",
                 "name": "supplier",
                 "plural": false,
-                "selections": (v3/*: any*/),
+                "selections": [
+                  (v2/*: any*/),
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "name",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "contact_person",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "phone",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "email",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "address",
+                    "storageKey": null
+                  }
+                ],
                 "storageKey": null
               },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "created_at",
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "kind": "ScalarField",
-                "name": "updated_at",
-                "storageKey": null
-              }
+              (v7/*: any*/),
+              (v8/*: any*/)
             ],
             "storageKey": null
           }
@@ -223,16 +246,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "2f8cff60b88b7a4d8ea14fd81c9963db",
+    "cacheID": "5acb8314cbe4ebdc3e41f27f5ba99bd3",
     "id": null,
     "metadata": {},
     "name": "PaymentMutationsRegisterSupplierMutation",
     "operationKind": "mutation",
-    "text": "mutation PaymentMutationsRegisterSupplierMutation(\n  $input: RegisterSupplierPaymentInput!\n) {\n  register_supplier_payment(input: $input) {\n    transaction {\n      ...TransactionFragments_transactionDetails\n      id\n    }\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment TransactionFragments_transaction on Transaction {\n  id\n  type\n  amount\n  date\n  description\n}\n\nfragment TransactionFragments_transactionDetails on Transaction {\n  ...TransactionFragments_transaction\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n  updated_at\n}\n"
+    "text": "mutation PaymentMutationsRegisterSupplierMutation(\n  $input: RegisterSupplierPaymentInput!\n) {\n  register_supplier_payment(input: $input) {\n    transaction {\n      id\n      type\n      amount\n      date\n      description\n      supplier {\n        ...SupplierFragments_supplier\n        id\n      }\n      created_at\n      updated_at\n    }\n  }\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n"
   }
 };
 })();
 
-(node as any).hash = "f9a8024a50ed12c66517d11d034da748";
+(node as any).hash = "125b3fbd689fb7015711eda9e68722fe";
 
 export default node;

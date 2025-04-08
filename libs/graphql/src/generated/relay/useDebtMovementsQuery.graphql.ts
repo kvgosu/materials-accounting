@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a458c8a68f6a3f3c2ba0af0d37be00c5>>
+ * @generated SignedSource<<cab4c29b03d35ff499b7eb5d2a52a34b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -110,41 +110,20 @@ v8 = {
   "name": "id",
   "storageKey": null
 },
-v9 = [
+v9 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "amount",
+  "storageKey": null
+},
+v10 = [
   (v8/*: any*/),
   {
     "alias": null,
     "args": null,
     "kind": "ScalarField",
     "name": "name",
-    "storageKey": null
-  },
-  {
-    "alias": null,
-    "args": null,
-    "kind": "ScalarField",
-    "name": "contact_person",
-    "storageKey": null
-  },
-  {
-    "alias": null,
-    "args": null,
-    "kind": "ScalarField",
-    "name": "phone",
-    "storageKey": null
-  },
-  {
-    "alias": null,
-    "args": null,
-    "kind": "ScalarField",
-    "name": "email",
-    "storageKey": null
-  },
-  {
-    "alias": null,
-    "args": null,
-    "kind": "ScalarField",
-    "name": "address",
     "storageKey": null
   }
 ];
@@ -227,13 +206,7 @@ return {
             "name": "document_type",
             "storageKey": null
           },
-          {
-            "alias": null,
-            "args": null,
-            "kind": "ScalarField",
-            "name": "amount",
-            "storageKey": null
-          },
+          (v9/*: any*/),
           {
             "alias": null,
             "args": null,
@@ -255,7 +228,7 @@ return {
             "kind": "LinkedField",
             "name": "client",
             "plural": false,
-            "selections": (v9/*: any*/),
+            "selections": (v10/*: any*/),
             "storageKey": null
           },
           {
@@ -265,7 +238,46 @@ return {
             "kind": "LinkedField",
             "name": "supplier",
             "plural": false,
-            "selections": (v9/*: any*/),
+            "selections": (v10/*: any*/),
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "Invoice",
+            "kind": "LinkedField",
+            "name": "invoice",
+            "plural": false,
+            "selections": [
+              (v8/*: any*/),
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "number",
+                "storageKey": null
+              }
+            ],
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
+            "concreteType": "Transaction",
+            "kind": "LinkedField",
+            "name": "transaction",
+            "plural": false,
+            "selections": [
+              (v8/*: any*/),
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "type",
+                "storageKey": null
+              },
+              (v9/*: any*/)
+            ],
             "storageKey": null
           },
           {
@@ -281,12 +293,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "16d7533a8b60fd182a5579351e3856b1",
+    "cacheID": "3d3b0105fcb6a188d01c002e271fb21f",
     "id": null,
     "metadata": {},
     "name": "useDebtMovementsQuery",
     "operationKind": "query",
-    "text": "query useDebtMovementsQuery(\n  $skip: Int\n  $limit: Int\n  $client_id: ID\n  $supplier_id: ID\n  $dimension: DebtDimension\n  $period_from: String\n  $period_to: String\n) {\n  debt_movements(skip: $skip, limit: $limit, client_id: $client_id, supplier_id: $supplier_id, dimension: $dimension, period_from: $period_from, period_to: $period_to) {\n    ...DebtFragments_debtMovementList\n    id\n  }\n}\n\nfragment ClientFragments_client on Client {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n\nfragment DebtFragments_debtMovementList on DebtMovement {\n  id\n  period\n  document_id\n  document_type\n  amount\n  direction\n  dimension\n  client {\n    ...ClientFragments_client\n    id\n  }\n  supplier {\n    ...SupplierFragments_supplier\n    id\n  }\n  created_at\n}\n\nfragment SupplierFragments_supplier on Supplier {\n  id\n  name\n  contact_person\n  phone\n  email\n  address\n}\n"
+    "text": "query useDebtMovementsQuery(\n  $skip: Int\n  $limit: Int\n  $client_id: ID\n  $supplier_id: ID\n  $dimension: DebtDimension\n  $period_from: String\n  $period_to: String\n) {\n  debt_movements(skip: $skip, limit: $limit, client_id: $client_id, supplier_id: $supplier_id, dimension: $dimension, period_from: $period_from, period_to: $period_to) {\n    ...DebtFragments_debtMovementList\n    id\n  }\n}\n\nfragment DebtFragments_debtMovement on DebtMovement {\n  id\n  period\n  document_id\n  document_type\n  amount\n  direction\n  dimension\n  client {\n    id\n    name\n  }\n  supplier {\n    id\n    name\n  }\n  invoice {\n    id\n    number\n  }\n  transaction {\n    id\n    type\n    amount\n  }\n  created_at\n}\n\nfragment DebtFragments_debtMovementList on DebtMovement {\n  ...DebtFragments_debtMovement\n}\n"
   }
 };
 })();

@@ -14,11 +14,10 @@ export const ContractQuery = graphql`
     contract(id: $id) {
       ...ContractFragments_contractDetails
       invoices {
-        ...InvoiceFragments_list
+        ...InvoiceFragments_listWithoutStatus
         id
         number
         date
-        status
         total_amount
         total_with_markup
         supplier {

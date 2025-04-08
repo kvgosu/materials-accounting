@@ -45,8 +45,6 @@ def get_invoices_resolver(obj, info, **kwargs):
         date_from=date_from,
         date_to=date_to
     )
-    
-    # Преобразуем все enum значения в строки
     for invoice in invoices:
         if hasattr(invoice, 'status'):
             invoice.status = str(invoice.status)
@@ -57,8 +55,6 @@ def get_invoice_resolver(obj, info, id, **kwargs):
     db = info.context["db"]
     invoice_repo = InvoiceRepository(db)
     invoice = invoice_repo.get_by_id(id)
-    
-    # Преобразуем enum в строку
     if invoice and hasattr(invoice, 'status'):
         invoice.status = str(invoice.status)
     
