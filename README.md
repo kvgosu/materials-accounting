@@ -58,13 +58,15 @@ cd ../..
 ### 3. Настройка базы данных
 
 ```bash
+
+# Очистка базы данных
+cd apps/api
+nx run api:clean-db
+
 # Создание и инициализация базы данных
 cd apps/api
-poetry run python scripts/init_db.py
+nx run api:init-db 
 
-# Генерация тестовых данных (опционально)
-poetry run python scripts/generate_demo_data.py
-cd ../..
 ```
 
 ### 4. Запуск приложения
@@ -73,7 +75,7 @@ cd ../..
 
 ```bash
 # В одном терминале
-nx serve api
+nx run api:serve
 # или
 cd apps/api
 poetry run flask run
@@ -83,7 +85,7 @@ poetry run flask run
 
 ```bash
 # В другом терминале
-nx serve web
+nx run web:serve
 ```
 
 Теперь приложение доступно по адресу [http://localhost:4200](http://localhost:4200)
@@ -94,7 +96,7 @@ nx serve web
 
 ```bash
 # Запуск Next.js приложения в режиме разработки
-nx serve web
+nx run web:serve
 
 # Сборка приложения
 nx build web
